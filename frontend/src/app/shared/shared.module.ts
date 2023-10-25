@@ -29,7 +29,6 @@ import {RadiolearnOptionsComponent} from "./radiolearn-options/radiolearn-option
 import {ChangePasswordComponent} from "./change-password/change-password.component";
 import {ChangeUsernameComponent} from "./change-username/change-username.component";
 import {FeedbackDialogComponent} from "./feedback-dialog/feedback-dialog.component";
-import {ReportOptionsComponent} from "@app/shared/report-options/report-options.component";
 
 import {InputDialogComponent} from "./input-dialog/input-dialog.component";
 import {StudentErrorsComponent} from "./student-errors/student-errors.component";
@@ -54,7 +53,6 @@ import { SettingsDialogComponent } from './settings-dialog/settings-dialog.compo
     InputModalComponent,
     StudentErrorsComponent,
     RadiolearnOptionsComponent,
-    ReportOptionsComponent,
     SignUpComponent,
     UploadTemplateComponent,
     UploadMaterialComponent,
@@ -95,7 +93,6 @@ import { SettingsDialogComponent } from './settings-dialog/settings-dialog.compo
         InputModalComponent,
         StudentErrorsComponent,
         RadiolearnOptionsComponent,
-        ReportOptionsComponent,
         SignUpComponent,
         UploadTemplateComponent,
         UploadMaterialComponent,
