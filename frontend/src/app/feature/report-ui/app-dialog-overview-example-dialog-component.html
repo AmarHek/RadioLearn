@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Befundung starten</h1>
+<div mat-dialog-content>
+  <p>Aufnahme-ID eingeben:</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Aufnahme-ID</mat-label>
+    <input matInput [(ngModel)]="data.id">
+  </mat-form-field>
+</div>
+<p>Art der Befundung wählen um Befundung zu starten:</p>
+<div mat-dialog-actions>
+  <button mat-flat-button color="primary" [mat-dialog-close]="data.id+'$s'">Strukturiert</button>
+  <button mat-flat-button color="primary" [mat-dialog-close]="data.id+'$f'">Freitext</button>
+</div>

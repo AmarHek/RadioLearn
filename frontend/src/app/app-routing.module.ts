@@ -6,13 +6,15 @@ import {
   FeedbackDisplayComponent,
   TemplateListComponent,
   RadiolearnListComponent,
-  RadiolearnUiComponent
+  RadiolearnUiComponent,
+  ReportUiComponent
 } from "@app/feature";
 import {AuthGuard} from "@app/helpers";
 import {Role} from "@app/models";
 
 import {LoginComponent} from "@app/view";
 import {RadiolearnWelcomeComponent} from "@app/view/radiolearn-welcome/radiolearn-welcome.component";
+import {PendingChangesGuard} from "@app/guards/pending-changes.guard";
 
 const routes: Routes = [
   {
@@ -29,6 +31,13 @@ const routes: Routes = [
     path: "list",
     component: TemplateListComponent,
     canActivate: [AuthGuard],
+    data: { roles: [Role.User, Role.ExternalUser, Role.Moderator, Role.Admin, Role.demoUser, Role.tester] }
+  },
+  {
+    path: "main/:id",
+    component: ReportUiComponent,
+    canActivate: [AuthGuard],
+    canDeactivate: [PendingChangesGuard],
     data: { roles: [Role.User, Role.ExternalUser, Role.Moderator, Role.Admin, Role.demoUser, Role.tester] }
   },
   {
