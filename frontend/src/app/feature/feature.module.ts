@@ -21,7 +21,6 @@ import {FeedbackDisplayComponent} from "@app/feature/feedback-display/feedback-d
 import {TemplateListComponent} from "@app/feature/template-list/template-list.component";
 import {RadiolearnListComponent} from "@app/feature/radiolearn-list/radiolearn-list.component";
 import {RadiolearnUiComponent} from "@app/feature/radiolearn-ui/radiolearn-ui.component";
-import {ReportUiComponent} from "@app/feature/report-ui/report-ui.component";
 import {AccountManagementComponent} from "./account-management/account-management.component";
 import {SharedModule} from "@app/shared/shared.module";
 import { DialogTemplateComponent } from './dialog-template/dialog-template.component';
@@ -38,7 +37,6 @@ import { InputMaterialHandlerComponent } from './input-material-handler/input-ma
     TemplateListComponent,
     RadiolearnListComponent,
     RadiolearnUiComponent,
-    ReportUiComponent,
     DialogTemplateComponent,
     DialogNoMaterialsComponent,
     InputMaterialHandlerComponent
@@ -71,7 +69,6 @@ import { InputMaterialHandlerComponent } from './input-material-handler/input-ma
     TemplateListComponent,
     RadiolearnListComponent,
     RadiolearnUiComponent,
-    ReportUiComponent
   ]
 })
 export class FeatureModule { }
