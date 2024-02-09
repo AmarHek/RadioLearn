@@ -1,0 +1,19 @@
+# IDE
+/.idea
+
+# backend
+/backend/node_modules
+/data
+/dist
+
+# frontend
+# compiled output
+/frontend/dist
+/frontend/tmp
+/frontend/out-tsc
+
+# dependencies
+/frontend/node_modules
+
+# cache
+/frontend/.angular/cache
