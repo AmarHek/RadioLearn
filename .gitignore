@@ -3,8 +3,8 @@
 
 # backend
 /backend/node_modules
-/data
-/dist
+/backend/data
+/backend/dist
 
 # frontend
 # compiled output
