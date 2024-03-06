@@ -78,18 +78,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "radiolearn:build"
+            "buildTarget": "radiolearn:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "radiolearn:build:production"
+              "buildTarget": "radiolearn:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "radiolearn:build"
+            "buildTarget": "radiolearn:build"
           }
         },
         "test": {
