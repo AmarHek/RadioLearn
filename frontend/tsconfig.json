@@ -2,14 +2,26 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./src",
-	"paths": {
-		"@app/*": ["app/*"],
-		"@app/core/*": ["app/core/*"],
-		"@app/shared/*": ["app/shared/*"],
-		"@app/models/*": ["app/models/*"],
-		"@app/helpers/*": ["app/helpers/*"],
-		"@env/*": ["environments/*"]
-	},
+    "paths": {
+      "@app/*": [
+        "app/*"
+      ],
+      "@app/core/*": [
+        "app/core/*"
+      ],
+      "@app/shared/*": [
+        "app/shared/*"
+      ],
+      "@app/models/*": [
+        "app/models/*"
+      ],
+      "@app/helpers/*": [
+        "app/helpers/*"
+      ],
+      "@env/*": [
+        "environments/*"
+      ]
+    },
     "downlevelIteration": true,
     "importHelpers": true,
     "outDir": "./dist/out-tsc",
@@ -18,14 +30,18 @@
     "module": "es2020",
     "moduleResolution": "node",
     "experimentalDecorators": true,
-    "target": "es2020",
-	"types": ["node", "@types/wicg-file-system-access"],
+    "target": "ES2022",
+    "types": [
+      "node",
+      "@types/wicg-file-system-access"
+    ],
     "typeRoots": [
       "node_modules/@types"
     ],
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "useDefineForClassFields": false
   }
 }
