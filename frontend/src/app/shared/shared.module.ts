@@ -12,7 +12,6 @@ import {MatLegacyProgressBarModule as MatProgressBarModule} from "@angular/mater
 import {MatLegacyRadioModule as MatRadioModule} from "@angular/material/legacy-radio";
 import {MatLegacySelectModule as MatSelectModule} from "@angular/material/legacy-select";
 import {MatLegacyTooltipModule as MatTooltipModule} from "@angular/material/legacy-tooltip";
-import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {MatLegacySlideToggleModule as MatSlideToggleModule} from "@angular/material/legacy-slide-toggle";
 
@@ -69,7 +68,6 @@ import { SettingsDialogComponent } from './settings-dialog/settings-dialog.compo
   ],
     imports: [
         CommonModule,
-        FontAwesomeModule,
         FormsModule,
         MatButtonModule,
         MatButtonToggleModule,
