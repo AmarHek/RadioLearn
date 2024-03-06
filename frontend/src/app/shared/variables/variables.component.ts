@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, Output, EventEmitter} from "@angular/core";
 import {Variable} from "@app/models";
-import {MatLegacyDialog as MatDialog} from "@angular/material/legacy-dialog";
+import {MatDialog} from "@angular/material/dialog";
 import {NgbDateStruct} from "@ng-bootstrap/ng-bootstrap";
 import {MatDialogService} from "@app/core";
 

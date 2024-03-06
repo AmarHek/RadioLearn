@@ -9,7 +9,7 @@ import {
 } from "@angular/core";
 import {fromEvent} from "rxjs";
 import {switchMap, takeUntil} from "rxjs/operators";
-import {MatLegacyDialog as MatDialog} from "@angular/material/legacy-dialog";
+import {MatDialog} from "@angular/material/dialog";
 
 import {environment} from "@env/environment";
 import {Annotation, BoundingBox, BoxLabel, Image} from "@app/models";

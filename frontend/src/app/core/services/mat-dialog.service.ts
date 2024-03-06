@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import {MatLegacyDialogConfig as MatDialogConfig} from "@angular/material/legacy-dialog";
+import {MatDialogConfig} from "@angular/material/dialog";
 import {ConfirmDialogModel} from "@app/shared";
 
 @Injectable({

@@ -1,19 +1,19 @@
 import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {MatLegacyButtonModule as MatButtonModule} from "@angular/material/legacy-button";
+import {MatButtonModule} from "@angular/material/button";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
-import {MatLegacyCheckboxModule as MatCheckboxModule} from "@angular/material/legacy-checkbox";
-import {MatLegacyDialogModule as MatDialogModule} from "@angular/material/legacy-dialog";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatDialogModule} from "@angular/material/dialog";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatIconModule} from "@angular/material/icon";
-import {MatLegacyInputModule as MatInputModule} from "@angular/material/legacy-input";
-import {MatLegacyProgressBarModule as MatProgressBarModule} from "@angular/material/legacy-progress-bar";
-import {MatLegacyRadioModule as MatRadioModule} from "@angular/material/legacy-radio";
-import {MatLegacySelectModule as MatSelectModule} from "@angular/material/legacy-select";
-import {MatLegacyTooltipModule as MatTooltipModule} from "@angular/material/legacy-tooltip";
+import {MatInputModule} from "@angular/material/input";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {MatRadioModule} from "@angular/material/radio";
+import {MatSelectModule} from "@angular/material/select";
+import {MatTooltipModule} from "@angular/material/tooltip";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
-import {MatLegacySlideToggleModule as MatSlideToggleModule} from "@angular/material/legacy-slide-toggle";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
 import {ConfirmDialogComponent} from "@app/shared/confirm-dialog/confirm-dialog.component";
 import {InputModalComponent} from "@app/shared/inputModal/inputModal.component";

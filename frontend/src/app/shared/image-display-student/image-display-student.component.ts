@@ -13,7 +13,7 @@ import {Annotation, BoundingBox, Category, Image} from "@app/models";
 import {BackendCallerService, ImageDisplayService, MatDialogService} from "@app/core";
 import {fromEvent} from "rxjs";
 import {switchMap, takeUntil} from "rxjs/operators";
-import {MatLegacyDialog as MatDialog} from "@angular/material/legacy-dialog";
+import {MatDialog} from "@angular/material/dialog";
 import {AnnotationPopupComponent} from "@app/shared/annotation-popup/annotation-popup.component";
 import {SettingsService} from "@app/core/services/settings.service";
 

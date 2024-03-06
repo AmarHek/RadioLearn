@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {nanoid} from "nanoid";
-import {MatLegacyDialogRef as MatDialogRef} from "@angular/material/legacy-dialog";
+import {MatDialogRef} from "@angular/material/dialog";
 
 import {BackendCallerService, FilesSortingService} from "@app/core";
 import {Template} from "@app/models/templateModel";
