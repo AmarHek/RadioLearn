@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { MatDialog } from "@angular/material/dialog";
+import { MatLegacyDialog as MatDialog } from "@angular/material/legacy-dialog";
 
 import {BackendCallerService, MatDialogService, AuthenticationService} from "@app/core";
 import {Template} from "@app/models";

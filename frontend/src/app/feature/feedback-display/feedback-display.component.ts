@@ -3,7 +3,7 @@ import {BackendCallerService, MatDialogService} from "@app/core";
 import {Feedback} from "@app/models";
 import {getDateFormatted} from "@app/helpers";
 import {ConfirmDialogComponent, ConfirmDialogModel} from "@app/shared";
-import {MatDialog} from "@angular/material/dialog";
+import {MatLegacyDialog as MatDialog} from "@angular/material/legacy-dialog";
 
 @Component({
   selector: "app-feedback-display",

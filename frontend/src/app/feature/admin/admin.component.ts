@@ -1,5 +1,5 @@
 import {Component, ComponentRef, OnInit, ViewChild} from "@angular/core";
-import {MatDialog} from "@angular/material/dialog";
+import {MatLegacyDialog as MatDialog} from "@angular/material/legacy-dialog";
 import {Role, User} from "@app/models";
 import {MatDialogService, UserService} from "@app/core";
 import {ChangeRoleDialogComponent} from "@app/shared/change-role-dialog/change-role-dialog.component";

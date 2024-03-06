@@ -6,7 +6,7 @@ import {ChipHelperService} from "@app/core/services/chip-helper.service";
 import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
 import {DialogNoMaterialsComponent} from "@app/feature/dialog-no-materials/dialog-no-materials.component";
 import {DialogTemplateComponent} from "@app/feature/dialog-template/dialog-template.component";
-import {MatDialog} from "@angular/material/dialog";
+import {MatLegacyDialog as MatDialog} from "@angular/material/legacy-dialog";
 import {getResetCounter, getSurveyStatus, getUUID, increaseSurveyCounter} from "@app/helpers/localStorageHelper";
 import {
   FeedbackDialogComponent,

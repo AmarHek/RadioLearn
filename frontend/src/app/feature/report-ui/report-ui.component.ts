@@ -6,7 +6,7 @@ import {ComponentCanDeactivate} from "@app/guards/pending-changes.guard";
 import {DomSanitizer} from "@angular/platform-browser";
 import {HttpClient} from "@angular/common/http";
 import {Location} from "@angular/common";
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialog as MatDialog, MatLegacyDialogRef as MatDialogRef} from "@angular/material/legacy-dialog";
 import {Observable} from "rxjs";
 import {ReportOptionsComponent} from "@app/shared";
 import {
