@@ -1,7 +1,7 @@
 {
     "apps": [
         {
-            "name": "radiospeech",
+            "name": "radiolearn",
 			"cwd": "./backend/",
             "script": "npm",
             "args" : "start",

@@ -1,5 +1,5 @@
 {
-  "name": "radiospeech-server",
+  "name": "radiolearn-server",
   "version": "1.0.0",
   "scripts": {
     "start": "node -r ts-node/register ./src/server.ts",
