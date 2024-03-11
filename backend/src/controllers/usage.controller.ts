@@ -1,30 +1,7 @@
 import {Response} from "express";
 import {RadiolearnData} from "../models/material.model";
-import {DoctorReportDB, ParticipantDB} from "../models";
+import {ParticipantDB} from "../models";
 
-export async function saveDoctorReport(req: any, res: Response): Promise<void> {
-    try {
-        console.log("Received Doctor report");
-
-        const doctorReport = new DoctorReportDB({
-            template: req.body.template,
-            timestamp: req.body.timestampStart,
-            duration: req.body.duration,
-            imageID: req.body.imageID,
-            layoutID: req.body.layoutID,
-            mode: req.body.mode,
-            report: req.body.report,
-            pseudonym: req.body.pseudonym
-        });
-
-        await doctorReport.save();
-        console.log("Successfully saved new doctor report.");
-        res.status(200).send({ success: true, message: "Successfully saved new doctor report." });
-    } catch (err: any) {
-        console.error("Saving doctor report failed: " + err.message);
-        res.status(500).send({ success: false, message: "Saving doctor report failed: " + err.message });
-    }
-}
 
 export async function saveRadiolearnData(req: any, res: Response): Promise<void> {
     try {

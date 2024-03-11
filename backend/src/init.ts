@@ -88,3 +88,27 @@ async function saveTemplate(path: string, name: string, kind: string) {
         console.error(err);
     }
 }
+
+
+function loadDefaultData() {
+    // This function is intended for the first startup of the backend, namely for the data folder
+    // It will assert that all files from the init folder are located in the data folder and copy all missing
+    // files to the data folder
+
+    // First we need to check if the data folder exists
+    if (!fs.existsSync(Path.join(process.cwd(), "data"))) {
+        fs.mkdirSync(Path.join(process.cwd(), "data"));
+    }
+}
+
+async function loadDefaultMongoDB() {
+    // This function is intended for the first startup of the backend, namely for the MongoDB
+    // It will assert the contents of the following collections:
+    // - material
+    // - template
+    // - participant
+    // - user
+
+    // If any of the collections are empty, it will insert the default data from the init folder
+
+}

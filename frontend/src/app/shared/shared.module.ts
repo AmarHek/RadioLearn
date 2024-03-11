@@ -17,7 +17,6 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
 import {ConfirmDialogComponent} from "@app/shared/confirm-dialog/confirm-dialog.component";
 import {InputModalComponent} from "@app/shared/inputModal/inputModal.component";
-import {ReportOutputComponent} from "@app/shared/report-output/report-output.component";
 import {UploadMaterialComponent} from "@app/shared/upload-material/upload-material.component";
 import {UploadTemplateComponent} from "@app/shared/upload-template/upload-template.component";
 import {VariablesComponent} from "@app/shared/variables/variables.component";
@@ -29,7 +28,6 @@ import {RadiolearnOptionsComponent} from "./radiolearn-options/radiolearn-option
 import {ChangePasswordComponent} from "./change-password/change-password.component";
 import {ChangeUsernameComponent} from "./change-username/change-username.component";
 import {FeedbackDialogComponent} from "./feedback-dialog/feedback-dialog.component";
-import {ReportOptionsComponent} from "@app/shared/report-options/report-options.component";
 
 import {InputDialogComponent} from "./input-dialog/input-dialog.component";
 import {StudentErrorsComponent} from "./student-errors/student-errors.component";
@@ -54,8 +52,6 @@ import { SettingsDialogComponent } from './settings-dialog/settings-dialog.compo
     InputModalComponent,
     StudentErrorsComponent,
     RadiolearnOptionsComponent,
-    ReportOutputComponent,
-    ReportOptionsComponent,
     SignUpComponent,
     UploadTemplateComponent,
     UploadMaterialComponent,
@@ -95,8 +91,6 @@ import { SettingsDialogComponent } from './settings-dialog/settings-dialog.compo
         InputModalComponent,
         StudentErrorsComponent,
         RadiolearnOptionsComponent,
-        ReportOptionsComponent,
-        ReportOutputComponent,
         SignUpComponent,
         UploadTemplateComponent,
         UploadMaterialComponent,

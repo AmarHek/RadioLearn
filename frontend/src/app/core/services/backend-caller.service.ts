@@ -100,15 +100,6 @@ export class BackendCallerService {
     );
   }
 
-  addDoctorReport(template: Template, timestampStart: number,
-                  duration: number, imageID: string, layoutID: number,
-                  mode: string, report: string, pseudonym: string): Observable<{ success: boolean; message: string }> {
-    return this.http.post<{ success: boolean; message: string }>(
-      this.usageUrl + "addDoctorReport/",{template, timestampStart, duration,
-        imageID, layoutID, mode, report, pseudonym}
-    );
-  }
-
   updateMaterial(material: Material) {
     return this.http.put<{message: string}>(this.materialUrl + "update/" + material._id, {
       deepDocTemplate: material.deepDocTemplate,
