@@ -106,7 +106,7 @@ async function loadDefaultMongoDB() {
             // using keys and existingKeys, we can now assert which keys are missing
             const missingKeys = keys.filter((key: any) => !existingKeys.includes(key));
 
-            for (let entry of data) {
+            for (const entry of data) {
                 // We need to remove the _id field, as it is not allowed to be set manually
                 deleteIDFields(entry);
                 if (collection === "templates") {
