@@ -1,9 +1,9 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "$schema": "node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "radiospeech": {
+    "radiolearn": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/radiospeech",
+            "outputPath": "dist/radiolearn",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -78,18 +78,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "radiospeech:build"
+            "buildTarget": "radiolearn:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "radiospeech:build:production"
+              "buildTarget": "radiolearn:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "radiospeech:build"
+            "buildTarget": "radiolearn:build"
           }
         },
         "test": {
@@ -120,7 +120,7 @@
         }
       }
     },
-    "radiospeech-e2e": {
+    "radiolearn-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -128,11 +128,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "radiospeech:serve"
+            "devServerTarget": "radiolearn:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "radiospeech:serve:production"
+              "devServerTarget": "radiolearn:serve:production"
             }
           }
         },
@@ -150,5 +150,13 @@
   },
   "cli": {
     "analytics": false
+  },
+  "schematics": {
+    "@angular-eslint/schematics:application": {
+      "setParserOptionsProject": true
+    },
+    "@angular-eslint/schematics:library": {
+      "setParserOptionsProject": true
+    }
   }
 }

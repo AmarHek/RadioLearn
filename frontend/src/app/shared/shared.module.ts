@@ -12,7 +12,6 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MatRadioModule} from "@angular/material/radio";
 import {MatSelectModule} from "@angular/material/select";
 import {MatTooltipModule} from "@angular/material/tooltip";
-import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
@@ -65,7 +64,6 @@ import { SettingsDialogComponent } from './settings-dialog/settings-dialog.compo
   ],
     imports: [
         CommonModule,
-        FontAwesomeModule,
         FormsModule,
         MatButtonModule,
         MatButtonToggleModule,

@@ -11,7 +11,7 @@ export function createExcelTemplate(req: any, res: Response) {
     const rawData = fs.readFileSync(req.file.path);
     const result = parseXLSToJson(rawData.toString("binary"), req.body.kind);
     if (typeof(result) === "object") {
-        let errorCollection = result as RowErrorCollection
+        const errorCollection = result as RowErrorCollection
         console.log("Errors found: " + errorCollection.getCompactReport());
         res.status(500).send({
             message: errorCollection.getVerboseReport()
@@ -106,52 +106,44 @@ export function getTemplateList(req: Request, res: Response){
   }
 }
 
-export function getTemplateListAsString(req: Request, res: Response) {
-    TemplateDB.find({kind: req.body.kind}).exec((err,
-                            templates) => {
-        if (err) {
-            res.status(500).send({message: err});
-        } else {
-            const templateNames: string[] = [];
-            if (templates.length > 0) {
-                for (const template of templates) {
-                    templateNames.push(template.name)
-                }
+export async function getTemplateListAsString(req: Request, res: Response) {
+    try {
+        const templates = await TemplateDB.find({kind: req.body.kind}).exec();
+        const templateNames: string[] = [];
+        if (templates.length > 0) {
+            for (const template of templates) {
+                templateNames.push(template.name)
             }
-            res.status(200).send({templateNames});
         }
-    })
+        res.status(200).send({templateNames});
+    } catch (err) {
+        res.status(500).send({message: err});
+    }
 }
 
-export function getTemplateById(req: Request, res: Response): void {
-    TemplateDB.findOne({_id: req.params.id}).exec(
-        (err, template) => {
-          if(err) {
-            res.status(500).send({message: err});
-          }
-          res.status(200).send(template)
-        }
-    )
+export async function getTemplateById(req: Request, res: Response) {
+    try {
+        const template = await TemplateDB.findOne({_id: req.params.id}).exec();
+        res.status(200).send({template});
+    } catch (err) {
+        res.status(500).send({message: err});
+    }
 }
 
-export function getTemplateByName(req: Request, res: Response): void {
-    TemplateDB.findOne({name: req.body.name}).exec(
-        (err, template) => {
-            if(err) {
-                res.status(500).send({message: err});
-            }
-            res.status(201).send({template});
-        }
-    )
+export async function getTemplateByName(req: Request, res: Response) {
+    try {
+        const template = await TemplateDB.findOne({name: req.body.name}).exec();
+        res.status(200).send({template});
+    } catch (err) {
+        res.status(500).send({message: err});
+    }
 }
 
-export function getTemplatesByKind(req: Request, res: Response): void {
-    TemplateDB.find({kind: req.body.kind}).exec(
-        (err, templates) => {
-            if(err) {
-                res.status(500).send({message: err});
-            }
-            res.status(201).send({templates});
-        }
-    )
+export async function getTemplatesByKind(req: Request, res: Response) {
+    try {
+        const templates = await TemplateDB.find({kind: req.body.kind}).exec();
+        res.status(200).send({templates});
+    } catch (err) {
+        res.status(500).send({message: err});
+    }
 }

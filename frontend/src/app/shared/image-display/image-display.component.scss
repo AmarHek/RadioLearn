@@ -31,11 +31,13 @@
   font-size: 100%;
 }
 
+/* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version. */
 .mat-button-toggle {
   height: 50px;
   align-items: center;
 }
 
+/* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version. */
 .mat-button-toggle-group {
   height: 50px;
   align-items: center;

@@ -13,7 +13,6 @@ import {RouterModule} from "@angular/router";
 import {HeaderComponent} from "@app/view/header/header.component";
 import {LoginComponent} from "@app/view/login/login.component";
 import {RadiolearnWelcomeComponent} from "@app/view/radiolearn-welcome/radiolearn-welcome.component";
-import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {MatMenuModule} from "@angular/material/menu";
 
 
@@ -25,7 +24,6 @@ import {MatMenuModule} from "@angular/material/menu";
   ],
     imports: [
         CommonModule,
-        FontAwesomeModule,
         ReactiveFormsModule,
         RouterModule,
         MatButtonModule,

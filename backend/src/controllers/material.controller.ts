@@ -73,287 +73,297 @@ export function addMaterial(req: any, res: Response): void {
     }
 }
 
-export function deleteMaterial(req: Request, res: Response): void {
-    MaterialDB.deleteOne({
-        _id: req.body.objectID
-    }).exec((err) => {
-        if (err) {
-            res.status(500).send({message: err});
-        } else {
-            const dir = Path.join("data/images/", req.body.scanID);
-            fs.rmdirSync(dir, {recursive: true});
-            res.status(200).send({message: "Material deleted"});
-        }
-    });
+export async function deleteMaterial(req: Request, res: Response): Promise<void> {
+    try {
+        await MaterialDB.deleteOne({_id: req.body.objectID})
+        const dir = Path.join("data/images/", req.body.scanID);
+        fs.rmSync(dir, {recursive: true});
+        res.status(200).send({message: "Material deleted"});
+    }
+    catch(err) {
+        res.status(500).send({message: err});
+    }
 }
 
-export function updateMaterial(req: Request, res: Response): void {
-    const time: number = new Date().getTime();
-    MaterialDB.updateOne({
-        _id: req.params.id
-    }, {
-        deepDocTemplate: req.body.deepDocTemplate,
-        shallowDocTemplate: req.body.shallowDocTemplate,
-        annotations: req.body.annotations,
-        pathologies: req.body.pathologies,
-        lastModified: time,
-        judged: req.body.judged
-    }).exec((err, response) => {
+export async function updateMaterial(req: Request, res: Response): Promise<void> {
+    try {
+        const time: number = new Date().getTime();
+        const response = await MaterialDB.updateOne({
+            _id: req.params.id
+        }, {
+            deepDocTemplate: req.body.deepDocTemplate,
+            shallowDocTemplate: req.body.shallowDocTemplate,
+            annotations: req.body.annotations,
+            pathologies: req.body.pathologies,
+            lastModified: time,
+            judged: req.body.judged
+        }).exec();
         console.log(response);
-        if (err) {
-            res.status(500).send({message: err});
-        } else if (response.modifiedCount === 1) {
+        if (response.modifiedCount === 1) {
             res.status(200).json({message: "Update successful"});
         } else {
             res.status(200).json({message: "No changes detected."});
         }
-    });
+    }
+    catch(err) {
+        res.status(500).send({message: err});
+    }
 }
 
-export function addScan(req: any, res: Response) {
-    console.log(req);
-
-    const newScan = {
-        filename: req.file.filename,
-        mimetype: req.file.mimetype
-    }
-
-    MaterialDB.findById(req.params.id).exec(
-        (err, material) => {
-            if (err || material === null) {
-                console.log(err);
-                res.status(500).send({message: err});
-            } else {
-                const scans = material.scans;
-                if (req.body.scanType === "lateralScan") {
-                    scans.lateralScan = newScan;
-                } else if (req.body.scanType === "preScan") {
-                    scans.preScan = newScan;
-                }
-
-                MaterialDB.updateOne({_id: req.params.id}, {
-                    scans: scans
-                }).exec((err, response) => {
-                    console.log(response);
-                    res.status(200).send({message: "Update successful"});
-                });
-            }
-        });
-}
-
-export function deleteScanById(req: Request, res: Response): void {
-    let update;
-    if (req.body.scanType === "lateralScan") {
-        update = {
-            "scans.lateralScan": undefined,
-            "annotations.lateral": []
+export async function addScan(req: any, res: Response) {
+    try {
+        const newScan = {
+            filename: req.file.filename,
+            mimetype: req.file.mimetype
         }
-    } else if (req.body.scanType === "preScan") {
-        update = {
-            "scans.preScan": undefined,
-            "annotations.pre": []
-        }
-    } else {
-        res.status(400).send({message: "Unknown scanType specified"});
-    }
-    // simply update corresponding material entry by id, removing requested scan and annotations
-    MaterialDB.updateOne({_id: req.params.id}, update
-    ).exec((err, response) => {
-        if (err) {
-            res.status(500).send({message: err});
+
+        const material = await MaterialDB.findById(req.params.id).exec();
+        if (!material) {
+            return res.status(404).send({message: "Material not found"});
         } else {
+
+            const scans = { ...material.scans };
+
+            if (req.body.scanType === "lateralScan") {
+                scans.lateralScan = newScan;
+            } else if (req.body.scanType === "preScan") {
+                scans.preScan = newScan;
+            }
+
+            const response = await MaterialDB.updateOne({_id: req.params.id}, {
+                scans: scans
+            }).exec();
             console.log(response);
-            // delete image from server folder
-            fs.rmSync(Path.join("data/images", req.body.id, req.body.filename));
-            res.status(200).send({message: "Deletion successful"});
+
+            res.status(200).send({message: "Update successful"});
         }
-    });
+    } catch(err) {
+        console.log(err)
+        res.status(500).send({message: err});
+    }
 }
 
-export function updateMaterialTemplates(req: Request, res: Response): void {
-    // replaces old with new template in all unjudged material
-    // first get current Template
-    TemplateDB.findOne({name: "Radiolearn"}).exec((err,
-                                                   template) => {
-        if (err || template === null) {
-            res.status(500).send({message: err});
-        } else {
-            // turn currentTemplate into template object
-            const newTemplate: Template = {
-                _id: template._id,
-                parts: template.parts,
-                kind: template.kind,
-                name: template.name,
-                timestamp: template.timestamp
+export async function deleteScanById(req: Request, res: Response) {
+    try {
+        let update;
+        if (req.body.scanType === "lateralScan") {
+            update = {
+                "scans.lateralScan": undefined,
+                "annotations.lateral": []
             }
+        } else if (req.body.scanType === "preScan") {
+            update = {
+                "scans.preScan": undefined,
+                "annotations.pre": []
+            }
+        } else {
+            res.status(400).send({message: "Unknown scanType specified"});
+            return;
+        }
 
-            // judged/unjudged given by request body
-            // more important for judged: only replace template if Material Template is older than new one
-            // because previous entries are lost in the process. Also set judged to false
-            MaterialDB.updateMany({
-                'judged': req.body.judged,
-                'template.timestamp': {$lt: newTemplate.timestamp}
-            }, {
+        const updateResult = await MaterialDB.updateOne({_id: req.params.id}, update).exec();
+        console.log(updateResult);
+
+        if (updateResult.modifiedCount === 0) {
+            res.status(404).send(
+                {message: "No scan was deleted. Material not found or scan already deleted."});
+        }
+
+        // delete image from server folder
+        const imagePath = Path.join("data/images", req.body.id, req.body.filename);
+        if (fs.existsSync(imagePath)) {
+            fs.rmSync(imagePath);
+        }
+        res.status(200).send({message: "Deletion successful"});
+    } catch(err) {
+        res.status(500).send({message: err});
+    }
+}
+
+export async function updateMaterialTemplates(req: Request, res: Response): Promise<void> {
+    try {
+        // Find the current template
+        const template = await TemplateDB.findOne({ name: "Radiolearn" }).exec();
+
+        if (!template) {
+            res.status(404).send({ message: "Template not found" });
+            return;
+        }
+
+        // Create a new template object
+        const newTemplate: Template = {
+            _id: template._id,
+            parts: template.parts,
+            kind: template.kind,
+            name: template.name,
+            timestamp: template.timestamp
+        };
+
+        // Update materials where necessary
+        const updateResult = await MaterialDB.updateMany({
+            'judged': req.body.judged,
+            'template.timestamp': { $lt: newTemplate.timestamp }
+        }, {
+            $set: {
                 deepDocTemplate: newTemplate,
                 judged: false
-            }).exec(
-                (err, update) => {
-                    if (err) {
-                        res.status(500).send({message: err});
-                    } else {
-                        console.log(update);
-                        res.status(200).send({message: "All updates successful"})
-                    }
-                })
-        }
-    });
+            }
+        }).exec();
+
+        console.log(updateResult);
+        res.status(200).send({ message: "All updates successful" });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send({ message: err || "Internal Server Error" });
+    }
 }
 
 // NOTE: BETTER USE PYTHON SCRIPTS WITH HARD CODED CHANGES
-export function updateMatTempBC(req: Request, res: Response): void {
-    // updates old templates on judged with backwards compatibility
+export async function updateMatTempBC(req: Request, res: Response): Promise<void> {
+    try {
+        // Find the current template
+        const template = await TemplateDB.findOne({ name: "Radiolearn" }).exec();
 
-    // first get current Template
-    TemplateDB.findOne({name: "Radiolearn"}).exec((err,
-                                                   template) => {
-        if (err || template === null) {
-            res.status(500).send({message: err});
-        } else {
-            // first get list of all Material with old template
-            MaterialDB.find({
-                'judged': true,
-                'template.timestamp': {$lt: template.timestamp}
-            }).exec((err, materials) => {
-                if (err) {
-                    res.status(500).send({message: err})
-                } else if (materials.length === 0) {
-                    res.status(200).send({message: "Keine Materialien zum Aktualisieren."})
-                } else {
-                    // found some materials, time to update them
-                    for (const material of materials) {
-                        // first copy new template
-                        const newPartsEmpty = JSON.parse(JSON.stringify(template.parts))
-                        // now fill out new parts by using old parts
-                        const newParts = updatePartsBackwardsCompatible(newPartsEmpty, material.deepDocTemplate.parts);
-                        // generate new template and update material entry
-                        const newTemplate = {
-                            _id: material.deepDocTemplate._id,
-                            name: template.name,
-                            timestamp: template.timestamp,
-                            parts: newParts
-                        }
-                        MaterialDB.updateOne({_id: material._id},
-                            {template: newTemplate}).exec((err, response) => {
-                            if (err) {
-                                console.log(err);
-                                res.status(500).send({message: err});
-                            }
-                            console.log(response);
-                        });
-                    }
-                    res.status(200).send({message: "Update successful"});
-                }
-            })
+        if (!template) {
+            res.status(404).send({ message: "Template not found" });
+            return;
         }
-    });
-}
 
-export function updateMaterialTemplateBCByID(req: Request, res: Response) {
-    // get current Template
-    TemplateDB.findOne({name: "Radiolearn"}).exec((err,
-                                                   template) => {
-        if (err || template === null) {
-            res.status(500).send({message: err});
-        } else {
-            MaterialDB.findById(req.params.id).exec((err,
-                                                     material) => {
-                if (err || material === null) {
-                    res.status(500).send({message: err});
-                } else {
-                    // first copy new template
-                    const newPartsEmpty = JSON.parse(JSON.stringify(template.parts))
-                    // now fill out new parts by using old parts
-                    const newParts = updatePartsBackwardsCompatible(newPartsEmpty, material.deepDocTemplate.parts);
-                    // generate new template and update material entry
-                    const newTemplate = {
-                        _id: material.deepDocTemplate._id,
-                        name: template.name,
-                        timestamp: template.timestamp,
-                        parts: newParts
-                    }
-                    MaterialDB.updateOne({_id: material._id},
-                        {template: newTemplate}).exec((err, response) => {
-                        if (err) {
-                            console.log(err);
-                            res.status(500).send({message: err});
-                        }
-                        console.log(response);
-                        res.status(200).send({message: "Update successful"});
-                    });
-                }
-            });
-        }
-    });
-}
+        // Find materials with old template and judged as true
+        const materials = await MaterialDB.find({
+            'judged': true,
+            'template.timestamp': { $lt: template.timestamp }
+        }).exec();
 
-export function getMaterialById(req: Request, res: Response): void {
-    MaterialDB.findById(req.params.id).exec((err, material) => {
-        if (err) {
-            res.status(500).send({message: err});
-        } else {
-            res.status(200).send({material});
+        if (materials.length === 0) {
+            res.status(200).send({ message: "No materials to update." });
+            return;
         }
-    });
-}
 
-export function listAll(req: Request, res: Response): void {
-    MaterialDB.find()
-        .exec((err, materials) => {
-            if (err) {
-                res.status(500).send({message: err});
-            } else {
-                res.status(200).send({materials});
-            }
-        });
-}
+        // Update materials
+        for (const material of materials) {
+            // Copy new template parts
+            const newPartsEmpty = JSON.parse(JSON.stringify(template.parts));
+            // Update new parts with old parts
+            const newParts = updatePartsBackwardsCompatible(newPartsEmpty, material.deepDocTemplate.parts);
+            // Generate new template
+            const newTemplate = {
+                _id: material.deepDocTemplate._id,
+                name: template.name,
+                timestamp: template.timestamp,
+                parts: newParts
+            };
 
-export function listByFilter(req: Request, res: Response): void {
-    let filter;
-    if (req.body.shallowDocTemplate !== undefined) {
-        filter = {
-            'judged': req.body.judged,
-            'shallowDocTemplate.name': req.body.shallowDocTemplate
+            // Update material entry with new template
+            await MaterialDB.updateOne({ _id: material._id }, { template: newTemplate }).exec();
         }
-    } else {
-        filter = {
-            'judged': req.body.judged
-        }
+
+        res.status(200).send({ message: "Update successful" });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send({ message: err || "Internal Server Error" });
     }
-    console.log(req.body);
-    console.log("Filter: ", filter);
+}
 
-    const skip = Math.max(0, req.body.skip);
-    if (req.body.judged) {
-        MaterialDB.find(filter)
-            .sort('lastModified')
-            .skip(skip)
-            .limit(req.body.length)
-            .exec((err, materials) => {
-                if (err) {
-                    res.status(404).send({message: err});
-                }
-                res.status(200).send({materials});
-            });
-    } else {
-        MaterialDB.find(filter)
-            .skip(skip)
-            .limit(req.body.length)
-            .exec((err, materials) => {
-                if (err) {
-                    res.status(404).send({message: err});
-                }
-                res.status(200).send({materials});
-            });
+export async function updateMaterialTemplateBCByID(req: Request, res: Response): Promise<void> {
+    try {
+        // Find the current template
+        const template = await TemplateDB.findOne({ name: "Radiolearn" }).exec();
+
+        if (!template) {
+            res.status(404).send({ message: "Template not found" });
+            return;
+        }
+
+        // Find material by ID
+        const material = await MaterialDB.findById(req.params.id).exec();
+
+        if (!material) {
+            res.status(404).send({ message: "Material not found" });
+            return;
+        }
+
+        // Copy new template parts
+        const newPartsEmpty = JSON.parse(JSON.stringify(template.parts));
+        // Update new parts with old parts
+        const newParts = updatePartsBackwardsCompatible(newPartsEmpty, material.deepDocTemplate.parts);
+        // Generate new template
+        const newTemplate = {
+            _id: material.deepDocTemplate._id,
+            name: template.name,
+            timestamp: template.timestamp,
+            parts: newParts
+        };
+
+        // Update material entry with new template
+        await MaterialDB.updateOne({ _id: material._id }, { template: newTemplate }).exec();
+
+        res.status(200).send({ message: "Update successful" });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send({ message: err || "Internal Server Error" });
+    }
+}
+
+export async function getMaterialById(req: Request, res: Response): Promise<void> {
+    try {
+        const material = await MaterialDB.findById(req.params.id).exec();
+
+        if (!material) {
+            res.status(404).send({message: "Material not found"});
+            return;
+        }
+
+        res.status(200).send({material});
+    } catch (err) {
+        console.error(err);
+        res.status(500).send({message: err || "Internal Server Error"});
+    }
+}
+
+export async function listAll(req: Request, res: Response): Promise<void> {
+    try {
+        const materials = await MaterialDB.find().exec();
+        res.status(200).send({materials});
+    } catch(err) {
+        console.log(err);
+        res.status(500).send({message: err});
+    }
+}
+
+export async function listByFilter(req: Request, res: Response): Promise<void> {
+    try {
+        let filter;
+        if (req.body.shallowDocTemplate !== undefined) {
+            filter = {
+                'judged': req.body.judged,
+                'shallowDocTemplate.name': req.body.shallowDocTemplate
+            }
+        } else {
+            filter = {
+                'judged': req.body.judged
+            }
+        }
+        console.log(req.body);
+        console.log("Filter: ", filter);
+
+        const skip = Math.max(0, req.body.skip);
+        if (req.body.judged) {
+            const materials = await MaterialDB.find(filter)
+                .sort('lastModified')
+                .skip(skip)
+                .limit(req.body.length)
+                .exec();
+            res.status(200).send({materials});
+        } else {
+            const materials = await MaterialDB.find(filter)
+                .skip(skip)
+                .limit(req.body.length)
+                .exec();
+            res.status(200).send({materials});
+        }
+    } catch(err) {
+        res.status(404).send({message: err});
     }
 }
 
@@ -405,26 +415,28 @@ export async function getUnusedMaterial(req: Request, res: Response): Promise<vo
     }
 }
 
-export function countMaterials(req: Request, res: Response): void {
-    let filter;
-    if (req.body.shallowDocTemplate !== undefined) {
-        filter = {
-            'judged': req.body.judged,
-            'shallowDocTemplate.name': req.body.shallowDocTemplate
-        }
-    } else {
-        filter = {
-            'judged': req.body.judged
-        }
-    }
-    console.log("Count", req.body);
-    console.log("Count", filter);
-    MaterialDB.countDocuments(filter).exec((err, count) => {
-        if (err) {
-            console.log(err);
-            res.status(500).send({message: err});
+export async function countMaterials(req: Request, res: Response): Promise<void> {
+    try {
+        let filter;
+        if (req.body.shallowDocTemplate !== undefined) {
+            filter = {
+                'judged': req.body.judged,
+                'shallowDocTemplate.name': req.body.shallowDocTemplate
+            }
         } else {
-            res.status(201).send({count});
+            filter = {
+                'judged': req.body.judged
+            }
         }
-    });
+
+        console.log("Count", req.body);
+        console.log("Count", filter);
+
+        const count = await MaterialDB.countDocuments(filter).exec();
+
+        res.status(200).send({count});
+    } catch (err) {
+        console.error(err);
+        res.status(500).send({message: err || "Internal Server Error"});
+    }
 }

@@ -1,8 +1,8 @@
 <div>
   <mat-form-field class="example-chip-list" appearance="fill">
     <mat-label>Eingabe</mat-label>
-    <mat-chip-list #chipList>
-      <mat-chip
+    <mat-chip-grid #chipList>
+      <mat-chip-row
         *ngFor="let chip of chips"
         [ngClass]="chip.color"
         (click)="onChipClick(chip)"
@@ -11,13 +11,13 @@
         <button matChipRemove>
           <mat-icon>cancel</mat-icon>
         </button>
-      </mat-chip>
+      </mat-chip-row>
       <input
         #chipInput
         placeholder="Befund eingeben ..."
         [matChipInputFor]="chipList"
         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
         [(ngModel)]="this.input" (input)="onInput()">
-    </mat-chip-list>
+    </mat-chip-grid>
   </mat-form-field>
 </div>

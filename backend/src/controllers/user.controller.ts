@@ -20,76 +20,69 @@ export const getUsers = (req: Request, res: Response) => {
 }
 
 export const getUserById = (req: Request, res: Response) => {
-       UserDB.find(
-            {_id: req.params.id}
-        ).exec((err, users) => {
-            if (err) {
-                res.status(500).send({message: err});
-            } else {
-                const user = users[0];
-                res.status(200).send({
-                    id: user._id,
-                    username: user.username,
-                    role: user.role
-                });
-            }
+    try {
+        UserDB.find({_id: req.params.id}).then(users => {
+            const user = users[0];
+            res.status(200).send({
+                id: user._id,
+                username: user.username,
+                role: user.role
+            });
         });
+    } catch(err) {
+        res.status(500).send({message: err});
+    }
 }
 
 export const deleteUserById = (req: Request, res: Response) => {
-    UserDB.deleteOne({
-        _id: req.params.id
-    }).exec((err) => {
-        if (err) {
-            res.status(500).send({message: err.message});
-            return;
-        } else {
+    try {
+        UserDB.deleteOne({_id: req.params.id}).then(() => {
             res.status(200).send({message: "User erfolgreich gelöscht."});
-        }
-    })
+        });
+    } catch(err) {
+        res.status(500).send({message: err});
+    }
 }
 
 export const changeUsername = (req: Request, res: Response) => {
-    UserDB.updateOne({
-        _id: req.params.id
-    }, {
-        username: req.body.newUsername
-    }).exec((err) => {
-       if (err) {
-           res.status(500).send({message: err});
-       } else {
-           res.status(200).send({message: "Username erfolgreich geändert."});
-       }
-    });
+    try {
+        UserDB.updateOne({
+            _id: req.params.id
+        }, {
+            username: req.body.newUsername
+        }).then(() => {
+            res.status(200).send({message: "Username erfolgreich geändert."});
+        });
+    } catch(err) {
+        res.status(500).send({message: err});
+    }
 }
 
 export const changePassword = (req: Request, res: Response) => {
-    const newPassword = bcrypt.hashSync(req.body.newPassword, 8);
-    UserDB.updateOne({
-        _id: req.params.id
-    }, {
-        password: newPassword
-    }).exec((err) => {
-        if (err) {
-            res.status(500).send({message: err});
-        } else {
+    try {
+        const newPassword = bcrypt.hashSync(req.body.newPassword, 8);
+        UserDB.updateOne({
+            _id: req.params.id
+        }, {
+            password: newPassword
+        }).then(() => {
             res.status(200).send({message: "Passwort erfolgreich geändert."});
-        }
-    });
+        });
+    } catch(err) {
+        res.status(500).send({message: err});
+    }
 }
 
 export const changeRole = (req: Request, res: Response) => {
-    console.log(req.body, req.params.id);
-    UserDB.updateOne({
-        _id: req.params.id
-    }, {
-        role: req.body.newRole
-    }).exec((err, result) => {
-        console.log(result)
-        if (err) {
-            res.status(500).send({message: err});
-        } else {
+    try {
+        UserDB.updateOne({
+            _id: req.params.id
+        }, {
+            role: req.body.newRole
+        }).then(() => {
             res.status(200).send({message: "Rolle erfolgreich geändert."});
-        }
-    });
+        });
+    } catch(err) {
+        res.status(500).send({message: err});
+    }
 }

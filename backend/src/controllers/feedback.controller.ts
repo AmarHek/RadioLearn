@@ -16,39 +16,37 @@ export function addFeedback(req: Request, res: Response) {
     });
 }
 
-export function getFeedbackCount(req: Request, res: Response) {
-    FeedbackDB.countDocuments().exec((err, count) => {
-        if (err) {
-            console.log(err);
-            res.status(500).send({message: err});
-        } else {
-            console.log(count);
-            res.status(201).send({count});
-        }
-    })
+export async function getFeedbackCount(req: Request, res: Response): Promise<void> {
+    try{
+        const count = await FeedbackDB.countDocuments();
+        console.log(count);
+        res.status(201).send({count});
+    }
+    catch(err) {
+        console.log(err);
+        res.status(500).send({message: err});
+    }
 }
 
-export function getFeedbackList(req: Request, res: Response) {
-    FeedbackDB.find()
-        .skip(req.body.skip)
-        .limit(req.body.length)
-        .exec((err, feedbackList) => {
-            if (err) {
-                res.status(404).send({message: err});
-            } else {
-                res.status(200).send({feedbackList});
-            }
-        });
+export async function getFeedbackList(req: Request, res: Response) {
+    try {
+        const feedbackList= await FeedbackDB.find()
+            .skip(req.body.skip)
+            .limit(req.body.length)
+            .exec();
+        res.status(200).send({feedbackList});
+    }
+    catch(err) {
+        res.status(404).send({message: err});
+    }
 }
 
-export function deleteFeedback(req: Request, res: Response) {
-    FeedbackDB.deleteOne(
-        {_id: req.params.id
-        }).exec((err) => {
-            if(err) {
-                res.status(500).send({message: err});
-            } else {
-                res.status(200).send({message: "Comment deleted."});
-            }
-    })
+export async function deleteFeedback(req: Request, res: Response) {
+    try {
+        await FeedbackDB.deleteOne({_id: req.params.id});
+        res.status(200).send({message: "Comment deleted."});
+    }
+    catch(err) {
+        res.status(500).send({message: err});
+    }
 }
