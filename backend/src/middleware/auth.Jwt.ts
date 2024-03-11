@@ -22,39 +22,37 @@ export const verifyToken = (req: any, res: Response, next: NextFunction) => {
     });
 };
 
-export const isAdmin = (req: any, res: Response, next: NextFunction) => {
-    UserDB.findById(req.userId).exec((err, user) => {
-        if (err) {
-            res.status(500).send({ message: err });
-            return;
-        }
-        if(user !== null) {
+export const isAdmin = async (req: any, res: Response, next: NextFunction) => {
+    try {
+        const user = await UserDB.findById(req.userId).exec();
+        if (user) {
             if (user.role === Role.Admin) {
                 next();
-                return;
             } else {
                 res.status(403).send({message: "Admin-Berechtigungen erforderlich!"});
             }
+        } else {
+            res.status(404).send({message: "Nutzer nicht gefunden!"});
         }
-    })
+    } catch (err) {
+        res.status(500).send({ message: err || "Internal Server Error" });
+    }
 }
 
-export const isModerator = (req: any, res: Response, next: NextFunction) => {
-    UserDB.findById(req.userId).exec((err, user) => {
-        if (err) {
-            res.status(500).send({ message: err });
-            return;
-        }
-
-        if (user !== null) {
+export const isModerator = async (req: any, res: Response, next: NextFunction) => {
+    try {
+        const user = await UserDB.findById(req.userID).exec();
+        if (user) {
             if (user.role === Role.Moderator || user.role === Role.Admin) {
                 next();
-                return;
             } else {
                 res.status(403).send({message: "Mod-Berechtigungen erforderlich!"});
             }
+
         }
-    })
+    } catch (err) {
+        res.status(500).send({ message: err || "Internal Server Error" });
+    }
 }
 
 

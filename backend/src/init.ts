@@ -65,8 +65,9 @@ async function loadDefaultTemplates() {
     }
 }
 
-function saveTemplate(path: string, name: string, kind: string) {
-    TemplateDB.countDocuments({name: name}, {}, (err, count) => {
+async function saveTemplate(path: string, name: string, kind: string) {
+    try {
+        const count = await TemplateDB.countDocuments({name: name});
         if (count === 0) {
             console.log("Adding " + name + " from assets..");
             const rawData = fs.readFileSync(path, "utf-8");
@@ -83,5 +84,7 @@ function saveTemplate(path: string, name: string, kind: string) {
                 console.log("Successfully saved " + res.name);
             });
         }
-    })
+    } catch (err) {
+        console.error(err);
+    }
 }

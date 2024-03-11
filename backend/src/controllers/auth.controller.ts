@@ -1,4 +1,4 @@
-import { authConfig } from "../config/auth.config";
+import { authConfig } from "../config";
 import { UserDB, Role } from "../models";
 import * as jwt from "jsonwebtoken";
 import * as bcrypt from "bcrypt";
@@ -31,40 +31,34 @@ export function signUp(req: Request, res: Response) {
     }
 }
 
-export function signIn(req: Request, res: Response) {
-    UserDB.findOne( {
-        username: req.body.username
-    })
-        .exec((err, user) => {
-            if (err) {
-                res.status(500).send({ message: err });
-            }
+export async function signIn(req: Request, res: Response) {
+    try {
+        const user = await UserDB.findOne({ username: req.body.username }).exec();
 
-            if (!user) {
-                return res.status(404).send({ message: "Falscher Nutzername oder falsches Passwort" });
-            }
+        if (!user) {
+            return res.status(404).send({ message: "Falscher Nutzername oder falsches Passwort!" });
+        }
 
-            const passwordIsValid = bcrypt.compareSync(
-                req.body.password,
-                user.password
-            );
+        const passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
 
-            if (!passwordIsValid) {
-                return res.status(401).send( {
-                    accessToken: null,
-                    message: "Falscher Nutzername oder falsches Passwort"
-                });
-            }
-
-            const token = jwt.sign({ id: user.id }, authConfig.secret, {
-                expiresIn: 7 * 86400 // 7 Tage
+        if (!passwordIsValid) {
+            return res.status(401).send({
+                accessToken: null,
+                message: "Falscher Nutzername oder falsches Passwort!"
             });
+        }
 
-            res.status(200).send({
-                id: user._id,
-                username: user.username,
-                role: user.role,
-                accessToken: token
-            })
-        })
+        const token = jwt.sign({ id: user.id }, authConfig.secret, {
+            expiresIn: 7 * 86400 // 7 days
+        });
+
+        res.status(200).send({
+            id: user._id,
+            username: user.username,
+            role: user.role,
+            accessToken: token
+        });
+    } catch (err) {
+        res.status(500).send({ message: err || "Internal Server Error" });
+    }
 }
