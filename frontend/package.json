@@ -29,6 +29,7 @@
     "annyang": "^2.6.1",
     "bootstrap": "^5.3.3",
     "core-js": "^3.36.0",
+    "eslint": "^8.57.0",
     "rxjs": "7.8.1",
     "tslib": "^2.6.2",
     "zone.js": "~0.14.4"
@@ -47,7 +48,7 @@
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
     "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-jsdoc": "48.2.0",
+    "eslint-plugin-jsdoc": "48.2.1",
     "eslint-plugin-prefer-arrow": "latest",
     "jasmine-core": "~5.1.2",
     "jasmine-spec-reporter": "~7.0.0",
