@@ -11,7 +11,7 @@ COPY ./frontend /app/frontend/
 RUN npm install
 
 # Build frontend for production
-RUN npm run build:docker
+RUN npm run build
 
 # Stage 2: Backend
 FROM node:20.11.1 AS backend-build
