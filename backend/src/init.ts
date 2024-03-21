@@ -21,17 +21,17 @@ export function initData() {
 
 // on app start, initialize all relative directories for file saving etc.
 function initDirectories() {
-    if (!fs.existsSync(Path.join(process.cwd(), "data"))) {
-        fs.mkdirSync(Path.join(process.cwd(), "data"));
+    if (!fs.existsSync(Path.join(__dirname, "data"))) {
+        fs.mkdirSync(Path.join(__dirname, "../data"));
     }
-    if (!fs.existsSync(Path.join(process.cwd(), "data/images"))) {
-        fs.mkdirSync(Path.join(process.cwd(), "data/images"));
+    if (!fs.existsSync(Path.join(__dirname, "../data/images"))) {
+        fs.mkdirSync(Path.join(__dirname, "../data/images"));
     }
-    if (!fs.existsSync(Path.join(process.cwd(), "data/excels"))) {
-        fs.mkdirSync(Path.join(process.cwd(), "data/excels"));
+    if (!fs.existsSync(Path.join(__dirname, "../data/excels"))) {
+        fs.mkdirSync(Path.join(__dirname, "../data/excels"));
     }
-    if (!fs.existsSync(Path.join(process.cwd(), "data/json"))) {
-        fs.mkdirSync(Path.join(process.cwd(), "data/json"));
+    if (!fs.existsSync(Path.join(__dirname, "../data/json"))) {
+        fs.mkdirSync(Path.join(__dirname, "../data/json"));
     }
 }
 
@@ -41,8 +41,8 @@ function loadDefaultData() {
     // files to the data folder
 
     // First let's list all files on the init folder
-    const initPath = Path.join(process.cwd(), "init", "data");
-    const dataPath = Path.join(process.cwd(), "data");
+    const initPath = Path.join(__dirname, "../init", "data");
+    const dataPath = Path.join(__dirname, "../data");
 
     const missingFiles = [];
 

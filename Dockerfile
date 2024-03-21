@@ -34,11 +34,11 @@ FROM node:20.11.1
 WORKDIR /app
 
 # Copy built frontend and backend from previous stages to the final image
-COPY --from=backend-build /app/backend/* /app/
+COPY --from=backend-build /backend/* /app/
 COPY --from=frontend-build /frontend/dist /app/dist
 
 # Expose port for the server
 EXPOSE 8000
 
 # Command to run the backend server
-CMD ["npm", "start"]
+CMD ["node", "/app/dist/server.js"]
