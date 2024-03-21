@@ -35,6 +35,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+console.log(__dirname);
 app.use("/images", express.static(path.join(__dirname, "../data/images")));
 app.use("/", express.static(path.join(__dirname, "../dist/radiolearn")));
 app.use("/assets", express.static(path.join(__dirname, "./assets/img")));
