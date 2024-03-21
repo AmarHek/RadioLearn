@@ -10,7 +10,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: server.Dockerfile
+      dockerfile: server2.Dockerfile
     ports:
       - "8000:8000"
     depends_on:
