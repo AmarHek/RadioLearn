@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 services:
   mongodb:
     image: mongodb/mongodb-community-server:latest
@@ -6,15 +6,22 @@ services:
       - "27017:27017"
     volumes:
       - mongodb_data:/data/db
+    container_name: radiolearn-mongodb
 
   app:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile-app
+    environment:
+      - NODE_ENV=docker
     ports:
       - "8000:8000"
     depends_on:
       - mongodb
+    volumes:
+      - app_data:/app/data
+    container_name: radiolearn-app
 
 volumes:
   mongodb_data:
+  app_data:
