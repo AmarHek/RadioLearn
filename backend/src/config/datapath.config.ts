@@ -19,7 +19,7 @@ const environment = process.env.NODE_ENV || 'development';
 // Select the appropriate configuration based on the environment
 export let dataPathConfig: DataPathConfig;
 
-if (environment === 'production') {
+if (environment === 'production' || environment === 'docker') {
     dataPathConfig = productionConfig;
 } else {
     dataPathConfig = developmentConfig;
