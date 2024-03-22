@@ -5,13 +5,13 @@ FROM node:20.11.1 AS frontend-build
 WORKDIR /frontend
 
 # Copy frontend source code
-COPY ./frontend /frontend/
+COPY ./frontend /frontend
 
 # Install frontend dependencies
 RUN npm install
 
-# Build frontend for production
-RUN npm run build
+# Build frontend for docker environment
+RUN npm run build:docker
 
 # Stage 2: Backend
 FROM node:20.11.1 AS backend-build
@@ -34,8 +34,10 @@ FROM node:20.11.1
 WORKDIR /app
 
 # Copy built frontend and backend from previous stages to the final image
-COPY --from=backend-build /backend/* /app/
-COPY --from=frontend-build /frontend/dist /app/dist
+COPY --from=backend-build /backend/dist /app/dist
+COPY --from=backend-build /backend/init /app/init
+COPY --from=backend-build /backend/node_modules /app/node_modules
+COPY --from=frontend-build /frontend/dist/radiolearn /app/dist/radiolearn
 
 # Expose port for the server
 EXPOSE 8000
