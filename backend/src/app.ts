@@ -12,8 +12,6 @@ import {usageRouter} from "./routes/usage.routes";
 
 export const app = express();
 
-console.log(process.env.NODE_ENV);
-
 const url = "mongodb://" + dbConfig.HOST + ":" + dbConfig.PORT + "/" + dbConfig.DB;
 mongoose.connect(url)
   .then(() => {
