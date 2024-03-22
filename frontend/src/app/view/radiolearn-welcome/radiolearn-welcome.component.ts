@@ -13,7 +13,8 @@ import {DialogNoMaterialsComponent} from "@app/feature/dialog-no-materials/dialo
 })
 export class RadiolearnWelcomeComponent implements OnInit {
 
-  assetsUrl = environment.assets;
+  // assetsUrl = environment.assets;
+  assetsUrl = "assets/img/";
 
   isMobile = false;
   private UUID = "undefined";
