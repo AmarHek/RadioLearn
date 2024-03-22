@@ -2,7 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import path from "path";
-import {dbConfig} from "./config";
+import {dbConfig, dataPathConfig} from "./config";
 import cors from "cors";
 
 import {matRouter, templateRouter, userRouter, authRouter} from './routes';
@@ -12,7 +12,7 @@ import {usageRouter} from "./routes/usage.routes";
 
 export const app = express();
 
-// TODO: Auf env auslagern
+console.log(process.env.NODE_ENV);
 
 const url = "mongodb://" + dbConfig.HOST + ":" + dbConfig.PORT + "/" + dbConfig.DB;
 mongoose.connect(url)
@@ -35,10 +35,9 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-console.log(__dirname);
-app.use("/images", express.static(path.join(__dirname, "../data/images")));
+app.use("/images", express.static(path.join(dataPathConfig.path, "images")));
 app.use("/", express.static(path.join(__dirname, "../dist/radiolearn")));
-app.use("/assets", express.static(path.join(__dirname, "./assets/img")));
+app.use("/assets", express.static(path.join(__dirname, "assets", "img")));
 app.set("view engine", "ejs");
 
 app.use((req, res, next) => {
