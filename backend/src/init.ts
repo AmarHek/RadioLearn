@@ -1,6 +1,7 @@
 import * as Path from "path";
 import * as fs from "fs";
 import {TemplateDB, UserDB, MaterialDB} from "./models";
+import {dataPathConfig} from "./config";
 
 export function initData() {
     console.log("Initializing directories...");
@@ -21,17 +22,18 @@ export function initData() {
 
 // on app start, initialize all relative directories for file saving etc.
 function initDirectories() {
-    if (!fs.existsSync(Path.join(__dirname, "data"))) {
-        fs.mkdirSync(Path.join(__dirname, "../data"));
+    const dataPath: string = dataPathConfig.path;
+
+    // check if data path exists, if not create it
+    if (!fs.existsSync(dataPath)) {
+        fs.mkdirSync(dataPath);
     }
-    if (!fs.existsSync(Path.join(__dirname, "../data/images"))) {
-        fs.mkdirSync(Path.join(__dirname, "../data/images"));
-    }
-    if (!fs.existsSync(Path.join(__dirname, "../data/excels"))) {
-        fs.mkdirSync(Path.join(__dirname, "../data/excels"));
-    }
-    if (!fs.existsSync(Path.join(__dirname, "../data/json"))) {
-        fs.mkdirSync(Path.join(__dirname, "../data/json"));
+    // check for other paths
+    const paths = ["images", "excels", "json"];
+    for (const path of paths) {
+        if (!fs.existsSync(Path.join(dataPath, path))) {
+            fs.mkdirSync(Path.join(dataPath, path));
+        }
     }
 }
 
@@ -41,8 +43,8 @@ function loadDefaultData() {
     // files to the data folder
 
     // First let's list all files on the init folder
-    const initPath = Path.join(__dirname, "../init", "data");
-    const dataPath = Path.join(__dirname, "../data");
+    const initPath = Path.join(__dirname, "..", "init", "data");
+    const dataPath = dataPathConfig.path;
 
     const missingFiles = [];
 
