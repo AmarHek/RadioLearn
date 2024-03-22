@@ -17,3 +17,5 @@
 
 # cache
 /frontend/.angular/cache
+
+/data
