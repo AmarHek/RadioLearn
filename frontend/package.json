@@ -6,7 +6,7 @@
     "start": "ng serve --open",
     "build:prod": "ng build --configuration=production && cp -r dist ../backend",
     "build:dev": "ng build --configuration=development && xcopy /E /Y .\\dist ..\\backend\\dist",
-    "build": "ng build --configuration=production",
+    "build:docker": "ng build --configuration=docker",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
