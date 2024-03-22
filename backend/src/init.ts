@@ -49,7 +49,7 @@ function loadDefaultData() {
     const missingFiles = [];
 
     // These are the folders that need checking, so we will iterate
-    const folders = ["excels", "images", "json"];
+    const folders = ["images", "excels", "json"];
     for (const folder of folders) {
         const initFolder = Path.join(initPath, folder);
         const dataFolder = Path.join(dataPath, folder);
@@ -83,7 +83,8 @@ async function loadDefaultMongoDB() {
         const collections = ["templates", "users", "material"]
 
         for (const collection of collections) {
-            const jsonData = fs.readFileSync(Path.join(process.cwd(), "init", "mongodb", collection + ".json"), 'utf8');
+            const jsonData = fs.readFileSync(Path.join(__dirname, "..", "init", "mongodb", collection + ".json"),
+                'utf8');
             const data = JSON.parse(jsonData);
 
             let keys: string[] = [];
