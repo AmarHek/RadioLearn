@@ -10,7 +10,6 @@ export function initData() {
 
     console.log("Loading default data into MongoDB if not already there...");
     loadDefaultMongoDB().then(() => console.log("...finished"));
-    console.log("...finished");
 }
 
 // on app start, initialize all relative directories for file saving etc.
@@ -39,10 +38,15 @@ async function loadDefaultMongoDB() {
     // Finally, if the collection is not empty, we will assert that all fields are present and add them otherwise
 
     try {
-        const collections = ["templates", "users", "material", "feedback"]
+        let collections: string[];
+        if (process.env.NODE_ENV === "production" || process.env.NODE_ENV === "docker") {
+            collections = ["templates", "users", "material", "participants"]
+        } else {
+            collections = ["templates", "users", "material"];
+        }
 
         for (const collection of collections) {
-            const jsonData = fs.readFileSync(Path.join(__dirname, "..", "init", "mongodb", collection + ".json"),
+            const jsonData = fs.readFileSync(Path.join(__dirname, "..", "init", "development", collection + ".json"),
                 'utf8');
             const data = JSON.parse(jsonData);
 
@@ -62,7 +66,7 @@ async function loadDefaultMongoDB() {
                 const existingData = await MaterialDB.find({"scans.id": {$in: keys}}).exec();
                 existingKeys = existingData.map((entry) => entry.scans.id);
             } else {
-                console.error("Collection not found");
+                console.log("Unknown collection");
             }
 
             // using keys and existingKeys, we can now assert which keys are missing
