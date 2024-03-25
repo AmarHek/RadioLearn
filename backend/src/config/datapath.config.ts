@@ -10,7 +10,7 @@ const developmentConfig: DataPathConfig = {
 
 // Configuration for production environment
 const productionConfig: DataPathConfig = {
-    path: '/data' // Use absolute path for production
+    path: '/data' // Use absolute path for production (or mounted path for docker)
 };
 
 // Determine environment based on NODE_ENV or default to development

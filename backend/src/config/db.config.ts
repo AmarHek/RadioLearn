@@ -4,9 +4,16 @@ interface DataBaseConfig {
     DB: string;
 }
 
-// Configuration for development and production environment
+// Configuration for development environment
 // (i.e. mongoDB running on local machine)
-const localConfig: DataBaseConfig = {
+const devConfig: DataBaseConfig = {
+    HOST: "127.0.0.1",
+    PORT: 27017,
+    DB: "radiolearn-dev"
+};
+
+// Configuration for production environment
+const prodConfig: DataBaseConfig = {
     HOST: "127.0.0.1",
     PORT: 27017,
     DB: "radiolearn"
@@ -15,7 +22,7 @@ const localConfig: DataBaseConfig = {
 // Configuration for running in a docker-compose environment
 const dockerConfig: DataBaseConfig = {
     HOST: "radiolearn-mongodb",
-    PORT: 27017,
+    PORT: 27018,
     DB: "radiolearn"
 };
 
@@ -26,6 +33,8 @@ export let dbConfig: DataBaseConfig;
 
 if (environment === 'docker') {
     dbConfig = dockerConfig;
+} else if (environment === 'production') {
+    dbConfig = prodConfig;
 } else {
-    dbConfig = localConfig;
+    dbConfig = devConfig;
 }
