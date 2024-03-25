@@ -4,15 +4,8 @@ import {TemplateDB, UserDB, MaterialDB} from "./models";
 import {dataPathConfig} from "./config";
 
 export function initData() {
-    console.log("Initializing directories...");
+    console.log("Initializing directories if not already there...");
     initDirectories();
-    console.log("...finished");
-
-    // console.log("Loading default Templates into database if not already in database...")
-    // loadDefaultTemplates().then(() => console.log("...finished"));
-
-    console.log("Loading default data into data folder if not already there...");
-    loadDefaultData();
     console.log("...finished");
 
     console.log("Loading default data into MongoDB if not already there...");
@@ -37,40 +30,6 @@ function initDirectories() {
     }
 }
 
-function loadDefaultData() {
-    // This function is intended for the first startup of the backend, namely for the data folder
-    // It will assert that all files from the init folder are located in the data folder and copy all missing
-    // files to the data folder
-
-    // First let's list all files on the init folder
-    const initPath = Path.join(__dirname, "..", "init", "data");
-    const dataPath = dataPathConfig.path;
-
-    const missingFiles = [];
-
-    // These are the folders that need checking, so we will iterate
-    const folders = ["images", "excels", "json"];
-    for (const folder of folders) {
-        const initFolder = Path.join(initPath, folder);
-        const dataFolder = Path.join(dataPath, folder);
-        const files = fs.readdirSync(initFolder);
-        for (const file of files) {
-            const initFile = Path.join(initFolder, file);
-            const dataFile = Path.join(dataFolder, file);
-            if (!fs.existsSync(dataFile)) {
-                missingFiles.push(initFile);
-            }
-        }
-    }
-    console.log("Missing " + missingFiles.length + " files in data folder. Copying now.");
-    for (const file of missingFiles) {
-        // For the destination, we have to replace the init path with the data path
-        const destination = file.replace(initPath, dataPath);
-        // Some of the files are folders, so we have to check if the
-        fs.cpSync(file, destination, {recursive: true});
-    }
-}
-
 async function loadDefaultMongoDB() {
     // This function is intended for the first startup of the backend, namely for the MongoDB
     // It will assert the contents of the following collections: material, template, user, participant
@@ -80,7 +39,7 @@ async function loadDefaultMongoDB() {
     // Finally, if the collection is not empty, we will assert that all fields are present and add them otherwise
 
     try {
-        const collections = ["templates", "users", "material"]
+        const collections = ["templates", "users", "material", "feedback"]
 
         for (const collection of collections) {
             const jsonData = fs.readFileSync(Path.join(__dirname, "..", "init", "mongodb", collection + ".json"),
@@ -93,21 +52,21 @@ async function loadDefaultMongoDB() {
             if (collection === "templates") {
                 keys = data.map((entry: any) => entry.name);
                 const existingData = await TemplateDB.find({name: {$in: keys}}).exec();
-                existingKeys = existingData.map((entry: any) => entry.name);
+                existingKeys = existingData.map((entry) => entry.name);
             } else if (collection === "users") {
                 keys = data.map((entry: any) => entry.username);
                 const existingData = await UserDB.find({username: {$in: keys}}).exec();
-                existingKeys = existingData.map((entry: any) => entry.username);
+                existingKeys = existingData.map((entry) => entry.username);
             } else if (collection === "material") {
                 keys = data.map((entry: any) => entry.scans.id);
                 const existingData = await MaterialDB.find({"scans.id": {$in: keys}}).exec();
-                existingKeys = existingData.map((entry: any) => entry.scans.id);
+                existingKeys = existingData.map((entry) => entry.scans.id);
             } else {
                 console.error("Collection not found");
             }
 
             // using keys and existingKeys, we can now assert which keys are missing
-            const missingKeys = keys.filter((key: any) => !existingKeys.includes(key));
+            const missingKeys = keys.filter((key) => !existingKeys.includes(key));
 
             for (const entry of data) {
                 // We need to remove the _id field, as it is not allowed to be set manually
