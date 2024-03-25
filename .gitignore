@@ -5,6 +5,8 @@
 /backend/node_modules
 /backend/data
 /backend/dist
+/backend/data-dev
+/data
 
 # frontend
 # compiled output
@@ -17,5 +19,3 @@
 
 # cache
 /frontend/.angular/cache
-
-/data
