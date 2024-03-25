@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialogRef} from "@angular/material/dialog";
-import {surveyLinkClicked} from "@app/helpers/localStorageHelper";
+import {surveyLinkClicked} from "@app/core/helpers/localStorageHelper";
 
 @Component({
   selector: 'app-dialog-template',

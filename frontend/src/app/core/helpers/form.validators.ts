@@ -1,5 +1,5 @@
 import { UntypedFormGroup } from "@angular/forms";
-import {getFileExtension} from "@app/helpers/util";
+import {getFileExtension} from "@app/core/helpers/util";
 
 
 // custom validator to check that two fields match

@@ -1,6 +1,6 @@
-import * as M from "@app/models/templateModel";
-import {KeyClickable, KeyVariable} from "@app/models";
-import {getAllIndexOf} from "@app/helpers/util";
+import * as M from "@app/core/models/templateModel";
+import {KeyClickable, KeyVariable} from "@app/core/models";
+import {getAllIndexOf} from "@app/core/helpers/util";
 
 export const getClickableKeywords = (selectables: M.Selectable[], category: string): KeyClickable[] => {
   const clickKey: KeyClickable[] = [];

@@ -4,7 +4,7 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms
 import { first } from "rxjs/operators";
 
 import {AuthenticationService} from "@app/core/services/authentication.service";
-import {Role} from "@app/models";
+import {Role} from "app/core/models";
 import {environment} from "@env/environment";
 
 @Component({
@@ -87,7 +87,7 @@ export class LoginComponent implements OnInit {
         });
   }
 
-  redirectUser(userRole) {
+  redirectUser(userRole: Role) {
     if (userRole === Role.User || userRole === Role.ExternalUser) {
       this.router.navigate(["/home"]);
     } else if (userRole === Role.Moderator) {

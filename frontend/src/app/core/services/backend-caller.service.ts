@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
-import * as M from "../../models/templateModel";
+import * as M from "@app/core/models/templateModel";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "@env/environment";
 import {Observable} from "rxjs";
-import {Template, Material, Feedback} from "@app/models";
+import {Template, Material, Feedback} from "app/core/models";
 
 
 @Injectable({

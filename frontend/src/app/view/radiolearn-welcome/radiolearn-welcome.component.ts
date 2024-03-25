@@ -2,7 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {BackendCallerService, DisplayService, RadiolearnService} from "@app/core";
 import {environment} from "@env/environment";
-import {getResetCounter, getUUID} from "@app/helpers/localStorageHelper";
+import {getResetCounter, getUUID} from "@app/core/helpers/localStorageHelper";
 import {MatDialog} from "@angular/material/dialog";
 import {DialogNoMaterialsComponent} from "@app/feature/dialog-no-materials/dialog-no-materials.component";
 

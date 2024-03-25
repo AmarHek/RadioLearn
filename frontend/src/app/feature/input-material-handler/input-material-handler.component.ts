@@ -1,6 +1,6 @@
 import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {ENTER} from "@angular/cdk/keycodes";
-import {Category, ChipColors, InputChip, TopLevel} from "@app/models";
+import {Category, ChipColors, InputChip, TopLevel} from "app/core/models";
 import {ChipHelperService} from "@app/core/services/chip-helper.service";
 import {DataParserService, InputParserService} from "@app/core";
 

@@ -11,15 +11,15 @@ import {
   VariableNumber,
   VariableOC,
   VariableText
-} from "@app/models";
+} from "app/core/models";
 import {
   CategoryError,
   SelectableError,
   VariableError,
   VariableMCError,
   VariableValueError
-} from "@app/models/errorModel";
-import * as M from "@app/models/templateModel";
+} from "@app/core/models/errorModel";
+import * as M from "@app/core/models/templateModel";
 
 @Injectable({
   providedIn: "root"

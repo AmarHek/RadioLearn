@@ -8,8 +8,8 @@ import {
   RadiolearnListComponent,
   RadiolearnUiComponent
 } from "@app/feature";
-import {AuthGuard} from "@app/helpers";
-import {Role} from "@app/models";
+import {AuthGuard} from "app/core/helpers";
+import {Role} from "app/core/models";
 
 import {LoginComponent} from "@app/view";
 import {RadiolearnWelcomeComponent} from "@app/view/radiolearn-welcome/radiolearn-welcome.component";

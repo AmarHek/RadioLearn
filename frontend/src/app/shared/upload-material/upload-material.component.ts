@@ -4,7 +4,7 @@ import {nanoid} from "nanoid";
 import {MatDialogRef} from "@angular/material/dialog";
 
 import {BackendCallerService, FilesSortingService} from "@app/core";
-import {Template} from "@app/models/templateModel";
+import {Template} from "@app/core/models/templateModel";
 
 @Component({
   selector: "app-upload-template-material",

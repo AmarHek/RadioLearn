@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import * as M from "@app/models/templateModel";
-import {Material} from "@app/models";
+import * as M from "@app/core/models/templateModel";
+import {Material} from "app/core/models";
 
 @Component({
   selector: 'app-radiolearn-options-shallow',

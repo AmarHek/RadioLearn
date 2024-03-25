@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from "@angular/core";
 import {UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {BackendCallerService} from "@app/core";
-import {Feedback} from "@app/models";
+import {Feedback} from "app/core/models";
 
 @Component({
   selector: "app-feedback-dialog",

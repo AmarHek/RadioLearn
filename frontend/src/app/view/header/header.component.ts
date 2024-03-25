@@ -1,7 +1,7 @@
 import {Component, DoCheck, OnInit} from "@angular/core";
 
 import {AuthenticationService, DisplayService} from "@app/core";
-import {Role, User} from "@app/models";
+import {Role, User} from "app/core/models";
 
 @Component({
   selector: "app-header",

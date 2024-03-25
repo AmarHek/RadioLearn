@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from "@angular/core";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {CategoryError, ErrorTableRow, ErrorTableRowMobile, SelectableError} from "@app/models/errorModel";
-import {displayableQuotient} from "@app/helpers";
+import {CategoryError, ErrorTableRow, ErrorTableRowMobile, SelectableError} from "@app/core/models/errorModel";
+import {displayableQuotient} from "app/core/helpers";
 import {DisplayService} from "@app/core";
 
 @Component({

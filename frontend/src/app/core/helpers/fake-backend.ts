@@ -3,7 +3,7 @@ import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTT
 import { Observable, of, throwError } from "rxjs";
 import { delay, materialize, dematerialize } from "rxjs/operators";
 
-import { Role } from "@app/models";
+import { Role } from "@app/core/models";
 
 const users = [
   { id: 1, username: "admin", password: "admin", role: Role.Admin },

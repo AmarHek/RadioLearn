@@ -7,7 +7,7 @@ import {
   InputChip,
   KeyClickable,
   KeyVariable, Option, Variable
-} from "@app/models";
+} from "app/core/models";
 
 @Injectable({
   providedIn: 'root'

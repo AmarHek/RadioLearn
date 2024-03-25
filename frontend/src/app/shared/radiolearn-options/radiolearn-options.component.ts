@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from "@angular/core";
-import * as M from "@app/models/templateModel";
+import * as M from "@app/core/models/templateModel";
 import {DataParserService} from "@app/core";
 
 @Component({

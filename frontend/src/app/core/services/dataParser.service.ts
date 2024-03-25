@@ -1,8 +1,8 @@
 import {EventEmitter, Injectable} from "@angular/core";
-import * as G from "@app/models/generator";
-import * as M from "@app/models/templateModel";
-import {KeyClickable, KeyVariable, Row} from "@app/models";
-import {Category, CheckBox, Clickable, Group, Variable} from "@app/models/templateModel";
+import * as G from "@app/core/models/generator";
+import * as M from "@app/core/models/templateModel";
+import {KeyClickable, KeyVariable, Row} from "app/core/models";
+import {Category, CheckBox, Clickable, Group, Variable} from "@app/core/models/templateModel";
 import {NgbDateStruct} from "@ng-bootstrap/ng-bootstrap";
 
 @Injectable({

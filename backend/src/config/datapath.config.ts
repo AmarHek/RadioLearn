@@ -5,7 +5,7 @@ interface DataPathConfig {
 
 // Configuration for development environment
 const developmentConfig: DataPathConfig = {
-    path: './data' // Use relative path for development
+    path: './data-dev' // Use relative path for development
 };
 
 // Configuration for production environment

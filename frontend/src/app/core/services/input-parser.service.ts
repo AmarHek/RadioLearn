@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
 
-import * as M from "@app/models/templateModel";
-import {KeyVariable, KeyClickable} from "@app/models";
+import * as M from "@app/core/models/templateModel";
+import {KeyVariable, KeyClickable} from "app/core/models";
 import { levenshtein, getAllIndexOf, getNextHighestValue, getClickableKeywords,
-         getSplitters, parseValue, getVariableKeywords} from "@app/helpers";
-import {Category} from "@app/models/templateModel";
+         getSplitters, parseValue, getVariableKeywords} from "app/core/helpers";
+import {Category} from "@app/core/models/templateModel";
 
 @Injectable({
   providedIn: "root"

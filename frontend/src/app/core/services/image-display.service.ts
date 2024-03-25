@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Annotation, BoundingBox} from "@app/models";
+import {Annotation, BoundingBox} from "app/core/models";
 import {DisplayService} from "@app/core";
 import {SettingsService} from "@app/core/services/settings.service";
 
