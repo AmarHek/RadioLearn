@@ -22,7 +22,8 @@
                       mat-flat-button color="primary" (click)="changeRole(user.id)">Rolle Ändern</button>
             </td>
             <td class="button">
-              <button mat-flat-button color="warn" (click)="deleteUser(user.id)">Löschen</button>
+              <button mat-flat-button color="warn" [disabled]="user.username === 'Amar'"
+                      (click)="deleteUser(user.id)">Löschen</button>
             </td>
           </tr>
         </table>
