@@ -1,11 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 
-import {BackendService, MatDialogService, AuthenticationService} from "@app/core";
-import {Template} from "app/core/models";
-import { ConfirmDialogComponent, ConfirmDialogModel, UploadTemplateComponent } from "@app/shared";
-import {Role, User} from "app/core/models";
-
+import {BackendService, MatDialogService, AuthenticationService,
+  Role, User, Template} from "@app/core";
+import {ConfirmDialogComponent, ConfirmDialogModel} from "@app/shared";
+import {UploadTemplateComponent} from "@app/template-manager";
 
 @Component({
   selector: "app-template-list",
@@ -68,7 +67,7 @@ export class TemplateListComponent implements OnInit {
   }
 
   remove(id: string): void {
-    this.backendCaller.deleteTemplate(id).subscribe(res => {
+    this.backendCaller.deleteTemplate(id).subscribe(() => {
       this.update();
     });
   }

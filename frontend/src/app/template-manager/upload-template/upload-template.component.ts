@@ -3,7 +3,7 @@ import {MatDialogRef} from "@angular/material/dialog";
 import {UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 
 import {BackendService} from "@app/core";
-import {fileValidator, getFileExtension} from "app/core/helpers";
+import {fileValidator, getFileExtension} from "@app/core/helpers";
 
 @Component({
   selector: "app-upload-template",

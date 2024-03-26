@@ -16,24 +16,26 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import {PendingChangesGuard} from "@app/core/guards/pending-changes.guard";
+import {TemplateManagerModule} from "@app/template-manager/template-manager.module";
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    BrowserModule,
     FeatureModule,
-    SharedModule,
-    ViewModule,
     FormsModule,
+    HttpClientModule,
+    MatButtonModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    SharedModule,
+    TemplateManagerModule,
+    ViewModule
   ],
   providers: [PendingChangesGuard,
     { provide: DateAdapter, useClass: AppDateAdapter },

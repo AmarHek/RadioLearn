@@ -18,7 +18,6 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {ConfirmDialogComponent} from "@app/shared/confirm-dialog/confirm-dialog.component";
 import {InputModalComponent} from "@app/shared/inputModal/inputModal.component";
 import {UploadMaterialComponent} from "@app/shared/upload-material/upload-material.component";
-import {UploadTemplateComponent} from "@app/shared/upload-template/upload-template.component";
 import {VariablesComponent} from "@app/shared/variables/variables.component";
 
 import {ImageDisplayStudentComponent} from "./image-display-student/image-display-student.component";
@@ -53,7 +52,6 @@ import { SettingsDialogComponent } from './settings-dialog/settings-dialog.compo
     StudentErrorsComponent,
     RadiolearnOptionsComponent,
     SignUpComponent,
-    UploadTemplateComponent,
     UploadMaterialComponent,
     VariablesComponent,
     AddScanDialogComponent,
@@ -92,7 +90,6 @@ import { SettingsDialogComponent } from './settings-dialog/settings-dialog.compo
         StudentErrorsComponent,
         RadiolearnOptionsComponent,
         SignUpComponent,
-        UploadTemplateComponent,
         UploadMaterialComponent,
         VariablesComponent,
         RadiolearnOptionsShallowComponent

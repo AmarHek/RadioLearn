@@ -18,12 +18,11 @@ import {MatRadioModule} from "@angular/material/radio";
 
 import {AdminComponent} from "@app/feature/admin/admin.component";
 import {FeedbackDisplayComponent} from "@app/feature/feedback-display/feedback-display.component";
-import {TemplateListComponent} from "@app/feature/template-list/template-list.component";
 import {MaterialListComponent} from "@app/feature/material-list/material-list.component";
 import {RadiolearnUiComponent} from "@app/feature/radiolearn-ui/radiolearn-ui.component";
 import {AccountManagementComponent} from "./account-management/account-management.component";
 import {SharedModule} from "@app/shared/shared.module";
-import {DialogTemplateComponent} from './dialog-template/dialog-template.component';
+import {DialogTemplateComponent} from '@app/shared/dialog-template/dialog-template.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {DialogNoMaterialsComponent} from '@app/shared/dialog-no-materials/dialog-no-materials.component';
 import {InputMaterialHandlerComponent} from './input-material-handler/input-material-handler.component';
@@ -34,7 +33,6 @@ import {InputMaterialHandlerComponent} from './input-material-handler/input-mate
     AccountManagementComponent,
     AdminComponent,
     FeedbackDisplayComponent,
-    TemplateListComponent,
     MaterialListComponent,
     RadiolearnUiComponent,
     DialogTemplateComponent,
@@ -66,7 +64,6 @@ import {InputMaterialHandlerComponent} from './input-material-handler/input-mate
     AccountManagementComponent,
     AdminComponent,
     FeedbackDisplayComponent,
-    TemplateListComponent,
     MaterialListComponent,
     RadiolearnUiComponent,
   ]

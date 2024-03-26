@@ -4,10 +4,10 @@ import {
   AccountManagementComponent,
   AdminComponent,
   FeedbackDisplayComponent,
-  TemplateListComponent,
   MaterialListComponent,
   RadiolearnUiComponent
 } from "@app/feature";
+import { TemplateListComponent } from "@app/template-manager";
 import {AuthGuard} from "app/core/helpers";
 import {Role} from "app/core/models";
 
@@ -61,8 +61,6 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { role: [Role.Admin, Role.Moderator]}
   },
-  {path: "deepspeech",
-   redirectTo: "deepspeech/login"},
   {path: "**", redirectTo: "/home"}
 ];
 
