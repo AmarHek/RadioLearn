@@ -13,7 +13,7 @@ import {MatDialog} from "@angular/material/dialog";
 
 import {environment} from "@env/environment";
 import {Annotation, BoundingBox, BoxLabel, Image} from "app/core/models";
-import {BackendCallerService, ImageDisplayService, MatDialogService} from "@app/core";
+import {BackendService, ImageDisplayService, MatDialogService} from "@app/core";
 import {InputDialogComponent} from "@app/shared/input-dialog/input-dialog.component";
 import {ConfirmDialogComponent, ConfirmDialogModel} from "@app/shared";
 
@@ -136,7 +136,7 @@ export class ImageDisplayComponent implements OnInit, AfterViewInit, OnChanges {
     }
   }
 
-  constructor(private backendCaller: BackendCallerService,
+  constructor(private backendCaller: BackendService,
               private renderer: Renderer2,
               private dialogService: MatDialogService,
               private dialog: MatDialog,

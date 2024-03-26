@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import {BackendCallerService, MatDialogService} from "@app/core";
+import {BackendService, MatDialogService} from "@app/core";
 import {Feedback} from "app/core/models";
 import {getDateFormatted} from "app/core/helpers";
 import {ConfirmDialogComponent, ConfirmDialogModel} from "@app/shared";
@@ -19,7 +19,7 @@ export class FeedbackDisplayComponent implements OnInit {
   feedbackList: Feedback[];
 
   constructor(
-    private backendCaller: BackendCallerService,
+    private backendCaller: BackendService,
     private dialogService: MatDialogService,
     private dialog: MatDialog
   ) { }

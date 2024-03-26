@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from "@angular/core";
 import {UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {BackendCallerService} from "@app/core";
+import {BackendService} from "@app/core";
 import {Feedback} from "app/core/models";
 
 @Component({
@@ -16,7 +16,7 @@ export class FeedbackDialogComponent implements OnInit {
 
   constructor(private dialogRef: MatDialogRef<FeedbackDialogComponent>,
               private formBuilder: UntypedFormBuilder,
-              private backendCaller: BackendCallerService,
+              private backendCaller: BackendService,
               @Inject(MAT_DIALOG_DATA) public data) { }
 
   get fc() {

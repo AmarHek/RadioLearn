@@ -4,7 +4,7 @@ import {BoxLabel, Material, Role, Template, User} from "app/core/models";
 import {CategoryError} from "@app/core/models/errorModel";
 import {ChipHelperService} from "@app/core/services/chip-helper.service";
 import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
-import {DialogNoMaterialsComponent} from "@app/feature/dialog-no-materials/dialog-no-materials.component";
+import {DialogNoMaterialsComponent} from "@app/shared/dialog-no-materials/dialog-no-materials.component";
 import {DialogTemplateComponent} from "@app/feature/dialog-template/dialog-template.component";
 import {MatDialog} from "@angular/material/dialog";
 import {getResetCounter, getSurveyStatus, getUUID, increaseSurveyCounter} from "@app/core/helpers/localStorageHelper";
@@ -17,7 +17,7 @@ import {
 } from "@app/shared";
 import {
   AuthenticationService,
-  BackendCallerService,
+  BackendService,
   DataParserService, DisplayService,
   InputParserService,
   MatDialogService,
@@ -87,7 +87,7 @@ export class RadiolearnUiComponent implements OnInit {
     return (this.workMode === "deep");
   }
 
-  constructor(private backendCaller: BackendCallerService,
+  constructor(private backendCaller: BackendService,
               private route: ActivatedRoute,
               private router: Router,
               private dataParser: DataParserService,

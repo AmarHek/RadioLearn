@@ -2,7 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {MatDialogRef} from "@angular/material/dialog";
 import {UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 
-import {BackendCallerService} from "@app/core";
+import {BackendService} from "@app/core";
 import {fileValidator, getFileExtension} from "app/core/helpers";
 
 @Component({
@@ -17,7 +17,7 @@ export class UploadTemplateComponent implements OnInit {
 
   constructor(private dialogRef: MatDialogRef<UploadTemplateComponent>,
               private formBuilder: UntypedFormBuilder,
-              private backendCaller: BackendCallerService) { }
+              private backendCaller: BackendService) { }
 
   // convenience getter for easy access to form fields
   get fc() {

@@ -10,7 +10,7 @@ import {
 
 import {environment} from "@env/environment";
 import {Annotation, BoundingBox, Category, Image} from "app/core/models";
-import {BackendCallerService, ImageDisplayService, MatDialogService} from "@app/core";
+import {BackendService, ImageDisplayService, MatDialogService} from "@app/core";
 import {fromEvent} from "rxjs";
 import {switchMap, takeUntil} from "rxjs/operators";
 import {MatDialog} from "@angular/material/dialog";
@@ -137,7 +137,7 @@ export class ImageDisplayStudentComponent implements OnInit, OnChanges, AfterVie
     }
   }
 
-  constructor(private backendCaller: BackendCallerService,
+  constructor(private backendCaller: BackendService,
               private renderer: Renderer2,
               private dialog: MatDialog,
               private dialogService: MatDialogService,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 
-import {BackendCallerService, MatDialogService, AuthenticationService} from "@app/core";
+import {BackendService, MatDialogService, AuthenticationService} from "@app/core";
 import {Template} from "app/core/models";
 import { ConfirmDialogComponent, ConfirmDialogModel, UploadTemplateComponent } from "@app/shared";
 import {Role, User} from "app/core/models";
@@ -23,7 +23,7 @@ export class TemplateListComponent implements OnInit {
   private user: User;
 
   constructor(private dialog: MatDialog,
-              private backendCaller: BackendCallerService,
+              private backendCaller: BackendService,
               private dialogService: MatDialogService,
               private authenticationService: AuthenticationService
   ) { }

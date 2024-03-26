@@ -3,7 +3,7 @@ import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {nanoid} from "nanoid";
 import {MatDialogRef} from "@angular/material/dialog";
 
-import {BackendCallerService, FilesSortingService} from "@app/core";
+import {BackendService, FilesSortingService} from "@app/core";
 import {Template} from "@app/core/models/templateModel";
 
 @Component({
@@ -33,7 +33,7 @@ export class UploadMaterialComponent implements OnInit {
   uploading = false;
   messages: string[] = [];
 
-  constructor(private backendCaller: BackendCallerService,
+  constructor(private backendCaller: BackendService,
               private dialogRef: MatDialogRef<UploadMaterialComponent>,
               private filesSorter: FilesSortingService) { }
 
