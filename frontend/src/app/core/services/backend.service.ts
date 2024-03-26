@@ -14,7 +14,7 @@ import {Template, Material, Feedback} from "app/core/models";
 // This class administrates the template-list of templates and executes all api calls
 // -----------------------------------
 
-export class BackendCallerService {
+export class BackendService {
 
   templateUrl = environment.database + "template/";
   materialUrl = environment.database + "material/";
