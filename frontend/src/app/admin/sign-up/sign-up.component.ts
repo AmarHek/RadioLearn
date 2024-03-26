@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
-import {Role} from "app/core/models";
+import {Role} from "@app/core/models";
 import {AuthenticationService, UserService} from "@app/core";
-import {mustMatch} from "app/core/helpers";
+import {mustMatch} from "@app/core/helpers";
 
 @Component({
   selector: "app-sign-up",

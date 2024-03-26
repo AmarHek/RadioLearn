@@ -7,7 +7,6 @@ export * from "./image-display/image-display.component";
 export * from "./input-dialog/input-dialog.component";
 export * from "./inputModal/inputModal.component";
 export * from "./radiolearn-options/radiolearn-options.component";
-export * from "./sign-up/sign-up.component";
 export * from "./student-errors/student-errors.component";
 export * from "./upload-material/upload-material.component";
 export * from "./variables/variables.component";

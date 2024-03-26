@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {UserService} from "@app/core";
-import {Role} from "app/core/models";
+import {Role} from "@app/core/models";
 
 @Component({
   selector: 'app-change-role-dialog',

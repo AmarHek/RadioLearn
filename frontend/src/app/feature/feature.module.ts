@@ -16,7 +16,6 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import {RouterModule} from "@angular/router";
 import {MatRadioModule} from "@angular/material/radio";
 
-import {AdminComponent} from "@app/feature/admin/admin.component";
 import {FeedbackDisplayComponent} from "@app/feature/feedback-display/feedback-display.component";
 import {MaterialListComponent} from "@app/feature/material-list/material-list.component";
 import {RadiolearnUiComponent} from "@app/feature/radiolearn-ui/radiolearn-ui.component";
@@ -31,7 +30,6 @@ import {InputMaterialHandlerComponent} from './input-material-handler/input-mate
 @NgModule({
   declarations: [
     AccountManagementComponent,
-    AdminComponent,
     FeedbackDisplayComponent,
     MaterialListComponent,
     RadiolearnUiComponent,
@@ -62,7 +60,6 @@ import {InputMaterialHandlerComponent} from './input-material-handler/input-mate
     ],
   exports: [
     AccountManagementComponent,
-    AdminComponent,
     FeedbackDisplayComponent,
     MaterialListComponent,
     RadiolearnUiComponent,

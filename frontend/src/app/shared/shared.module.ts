@@ -31,9 +31,7 @@ import {FeedbackDialogComponent} from "./feedback-dialog/feedback-dialog.compone
 import {InputDialogComponent} from "./input-dialog/input-dialog.component";
 import {StudentErrorsComponent} from "./student-errors/student-errors.component";
 
-import {SignUpComponent} from "./sign-up/sign-up.component";
 import {AddScanDialogComponent} from "./add-scan-dialog/add-scan-dialog.component";
-import { ChangeRoleDialogComponent } from './change-role-dialog/change-role-dialog.component';
 import { RadiolearnOptionsShallowComponent } from './radiolearn-options-shallow/radiolearn-options-shallow.component';
 import { AnnotationPopupComponent } from './annotation-popup/annotation-popup.component';
 import { SettingsDialogComponent } from './settings-dialog/settings-dialog.component';
@@ -51,11 +49,9 @@ import { SettingsDialogComponent } from './settings-dialog/settings-dialog.compo
     InputModalComponent,
     StudentErrorsComponent,
     RadiolearnOptionsComponent,
-    SignUpComponent,
     UploadMaterialComponent,
     VariablesComponent,
     AddScanDialogComponent,
-    ChangeRoleDialogComponent,
     RadiolearnOptionsShallowComponent,
     AnnotationPopupComponent,
     SettingsDialogComponent
@@ -89,7 +85,6 @@ import { SettingsDialogComponent } from './settings-dialog/settings-dialog.compo
         InputModalComponent,
         StudentErrorsComponent,
         RadiolearnOptionsComponent,
-        SignUpComponent,
         UploadMaterialComponent,
         VariablesComponent,
         RadiolearnOptionsShallowComponent
