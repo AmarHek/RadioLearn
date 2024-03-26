@@ -5,7 +5,7 @@ import {
   AdminComponent,
   FeedbackDisplayComponent,
   TemplateListComponent,
-  RadiolearnListComponent,
+  MaterialListComponent,
   RadiolearnUiComponent
 } from "@app/feature";
 import {AuthGuard} from "app/core/helpers";
@@ -33,7 +33,7 @@ const routes: Routes = [
   },
   {
     path: "radiolearn/list",
-    component: RadiolearnListComponent,
+    component: MaterialListComponent,
     canActivate: [AuthGuard],
     data: { roles: [Role.Moderator, Role.Admin] }
   },

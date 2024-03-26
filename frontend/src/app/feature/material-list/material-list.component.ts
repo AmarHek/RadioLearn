@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {MatDialog} from "@angular/material/dialog";
 import {Router} from "@angular/router";
-import {AuthenticationService, BackendCallerService, MatDialogService, RadiolearnService} from "@app/core";
+import {AuthenticationService, BackendService, MatDialogService, RadiolearnService} from "@app/core";
 import {Material, Role, User} from "app/core/models";
 import {ConfirmDialogComponent, ConfirmDialogModel, UploadMaterialComponent} from "@app/shared";
 import {AddScanDialogComponent} from "@app/shared/add-scan-dialog/add-scan-dialog.component";
@@ -10,10 +10,10 @@ import {environment} from "@env/environment";
 
 @Component({
   selector: "app-display-material",
-  templateUrl: "./radiolearn-list.component.html",
-  styleUrls: ["./radiolearn-list.component.scss"]
+  templateUrl: "./material-list.component.html",
+  styleUrls: ["./material-list.component.scss"]
 })
-export class RadiolearnListComponent implements OnInit {
+export class MaterialListComponent implements OnInit {
 
   imageUrl = environment.images;
   materials: Material[] = [];
@@ -31,7 +31,7 @@ export class RadiolearnListComponent implements OnInit {
 
   private user: User;
 
-  constructor(private backendCaller: BackendCallerService,
+  constructor(private backend: BackendService,
               private router: Router,
               private dialogService: MatDialogService,
               private dialog: MatDialog,
@@ -46,8 +46,8 @@ export class RadiolearnListComponent implements OnInit {
     return this.user && (this.user.role === Role.Admin);
   }
 
-  async ngOnInit() {
-    await this.authenticationService.user.subscribe((x) => {
+  ngOnInit() {
+    this.authenticationService.user.subscribe((x) => {
       this.user = x;
       this.showJudged = !this.isMod;
     });
@@ -56,18 +56,18 @@ export class RadiolearnListComponent implements OnInit {
   }
 
   getTemplateLists() {
-    this.backendCaller.getTemplateListAsString("shallowDoc").subscribe(res => {
+    this.backend.getTemplateListAsString("shallowDoc").subscribe(res => {
       console.log(res);
       this.shallowTemplates = res.templateNames;
     });
-    this.backendCaller.getTemplateListAsString("deepDoc").subscribe(res => {
+    this.backend.getTemplateListAsString("deepDoc").subscribe(res => {
       console.log(res);
       this.deepTemplates = res.templateNames;
     });
   }
 
   getCountAndData() {
-    this.backendCaller.getDocCount(this.showJudged, this.shallowFilter).subscribe(res => {
+    this.backend.getDocCount(this.showJudged, this.shallowFilter).subscribe(res => {
       console.log("Count: ", res.count);
       console.log(this.collectionSize);
       this.collectionSize = res.count;
@@ -88,7 +88,7 @@ export class RadiolearnListComponent implements OnInit {
         length = length + skip;
         skip = 0;
       }
-      this.backendCaller.listByFilter(skip, length, this.showJudged, this.shallowFilter)
+      this.backend.listByFilter(skip, length, this.showJudged, this.shallowFilter)
         .subscribe(res => {
           // then reverse the resulting template-list
           this.materials = res.materials.reverse();
@@ -97,7 +97,7 @@ export class RadiolearnListComponent implements OnInit {
         });
     } else {
       const skip = (this.page - 1) * this.pageSize;
-      this.backendCaller.listByFilter(skip, this.pageSize, this.showJudged, this.shallowFilter)
+      this.backend.listByFilter(skip, this.pageSize, this.showJudged, this.shallowFilter)
         .subscribe(res => {
           this.materials = res.materials;
         }, err => {
@@ -119,7 +119,7 @@ export class RadiolearnListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(dialogResult => {
       if (dialogResult) {
-        this.backendCaller.deleteMaterial(objectID, scanID).subscribe(res => {
+        this.backend.deleteMaterial(objectID, scanID).subscribe(res => {
           console.log(res.message);
           this.getCountAndData();
         }, err => {
@@ -142,7 +142,7 @@ export class RadiolearnListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(dialogResult => {
       if (dialogResult) {
-        this.backendCaller.deleteScanById(objectID, scanID, scanType, filename).subscribe(res => {
+        this.backend.deleteScanById(objectID, scanID, scanType, filename).subscribe(res => {
           console.log(res.message);
           this.getCountAndData();
         }, err => {
@@ -214,7 +214,7 @@ export class RadiolearnListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.backendCaller.updateMatTemplate(this.showJudged).subscribe(res => {
+        this.backend.updateMatTemplate(this.showJudged).subscribe(res => {
           window.alert(res.message);
           console.log(res);
           this.getCountAndData();
@@ -240,7 +240,7 @@ export class RadiolearnListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.backendCaller.updateMatTemplateBCByID(id).subscribe(res => {
+        this.backend.updateMatTemplateBCByID(id).subscribe(res => {
           console.log(res);
           window.alert(res);
         }, err => {
