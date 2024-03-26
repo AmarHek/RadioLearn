@@ -2,7 +2,7 @@ import {CommonModule} from "@angular/common";
 import {NgModule, Optional, SkipSelf} from "@angular/core";
 import {
   AuthenticationService,
-  BackendCallerService,
+  BackendService,
   DataParserService,
   DisplayService,
   FilesSortingService,
@@ -21,7 +21,7 @@ import {
   ],
   providers: [
     AuthenticationService,
-    BackendCallerService,
+    BackendService,
     DataParserService,
     DisplayService,
     FilesSortingService,

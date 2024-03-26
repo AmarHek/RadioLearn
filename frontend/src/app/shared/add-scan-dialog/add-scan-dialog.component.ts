@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from "@angular/core";
 import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {BackendCallerService} from "@app/core";
+import {BackendService} from "@app/core";
 
 @Component({
   selector: "app-add-scan-dialog",
@@ -18,7 +18,7 @@ export class AddScanDialogComponent implements OnInit {
   progress = 0;
 
 
-  constructor(private backendCaller: BackendCallerService,
+  constructor(private backendCaller: BackendService,
               private dialogRef: MatDialogRef<AddScanDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data) { }
 

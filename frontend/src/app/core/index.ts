@@ -1,5 +1,5 @@
 export * from "./services/authentication.service";
-export * from "./services/backend-caller.service";
+export * from "./services/backend.service";
 export * from "./services/dataParser.service";
 export * from "./services/display.service";
 export * from "./services/files-sorting.service";
