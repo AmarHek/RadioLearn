@@ -9,7 +9,7 @@ import {
 } from "@angular/core";
 
 import {environment} from "@env/environment";
-import {Annotation, BoundingBox, Category, Image} from "app/core/models";
+import {Annotation, BoundingBox, Category, Image} from "@app/core/models";
 import {BackendService, ImageDisplayService, MatDialogService} from "@app/core";
 import {fromEvent} from "rxjs";
 import {switchMap, takeUntil} from "rxjs/operators";

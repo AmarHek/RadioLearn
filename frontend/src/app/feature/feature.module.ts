@@ -18,22 +18,18 @@ import {MatRadioModule} from "@angular/material/radio";
 
 import {FeedbackDisplayComponent} from "@app/feature/feedback-display/feedback-display.component";
 import {MaterialListComponent} from "@app/feature/material-list/material-list.component";
-import {RadiolearnUiComponent} from "@app/feature/radiolearn-ui/radiolearn-ui.component";
 import {SharedModule} from "@app/shared/shared.module";
 import {DialogTemplateComponent} from '@app/shared/dialog-template/dialog-template.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {DialogNoMaterialsComponent} from '@app/shared/dialog-no-materials/dialog-no-materials.component';
-import {InputMaterialHandlerComponent} from './input-material-handler/input-material-handler.component';
 
 
 @NgModule({
   declarations: [
     FeedbackDisplayComponent,
     MaterialListComponent,
-    RadiolearnUiComponent,
     DialogTemplateComponent,
     DialogNoMaterialsComponent,
-    InputMaterialHandlerComponent
   ],
     imports: [
         CommonModule,
@@ -59,7 +55,6 @@ import {InputMaterialHandlerComponent} from './input-material-handler/input-mate
   exports: [
     FeedbackDisplayComponent,
     MaterialListComponent,
-    RadiolearnUiComponent,
   ]
 })
 export class FeatureModule { }

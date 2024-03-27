@@ -12,7 +12,7 @@ import {switchMap, takeUntil} from "rxjs/operators";
 import {MatDialog} from "@angular/material/dialog";
 
 import {environment} from "@env/environment";
-import {Annotation, BoundingBox, BoxLabel, Image} from "app/core/models";
+import {Annotation, BoundingBox, BoxLabel, Image} from "@app/core/models";
 import {BackendService, ImageDisplayService, MatDialogService} from "@app/core";
 import {InputDialogComponent} from "@app/shared/input-dialog/input-dialog.component";
 import {ConfirmDialogComponent, ConfirmDialogModel} from "@app/shared";

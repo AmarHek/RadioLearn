@@ -18,19 +18,12 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {ConfirmDialogComponent} from "@app/shared/confirm-dialog/confirm-dialog.component";
 import {InputModalComponent} from "@app/shared/inputModal/inputModal.component";
 import {UploadMaterialComponent} from "@app/shared/upload-material/upload-material.component";
-import {VariablesComponent} from "@app/shared/variables/variables.component";
-
-import {ImageDisplayStudentComponent} from "./image-display-student/image-display-student.component";
-import {ImageDisplayComponent} from "./image-display/image-display.component";
-import {RadiolearnOptionsComponent} from "./radiolearn-options/radiolearn-options.component";
 
 import {FeedbackDialogComponent} from "./feedback-dialog/feedback-dialog.component";
 
 import {InputDialogComponent} from "./input-dialog/input-dialog.component";
-import {StudentErrorsComponent} from "./student-errors/student-errors.component";
 
 import {AddScanDialogComponent} from "./add-scan-dialog/add-scan-dialog.component";
-import { RadiolearnOptionsShallowComponent } from './radiolearn-options-shallow/radiolearn-options-shallow.component';
 import { AnnotationPopupComponent } from './annotation-popup/annotation-popup.component';
 import { SettingsDialogComponent } from './settings-dialog/settings-dialog.component';
 
@@ -39,16 +32,10 @@ import { SettingsDialogComponent } from './settings-dialog/settings-dialog.compo
   declarations: [
     ConfirmDialogComponent,
     FeedbackDialogComponent,
-    ImageDisplayComponent,
-    ImageDisplayStudentComponent,
     InputDialogComponent,
     InputModalComponent,
-    StudentErrorsComponent,
-    RadiolearnOptionsComponent,
     UploadMaterialComponent,
-    VariablesComponent,
     AddScanDialogComponent,
-    RadiolearnOptionsShallowComponent,
     AnnotationPopupComponent,
     SettingsDialogComponent
   ],
@@ -73,15 +60,9 @@ import { SettingsDialogComponent } from './settings-dialog/settings-dialog.compo
     exports: [
         ConfirmDialogComponent,
         FeedbackDialogComponent,
-        ImageDisplayComponent,
-        ImageDisplayStudentComponent,
         InputDialogComponent,
         InputModalComponent,
-        StudentErrorsComponent,
-        RadiolearnOptionsComponent,
         UploadMaterialComponent,
-        VariablesComponent,
-        RadiolearnOptionsShallowComponent
     ]
 })
 export class SharedModule { }

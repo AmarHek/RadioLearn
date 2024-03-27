@@ -17,6 +17,7 @@ import {PendingChangesGuard} from "@app/core/guards/pending-changes.guard";
 import {TemplateManagerModule} from "@app/template-manager/template-manager.module";
 import {AdminModule} from "@app/admin/admin.module";
 import {AccountManagementModule} from "@app/account-management/account-management.module";
+import {MainInterfaceModule} from "@app/main-interface/main-interface.module";
 import {SharedModule} from "@app/shared/shared.module";
 import {ViewModule} from "@app/view/view.module";
 
@@ -40,6 +41,7 @@ import {AppComponent} from "./app.component";
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    MainInterfaceModule,
     SharedModule,
     TemplateManagerModule,
     ViewModule

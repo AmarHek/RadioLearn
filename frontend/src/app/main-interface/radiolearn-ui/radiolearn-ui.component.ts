@@ -1,6 +1,6 @@
 import * as M from "@app/core/models/templateModel";
 import {ActivatedRoute, Router} from "@angular/router";
-import {BoxLabel, Material, Role, Template, User} from "app/core/models";
+import {BoxLabel, Material, Role, Template, User} from "@app/core/models";
 import {CategoryError} from "@app/core/models/errorModel";
 import {ChipHelperService} from "@app/core/services/chip-helper.service";
 import {Component, ElementRef, OnInit, ViewChild} from "@angular/core";
@@ -10,10 +10,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {getResetCounter, getSurveyStatus, getUUID, increaseSurveyCounter} from "@app/core/helpers/localStorageHelper";
 import {
   FeedbackDialogComponent,
-  ImageDisplayComponent,
-  ImageDisplayStudentComponent,
-  RadiolearnOptionsComponent,
-  StudentErrorsComponent
+  SettingsDialogComponent
 } from "@app/shared";
 import {
   AuthenticationService,
@@ -23,8 +20,11 @@ import {
   MatDialogService,
   RadiolearnService
 } from "@app/core";
-import {InputMaterialHandlerComponent} from "@app/feature/input-material-handler/input-material-handler.component";
-import {SettingsDialogComponent} from "@app/shared/settings-dialog/settings-dialog.component";
+import {ImageDisplayComponent,
+  ImageDisplayStudentComponent,
+  RadiolearnOptionsComponent,
+  StudentErrorsComponent,
+  InputMaterialHandlerComponent} from "@app/main-interface";
 
 @Component({
   selector: "app-radiolearn-ui",
