@@ -154,7 +154,7 @@ export class MaterialListComponent implements OnInit {
 
   openEditor(matID: string) {
     this.radiolearnService.workMode = "deep";
-    this.router.navigate(["/", "radiolearn", "main", matID]).then();
+    this.router.navigate(["/", "main", matID]).then();
   }
 
   openUploadDialog() {

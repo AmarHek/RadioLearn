@@ -16,6 +16,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
   imports: [
     CommonModule,
     NgbModule,
+    MatIconModule,
     MatDialogModule,
     MatDividerModule,
     MatButtonModule,
