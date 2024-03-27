@@ -14,7 +14,7 @@ import {BackendService, ImageDisplayService, MatDialogService} from "@app/core";
 import {fromEvent} from "rxjs";
 import {switchMap, takeUntil} from "rxjs/operators";
 import {MatDialog} from "@angular/material/dialog";
-import {AnnotationPopupComponent} from "@app/shared/annotation-popup/annotation-popup.component";
+import {AnnotationPopupComponent} from "@app/main-interface/";
 import {SettingsService} from "@app/core/services/settings.service";
 
 const BOX_LINE_WIDTH = 5;

@@ -22,7 +22,6 @@ import {FeedbackDialogComponent} from "./feedback-dialog/feedback-dialog.compone
 
 import {InputDialogComponent} from "./input-dialog/input-dialog.component";
 
-import { AnnotationPopupComponent } from './annotation-popup/annotation-popup.component';
 import { SettingsDialogComponent } from './settings-dialog/settings-dialog.component';
 
 
@@ -32,7 +31,6 @@ import { SettingsDialogComponent } from './settings-dialog/settings-dialog.compo
     FeedbackDialogComponent,
     InputDialogComponent,
     InputModalComponent,
-    AnnotationPopupComponent,
     SettingsDialogComponent
   ],
     imports: [

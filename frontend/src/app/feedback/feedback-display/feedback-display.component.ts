@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import {BackendService, MatDialogService} from "@app/core";
-import {Feedback} from "app/core/models";
-import {getDateFormatted} from "app/core/helpers";
+import {Feedback} from "@app/core/models";
+import {getDateFormatted} from "@app/core/helpers";
 import {ConfirmDialogComponent, ConfirmDialogModel} from "@app/shared";
 import {MatDialog} from "@angular/material/dialog";
 

@@ -16,7 +16,7 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import {RouterModule} from "@angular/router";
 import {MatRadioModule} from "@angular/material/radio";
 
-import {FeedbackDisplayComponent} from "@app/feature/feedback-display/feedback-display.component";
+import {FeedbackDisplayComponent} from "@app/feedback/feedback-display/feedback-display.component";
 import {SharedModule} from "@app/shared/shared.module";
 import {DialogTemplateComponent} from '@app/shared/dialog-template/dialog-template.component';
 import {MatSidenavModule} from "@angular/material/sidenav";

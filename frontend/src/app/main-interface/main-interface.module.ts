@@ -17,7 +17,8 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatTooltipModule} from "@angular/material/tooltip";
 
-import {ImageAnnotatorComponent,
+import {AnnotationPopupComponent,
+  ImageAnnotatorComponent,
   ImageDisplayComponent,
   InputHandlerComponent,
   OptionsComponent,
@@ -28,6 +29,7 @@ import {ImageAnnotatorComponent,
 
 @NgModule({
   declarations: [
+    AnnotationPopupComponent,
     ImageAnnotatorComponent,
     ImageDisplayComponent,
     InputHandlerComponent,

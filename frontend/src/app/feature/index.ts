@@ -1,1 +1,1 @@
-export * from "./feedback-display/feedback-display.component";
+export * from "@app/feedback/feedback-display/feedback-display.component";
