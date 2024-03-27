@@ -73,54 +73,57 @@
       <tbody>
       <tr *ngFor="let material of this.materials; let i = index">
         <th scope="row">{{i+1}}</th>
-        <td class="img">
+        <td class="td-img">
           <img *ngIf="material.scans" src="{{imageUrl}}{{material.scans.id}}/{{material.scans.mainScan.filename}}"
                width="300px"
                alt="Fehler beim Laden der Aufnahme"
                loading="lazy"
                (click)="openEditor(material._id)"/> <br>
         </td>
-        <td class="img">
+        <td class="td-img">
           <ng-container *ngIf="material.scans.lateralScan">
-            <img src="{{imageUrl}}{{material.scans.id}}/{{material.scans.lateralScan.filename}}"
-                 width="300px"
-                 alt="Fehler beim Laden der Aufnahme"
-                 loading="lazy"
-                 (click)="openEditor(material._id)"/> <br>
-
-            <button mat-flat-button color="primary" class="add-button"
-                    (click)="deleteScan(material._id, material.scans.id,
-                    'lateralScan', material.scans.lateralScan.filename)">
-              <mat-icon>delete</mat-icon>
+            <div class="image-container">
+              <img src="{{imageUrl}}{{material.scans.id}}/{{material.scans.lateralScan.filename}}"
+                   width="300px"
+                   alt="Fehler beim Laden der Aufnahme"
+                   loading="lazy"
+                   (click)="openEditor(material._id)"/> <br>
+              <button mat-flat-button color="primary" class="delete-button"
+                      (click)="deleteScan(material._id, material.scans.id,
+                      'lateralScan', material.scans.lateralScan.filename)">
+                <mat-icon class="icon-display">close</mat-icon>
             </button>
+            </div>
           </ng-container>
           <ng-container *ngIf="!material.scans.lateralScan">
-            <div class="wrapper">
+            <div class="no-image-container">
               <button mat-flat-button color="primary" class="add-button"
                       (click)="openAddScanDialog(material._id, material.scans.id, 'lateralScan')">
-                <mat-icon>add</mat-icon>
+                <mat-icon class="icon-display">add</mat-icon>
               </button>
             </div>
           </ng-container>
         </td>
-        <td class="img">
+        <td class="td-img">
           <ng-container *ngIf="material.scans.preScan">
-            <img src="{{imageUrl}}{{material.scans.id}}/{{material.scans.preScan.filename}}"
-                 width="300px"
-                 alt="Fehler beim Laden der Aufnahme"
-                 loading="lazy"
-                 (click)="openEditor(material._id)"/> <br>
-            <button mat-flat-button color="primary" class="add-button"
-                    (click)="deleteScan(material._id, material.scans.id,
-                    'preScan', material.scans.preScan.filename)">
-              <mat-icon>delete</mat-icon>
-            </button>
+            <div class="image-container">
+              <img src="{{imageUrl}}{{material.scans.id}}/{{material.scans.preScan.filename}}"
+                   width="300px"
+                   alt="Fehler beim Laden der Aufnahme"
+                   loading="lazy"
+                   (click)="openEditor(material._id)"/> <br>
+              <button mat-flat-button color="primary" class="delete-button"
+                      (click)="deleteScan(material._id, material.scans.id,
+                      'preScan', material.scans.preScan.filename)">
+                <mat-icon class="icon-display">close</mat-icon>
+              </button>
+            </div>
           </ng-container>
           <ng-container *ngIf="!material.scans.preScan">
-            <div class="wrapper">
+            <div class="no-image-container">
               <button mat-flat-button color="primary" class="add-button"
                       (click)="openAddScanDialog(material._id, material.scans.id, 'preScan')">
-                <mat-icon>add</mat-icon>
+                <mat-icon class="icon-display">add</mat-icon>
               </button>
             </div>
           </ng-container>
