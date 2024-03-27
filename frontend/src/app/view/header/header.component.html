@@ -1,13 +1,22 @@
 <mat-toolbar color="primary" class="toolbar" *ngIf="displayNavbar">
-  <button mat-icon-button [mat-menu-trigger-for]="menu" class="header-button">
+  <button *ngIf="isMod" mat-icon-button [matMenuTriggerFor]="menu" style="top: 1px" class="header-button">
     <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <a mat-menu-item class="header-button" *ngIf="isMod" routerLink='/radiolearn/list' routerLinkActive="active">Annotation</a>
-    <a mat-menu-item class="header-button" routerLink='/list' routerLinkActive="active">Schablonen</a>
-    <a mat-menu-item class="header-button" *ngIf="isMod" routerLink="/feedback" routerLinkActive="active">Feedback</a>
+    <a mat-menu-item class="header-button" routerLink='/material-list' routerLinkActive="active">
+      <mat-icon [ngStyle]="{'color':'#383838'}">crop_free</mat-icon>
+      <span>Annotation</span>
+    </a>
+    <a mat-menu-item class="header-button" routerLink='/template-list' routerLinkActive="active">
+      <mat-icon [ngStyle]="{'color':'#383838'}">content_paste</mat-icon>
+      <span>Schablonen</span>
+    </a>
+    <a mat-menu-item class="header-button" routerLink="/feedback" routerLinkActive="active">
+      <mat-icon [ngStyle]="{'color':'#383838'}">feedback</mat-icon>
+      <span>Feedback</span>
+    </a>
   </mat-menu>
-  <a id="homeButton" mat-button class="header-button" routerLink='/'>
+  <a mat-button class="header-button" routerLink='/' style="top: 2px; left: -5px; font-size: 15px">
     RadioLearn
   </a>
   <span class="spacer2"></span>

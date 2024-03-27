@@ -17,19 +17,15 @@
 .header-button {
   font-weight: 600;
   font-size: 15px;
-  font-family: Roboto, "Helvetica Neue", sans-serif
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  align-content: center;
+  align-items: center;
 }
 
 .header-button:hover {
-  background-color: rgba(0,0,0,0.3);
-  color: white;
+  background-color: rgba(0,0,0,0.4);
 }
 
 .active {
   background-color: rgba(0,0,0,0.2);
-}
-
-#homeButton {
-  top: 2px;
-  left: -5px;
 }
