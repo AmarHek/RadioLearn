@@ -1,5 +1,5 @@
 <div mat-dialog-title class="header">
-  <h4>Aufnahme ersetzen</h4>
+  <h4>Aufnahme hinzufügen</h4>
 </div>
 
 <mat-divider></mat-divider>
@@ -9,7 +9,7 @@
   <div>Bitte Aufnahme auswählen:</div>
 
   <button mat-stroked-button color="primary" (click)="fileInput1.click()">Datei auswählen</button>
-  <input hidden class="mr-3" type="file" multiple="single" id="mainScans" #fileInput1
+  <input hidden class="mr-3" type="file" id="mainScans" #fileInput1
          (change)="onFileSelect($event)"/>
   <div *ngIf="this.fileForm.get('newScan').value !== null">{{this.fileForm.get('newScan').value.name}}</div>
 
