@@ -1,7 +1,6 @@
 import {Component, Inject, OnInit} from "@angular/core";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {CategoryError, ErrorTableRow, ErrorTableRowMobile, SelectableError} from "@app/core/models/errorModel";
-import {displayableQuotient} from "@app/core/helpers";
 import {DisplayService} from "@app/core";
 
 @Component({
@@ -126,11 +125,6 @@ export class StudentErrorsComponent implements OnInit {
     }
   }
 
-  displayQuotient(numerator, denominator) {
-    return displayableQuotient(numerator as number,
-      denominator as number, 2);
-  }
-
   catRowCount(catError: CategoryError) {
     let result = 0;
     for (const selError of catError.selErrors) {
@@ -156,8 +150,8 @@ export class StudentErrorsComponent implements OnInit {
           if (varErr.kind === "mc") {
             // for mc variables, compute symmetric difference between should and actual
             const difference = varErr.should
-                              .filter(x => !varErr.actual.includes(x))
-                              .concat(varErr.actual.filter(x => !varErr.should.includes(x)));
+                              .filter((x: string | number) => !varErr.actual.includes(x))
+                              .concat(varErr.actual.filter((x: string | number) => !varErr.should.includes(x)));
             this.minorErrorCount += difference.length;
           } else {
             // remaining variable types are simple check as above
