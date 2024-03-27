@@ -292,8 +292,8 @@ export class MainInterfaceComponent implements OnInit {
         }
       },
       error: (err) => {
-        window.alert(err);
-        console.log(err);
+        window.alert(err.message);
+        console.log(err.message);
       }
     })
   }

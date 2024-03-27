@@ -372,7 +372,7 @@ export async function getRandom(req: Request, res: Response): Promise<void> {
         const count = await MaterialDB.countDocuments({judged: req.body.judged}).exec();
         const random = Math.floor(Math.random() * count);
         const randomMaterial = await MaterialDB.findOne({judged: req.body.judged}).skip(random).exec();
-        res.status(200).send({randomMaterial});
+        res.status(200).send({material: randomMaterial});
     } catch (error) {
         res.status(500).send({message: error})
     }
