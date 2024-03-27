@@ -73,13 +73,13 @@
 
     </mat-toolbar>
 
-    <app-input-material-handler
+    <app-input-handler
       *ngIf="inputEnabled"
       [defaultCategories]="this.defaultCategories"
       [categories]="this.categories"
       (resetEmitter)="resetMaterialKeepInput()"
       (selectedChipEmitter)="chipSelectedEvent($event)">
-    </app-input-material-handler>
+    </app-input-handler>
 
 
   </div>
