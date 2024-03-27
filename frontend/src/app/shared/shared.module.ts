@@ -24,8 +24,6 @@ import {ImageDisplayStudentComponent} from "./image-display-student/image-displa
 import {ImageDisplayComponent} from "./image-display/image-display.component";
 import {RadiolearnOptionsComponent} from "./radiolearn-options/radiolearn-options.component";
 
-import {ChangePasswordComponent} from "./change-password/change-password.component";
-import {ChangeUsernameComponent} from "./change-username/change-username.component";
 import {FeedbackDialogComponent} from "./feedback-dialog/feedback-dialog.component";
 
 import {InputDialogComponent} from "./input-dialog/input-dialog.component";
@@ -39,8 +37,6 @@ import { SettingsDialogComponent } from './settings-dialog/settings-dialog.compo
 
 @NgModule({
   declarations: [
-    ChangePasswordComponent,
-    ChangeUsernameComponent,
     ConfirmDialogComponent,
     FeedbackDialogComponent,
     ImageDisplayComponent,
@@ -75,8 +71,6 @@ import { SettingsDialogComponent } from './settings-dialog/settings-dialog.compo
         MatSlideToggleModule
     ],
     exports: [
-        ChangePasswordComponent,
-        ChangeUsernameComponent,
         ConfirmDialogComponent,
         FeedbackDialogComponent,
         ImageDisplayComponent,

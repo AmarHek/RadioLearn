@@ -19,7 +19,6 @@ import {MatRadioModule} from "@angular/material/radio";
 import {FeedbackDisplayComponent} from "@app/feature/feedback-display/feedback-display.component";
 import {MaterialListComponent} from "@app/feature/material-list/material-list.component";
 import {RadiolearnUiComponent} from "@app/feature/radiolearn-ui/radiolearn-ui.component";
-import {AccountManagementComponent} from "./account-management/account-management.component";
 import {SharedModule} from "@app/shared/shared.module";
 import {DialogTemplateComponent} from '@app/shared/dialog-template/dialog-template.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
@@ -29,7 +28,6 @@ import {InputMaterialHandlerComponent} from './input-material-handler/input-mate
 
 @NgModule({
   declarations: [
-    AccountManagementComponent,
     FeedbackDisplayComponent,
     MaterialListComponent,
     RadiolearnUiComponent,
@@ -59,7 +57,6 @@ import {InputMaterialHandlerComponent} from './input-material-handler/input-mate
         MatSidenavModule,
     ],
   exports: [
-    AccountManagementComponent,
     FeedbackDisplayComponent,
     MaterialListComponent,
     RadiolearnUiComponent,

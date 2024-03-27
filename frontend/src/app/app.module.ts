@@ -16,6 +16,7 @@ import {FeatureModule} from "@app/feature/feature.module";
 import {PendingChangesGuard} from "@app/core/guards/pending-changes.guard";
 import {TemplateManagerModule} from "@app/template-manager/template-manager.module";
 import {AdminModule} from "@app/admin/admin.module";
+import {AccountManagementModule} from "@app/account-management/account-management.module";
 import {SharedModule} from "@app/shared/shared.module";
 import {ViewModule} from "@app/view/view.module";
 
@@ -28,6 +29,7 @@ import {AppComponent} from "./app.component";
   ],
   imports: [
     AdminModule,
+    AccountManagementModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,

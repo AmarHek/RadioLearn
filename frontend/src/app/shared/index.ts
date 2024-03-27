@@ -1,5 +1,3 @@
-export * from "./change-password/change-password.component";
-export * from "./change-username/change-username.component";
 export * from "./confirm-dialog/confirm-dialog.component";
 export * from "./feedback-dialog/feedback-dialog.component";
 export * from "./image-display-student/image-display-student.component";

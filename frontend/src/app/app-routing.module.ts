@@ -1,13 +1,13 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
 import {
-  AccountManagementComponent,
   FeedbackDisplayComponent,
   MaterialListComponent,
   RadiolearnUiComponent
 } from "@app/feature";
 import { TemplateListComponent } from "@app/template-manager";
 import {AdminComponent} from "@app/admin";
+import {AccountManagementComponent} from "@app/account-management";
 import {AuthGuard} from "app/core/helpers";
 import {Role} from "app/core/models";
 

@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {UserService} from "@app/core";
-import {mustMatch} from "app/core/helpers";
+import {mustMatch} from "@app/core/helpers";
 
 @Component({
   selector: "app-change-password",
