@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { AccountManagementComponent } from "@app/feature";
+import { AccountManagementComponent } from "@app/account-management";
 
 describe("AccountManagementComponent", () => {
   let component: AccountManagementComponent;

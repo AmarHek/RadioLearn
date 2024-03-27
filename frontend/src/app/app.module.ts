@@ -12,14 +12,14 @@ import {MatInputModule} from "@angular/material/input";
 import {DateAdapter, MAT_DATE_FORMATS} from "@angular/material/core";
 import {APP_DATE_FORMATS, AppDateAdapter, ErrorInterceptor, JwtInterceptor} from "app/core/helpers";
 
-import {FeatureModule} from "@app/feature/feature.module";
-import {PendingChangesGuard} from "@app/core/guards/pending-changes.guard";
-import {TemplateManagerModule} from "@app/template-manager/template-manager.module";
-import {AdminModule} from "@app/admin/admin.module";
 import {AccountManagementModule} from "@app/account-management/account-management.module";
+import {AdminModule} from "@app/admin/admin.module";
+import {FeedbackModule} from "@app/feedback/feedback.module";
 import {MainInterfaceModule} from "@app/main-interface/main-interface.module";
 import {MaterialManagerModule} from "@app/material-manager/material-manager.module";
+import {PendingChangesGuard} from "@app/core/guards/pending-changes.guard";
 import {SharedModule} from "@app/shared/shared.module";
+import {TemplateManagerModule} from "@app/template-manager/template-manager.module";
 import {ViewModule} from "@app/view/view.module";
 
 import {AppRoutingModule} from "./app-routing.module";
@@ -35,7 +35,7 @@ import {AppComponent} from "./app.component";
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
-    FeatureModule,
+    FeedbackModule,
     FormsModule,
     HttpClientModule,
     MaterialManagerModule,

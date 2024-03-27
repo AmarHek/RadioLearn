@@ -23,11 +23,15 @@ import {FeedbackDialogComponent} from "./feedback-dialog/feedback-dialog.compone
 import {InputDialogComponent} from "./input-dialog/input-dialog.component";
 
 import { SettingsDialogComponent } from './settings-dialog/settings-dialog.component';
+import {DialogTemplateComponent} from "@app/shared/dialog-template/dialog-template.component";
+import {DialogNoMaterialsComponent} from "@app/shared/dialog-no-materials/dialog-no-materials.component";
 
 
 @NgModule({
   declarations: [
     ConfirmDialogComponent,
+    DialogTemplateComponent,
+    DialogNoMaterialsComponent,
     FeedbackDialogComponent,
     InputDialogComponent,
     InputModalComponent,
@@ -52,10 +56,13 @@ import { SettingsDialogComponent } from './settings-dialog/settings-dialog.compo
         MatSlideToggleModule
     ],
     exports: [
-        ConfirmDialogComponent,
-        FeedbackDialogComponent,
-        InputDialogComponent,
-        InputModalComponent,
+      ConfirmDialogComponent,
+      DialogTemplateComponent,
+      DialogNoMaterialsComponent,
+      FeedbackDialogComponent,
+      InputDialogComponent,
+      InputModalComponent,
+      SettingsDialogComponent
     ]
 })
 export class SharedModule { }

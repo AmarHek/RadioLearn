@@ -1,18 +1,16 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
-import {
-  FeedbackDisplayComponent,
-} from "@app/feature";
-import { TemplateListComponent } from "@app/template-manager";
-import {AdminComponent} from "@app/admin";
-import {AccountManagementComponent} from "@app/account-management";
-import {MainInterfaceComponent} from "@app/main-interface";
-import {MaterialListComponent} from "@app/material-manager";
 import {AuthGuard} from "app/core/helpers";
 import {Role} from "app/core/models";
 
+import {AccountManagementComponent} from "@app/account-management";
+import {AdminComponent} from "@app/admin";
+import {FeedbackDisplayComponent,} from "@app/feedback";
+import {MainInterfaceComponent} from "@app/main-interface";
+import {MaterialListComponent} from "@app/material-manager";
+import {TemplateListComponent} from "@app/template-manager";
 import {LoginComponent} from "@app/view";
-import {WelcomePage} from "@app/view/welcome-page/welcome-page";
+import {WelcomePage} from "@app/view/";
 
 const routes: Routes = [
   {
