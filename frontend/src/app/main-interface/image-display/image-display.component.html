@@ -1,6 +1,7 @@
 <div class="main">
   <div id="buttonsDiv" *ngIf="!isMobile">
-    <mat-button-toggle-group value="Frontal">
+    <mat-button-toggle-group value="Frontal"
+                             hideSingleSelectionIndicator="True">
       <mat-button-toggle class="buttons imgButton"
                          value="Frontal"
                          [ngClass]="{'imgButtonWarn':
