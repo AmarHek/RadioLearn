@@ -48,20 +48,11 @@ export class DisplayService {
 
   update() {
     this.updateDisplay();
-    this.updateTitle();
   }
 
   private updateDisplay() {
     this.displayHeader = !(this.router.url.includes(NAVBAR_HEADER_TOGGLE_1) ||
       this.router.url.includes(NAVBAR_HEADER_TOGGLE_2));
-  }
-
-  private updateTitle() {
-    if (this.router.url.includes("radiolearn")) {
-      this.title = "RadioLearn";
-    } else {
-      this.title = "RadioLearn";
-    }
   }
 
 }
