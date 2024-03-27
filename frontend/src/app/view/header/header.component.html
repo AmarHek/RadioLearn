@@ -1,17 +1,17 @@
 <mat-toolbar color="primary" class="toolbar" *ngIf="displayNavbar">
-  <button *ngIf="isMod" mat-icon-button [matMenuTriggerFor]="menu" style="top: 1px" class="header-button">
+  <button [disabled]="!isMod" mat-icon-button [matMenuTriggerFor]="menu" style="top: 1px" class="header-button">
     <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <a mat-menu-item class="header-button" routerLink='/material-list' routerLinkActive="active">
+    <a *ngIf="isMod" mat-menu-item class="header-button" routerLink='/material-list' routerLinkActive="active">
       <mat-icon [ngStyle]="{'color':'#383838'}">crop_free</mat-icon>
       <span>Annotation</span>
     </a>
-    <a mat-menu-item class="header-button" routerLink='/template-list' routerLinkActive="active">
+    <a *ngIf="isMod" mat-menu-item class="header-button" routerLink='/template-list' routerLinkActive="active">
       <mat-icon [ngStyle]="{'color':'#383838'}">content_paste</mat-icon>
       <span>Schablonen</span>
     </a>
-    <a mat-menu-item class="header-button" routerLink="/feedback" routerLinkActive="active">
+    <a *ngIf="isMod" mat-menu-item class="header-button" routerLink="/feedback" routerLinkActive="active">
       <mat-icon [ngStyle]="{'color':'#383838'}">feedback</mat-icon>
       <span>Feedback</span>
     </a>
