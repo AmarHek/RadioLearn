@@ -150,16 +150,13 @@
                         style="height: calc(100% - 60px); background-color: #e0eafa">
     <mat-drawer #drawer [mode]="'over'">
 
-
-      <app-radiolearn-options-shallow
+      <app-options-shallow
         (updateEmitter)="updateFromOptionsEvent()"
         [material]="this.material"
         [userMode]="this.userMode"
         [categories]="this.categories"
         [selectedSelectableID]="this.selectedSelectableID">
-      </app-radiolearn-options-shallow>
-
-
+      </app-options-shallow>
     </mat-drawer>
     <mat-drawer-content style="height: 100%">
       <app-image-display *ngIf="material && userMode"
