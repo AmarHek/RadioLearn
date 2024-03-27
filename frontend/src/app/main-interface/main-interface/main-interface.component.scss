@@ -12,6 +12,8 @@ body {
   padding: 8px 18px;
   box-shadow: 0 3px 5px -1px #0003, 0 6px 10px #00000024, 0 1px 18px #0000001f;
   height: 60px;
+  z-index: 10;
+  position: relative;
 }
 
 #outer {
@@ -59,7 +61,7 @@ body {
 
 .header-button {
   font-weight: 600;
-  font-size: 14px;
+  font-size: 15px;
   font-family: Roboto, "Helvetica Neue", sans-serif
 }
 
@@ -68,12 +70,12 @@ body {
   color: white;
 }
 
-::ng-deep .mat-toolbar{
-  padding-top: 5px !important;
-  padding-bottom: 5px !important;
+.mat-toolbar{
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
 }
 
-::ng-deep .mat-mdc-form-field{
+.mat-mdc-form-field{
   width: 100%;
   overflow: hidden;
 }
@@ -116,7 +118,7 @@ body {
 }
 
 .mat-mdc-list-item {
-  font-size: 110%;
+  font-size: 100%;
 }
 
 .mat-background-warn {
@@ -133,29 +135,6 @@ body {
 }
 
 // General Browser settings
-
-/* width */
-::-webkit-scrollbar {
-  width: 2px;
-  height: 5px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
-  border-radius: 5px;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: grey;
-  border-radius: 0;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #b30000;
-}
 
 .disable-select {
   user-select: none; /* supported by Chrome and Opera */

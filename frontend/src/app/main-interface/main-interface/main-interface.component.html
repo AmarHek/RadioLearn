@@ -5,7 +5,6 @@
     <mat-toolbar class="toolbar" color="primary">
       <button mat-icon-button [matMenuTriggerFor]="menu" style="top: 1px">
         <mat-icon>menu</mat-icon>
-
       </button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="navigateToDeepMode()">
@@ -51,7 +50,7 @@
       </button>
       <button *ngIf="deepMode" mat-button class="header-button" id="normal-btn"
               matTooltip="Restliche Kategorien als unauffällig markieren"
-              (click)="makeNormal()">Rest normal
+              (click)="makeNormal()">Rest-Normal
       </button>
       <button mat-button class="header-button" id="check" matTooltip="Eingaben überprüfen" *ngIf="!isMod && !(drawMode && sawFeedback)"
               (click)="checkForErrors()">
@@ -66,11 +65,6 @@
               (click)="nextMaterial()">
         <mat-icon>navigate_next</mat-icon>
       </button>
-<!--      <button mat-button class="header-button" id="feedback" matTooltip="Feedback geben" *ngIf="!isMod"-->
-<!--              (click)="feedbackModal()">-->
-<!--        <mat-icon>feedback</mat-icon>-->
-<!--      </button>-->
-
     </mat-toolbar>
 
     <app-input-handler
