@@ -7,7 +7,7 @@ $background-color: hsl(202, 73%, 96%);
   background-color: $background-color;
   border: 1px solid $border-color;
   margin: 10px;
-  padding: 20px;
+  padding: 20px 40px;
   border-radius: 5px;
   width: auto;
 }
@@ -15,7 +15,7 @@ $background-color: hsl(202, 73%, 96%);
 .body, .td-img,  {
   border: 1px solid $border-color;
   text-align: center;
-  font-size: 15pt;
+  font-size: 14pt;
   width: auto;
   max-width: 350px;
   min-width: 200px;
