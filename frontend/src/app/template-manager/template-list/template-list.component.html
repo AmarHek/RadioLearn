@@ -15,8 +15,8 @@
       <tbody>
       <tr *ngFor="let template of templates; let i = index" class="list-row">
         <th class="number" scope="row">{{i+1}}</th>
-        <td class="text"><a style="text-decoration: none;"
-                            [routerLink]="['/', 'main', template._id]">{{template.name}}</a></td>
+        <td class="text"><a style="text-decoration: none;" disabled="True"
+                            [routerLink]="['/', 'edit', template._id]">{{template.name}}</a></td>
         <td class="text">{{displayDate(template.timestamp)}}</td>
         <td class="text">{{displayKind(template.kind)}}</td>
         <td class="button">
