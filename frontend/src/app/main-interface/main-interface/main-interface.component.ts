@@ -216,7 +216,7 @@ export class MainInterfaceComponent implements OnInit {
 
   back() {
     if (this.isMod) {
-      this.router.navigate(["radiolearn/list"]).then();
+      this.router.navigate(["material-list"]).then();
     } else {
       this.router.navigate(["/"]).then();
     }
