@@ -18,11 +18,11 @@ import {InputDialogComponent} from "@app/shared/input-dialog/input-dialog.compon
 import {ConfirmDialogComponent, ConfirmDialogModel} from "@app/shared";
 
 @Component({
-  selector: "app-image-display",
-  templateUrl: "./image-display.component.html",
-  styleUrls: ["./image-display.component.scss"]
+  selector: "app-image-annotator",
+  templateUrl: "./image-annotator.component.html",
+  styleUrls: ["./image-annotator.component.scss"]
 })
-export class ImageDisplayComponent implements OnInit, AfterViewInit, OnChanges {
+export class ImageAnnotatorComponent implements OnInit, AfterViewInit, OnChanges {
 
   @Input() scans: {
     id: string;

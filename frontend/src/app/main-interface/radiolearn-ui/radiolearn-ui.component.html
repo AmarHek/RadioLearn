@@ -121,10 +121,10 @@
       </div>
     </ng-container>
 
-    <app-image-display *ngIf="material && !userMode && isMod"
+    <app-image-annotator *ngIf="material && !userMode && isMod"
                        [scans]="material.scans"
                        [boxLabels]="boxLabels.slice(1)"
-                       [annotations]="material.annotations"></app-image-display>
+                       [annotations]="material.annotations"></app-image-annotator>
 
     <app-image-display-student *ngIf="material && userMode"
                                [scans]="material.scans"

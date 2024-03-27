@@ -20,7 +20,7 @@ import {
   MatDialogService,
   RadiolearnService
 } from "@app/core";
-import {ImageDisplayComponent,
+import {ImageAnnotatorComponent,
   ImageDisplayStudentComponent,
   RadiolearnOptionsComponent,
   StudentErrorsComponent,
@@ -35,7 +35,7 @@ export class RadiolearnUiComponent implements OnInit {
 
   @ViewChild(RadiolearnOptionsComponent) radiolearnOptionsChild: RadiolearnOptionsComponent;
   @ViewChild(ImageDisplayStudentComponent) imageDisplayStudentChild: ImageDisplayStudentComponent;
-  @ViewChild(ImageDisplayComponent) imageDisplayChild: ImageDisplayComponent;
+  @ViewChild(ImageAnnotatorComponent) imageDisplayChild: ImageAnnotatorComponent;
   @ViewChild(InputMaterialHandlerComponent) private inputMaterialHandlerComponent: InputMaterialHandlerComponent;
   @ViewChild("chipInput") chipInput: ElementRef<HTMLInputElement> | undefined;
 
