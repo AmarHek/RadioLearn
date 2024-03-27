@@ -3,11 +3,11 @@ import * as M from "@app/core/models/templateModel";
 import {Material} from "@app/core/models";
 
 @Component({
-  selector: 'app-radiolearn-options-shallow',
-  templateUrl: './radiolearn-options-shallow.component.html',
-  styleUrls: ['./radiolearn-options-shallow.component.css']
+  selector: 'app-options-shallow',
+  templateUrl: './options-shallow.component.html',
+  styleUrls: ['./options-shallow.component.css']
 })
-export class RadiolearnOptionsShallowComponent implements OnInit {
+export class OptionsShallowComponent implements OnInit {
 
   @Input() material: Material;
   @Input() userMode: boolean;

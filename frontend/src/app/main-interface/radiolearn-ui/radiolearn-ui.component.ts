@@ -21,10 +21,10 @@ import {
   RadiolearnService
 } from "@app/core";
 import {ImageAnnotatorComponent,
-  ImageDisplayStudentComponent,
-  RadiolearnOptionsComponent,
+  ImageDisplayComponent,
+  OptionsComponent,
   StudentErrorsComponent,
-  InputMaterialHandlerComponent} from "@app/main-interface";
+  InputHandlerComponent} from "@app/main-interface";
 
 @Component({
   selector: "app-radiolearn-ui",
@@ -33,10 +33,10 @@ import {ImageAnnotatorComponent,
 })
 export class RadiolearnUiComponent implements OnInit {
 
-  @ViewChild(RadiolearnOptionsComponent) radiolearnOptionsChild: RadiolearnOptionsComponent;
-  @ViewChild(ImageDisplayStudentComponent) imageDisplayStudentChild: ImageDisplayStudentComponent;
+  @ViewChild(OptionsComponent) radiolearnOptionsChild: OptionsComponent;
+  @ViewChild(ImageDisplayComponent) imageDisplayStudentChild: ImageDisplayComponent;
   @ViewChild(ImageAnnotatorComponent) imageDisplayChild: ImageAnnotatorComponent;
-  @ViewChild(InputMaterialHandlerComponent) private inputMaterialHandlerComponent: InputMaterialHandlerComponent;
+  @ViewChild(InputHandlerComponent) private inputMaterialHandlerComponent: InputHandlerComponent;
   @ViewChild("chipInput") chipInput: ElementRef<HTMLInputElement> | undefined;
 
 

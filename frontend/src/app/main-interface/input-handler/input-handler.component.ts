@@ -5,11 +5,11 @@ import {ChipHelperService} from "@app/core/services/chip-helper.service";
 import {DataParserService, InputParserService} from "@app/core";
 
 @Component({
-  selector: 'app-input-material-handler',
-  templateUrl: './input-material-handler.component.html',
-  styleUrls: ['./input-material-handler.component.css']
+  selector: 'app-input-handler',
+  templateUrl: './input-handler.component.html',
+  styleUrls: ['./input-handler.component.css']
 })
-export class InputMaterialHandlerComponent implements OnInit {
+export class InputHandlerComponent implements OnInit {
 
   @ViewChild("chipInput") chipInput: ElementRef<HTMLInputElement> | undefined;
 

@@ -20,11 +20,11 @@ import {SettingsService} from "@app/core/services/settings.service";
 const BOX_LINE_WIDTH = 5;
 
 @Component({
-  selector: "app-image-display-student",
-  templateUrl: "./image-display-student.component.html",
-  styleUrls: ["./image-display-student.component.scss"]
+  selector: "app-image-display",
+  templateUrl: "./image-display.component.html",
+  styleUrls: ["./image-display.component.scss"]
 })
-export class ImageDisplayStudentComponent implements OnInit, OnChanges, AfterViewInit {
+export class ImageDisplayComponent implements OnInit, OnChanges, AfterViewInit {
 
   @Input() scans: {
     id: string;

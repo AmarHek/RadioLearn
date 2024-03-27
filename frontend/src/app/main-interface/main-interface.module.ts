@@ -1,39 +1,39 @@
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from "@angular/forms";
+import {MatButtonModule} from "@angular/material/button";
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatChipsModule} from "@angular/material/chips";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatIconModule} from "@angular/material/icon";
+import {MatListModule} from "@angular/material/list";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatRadioModule} from "@angular/material/radio";
+import {MatSelectModule} from "@angular/material/select";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatTooltipModule} from "@angular/material/tooltip";
+
 import {ImageAnnotatorComponent,
-  ImageDisplayStudentComponent,
-  InputMaterialHandlerComponent,
-  RadiolearnOptionsComponent,
-  RadiolearnOptionsShallowComponent,
+  ImageDisplayComponent,
+  InputHandlerComponent,
+  OptionsComponent,
+  OptionsShallowComponent,
   RadiolearnUiComponent,
   StudentErrorsComponent,
   VariablesComponent} from "@app/main-interface/";
 
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MatToolbarModule} from "@angular/material/toolbar";
-import {MatButtonModule} from "@angular/material/button";
-import {MatIconModule} from "@angular/material/icon";
-import {MatMenuModule} from "@angular/material/menu";
-import {MatTooltipModule} from "@angular/material/tooltip";
-import {MatCheckboxModule} from "@angular/material/checkbox";
-import {MatRadioModule} from "@angular/material/radio";
-import {FormsModule} from "@angular/forms";
-import {MatListModule} from "@angular/material/list";
-import {MatSidenavModule} from "@angular/material/sidenav";
-import {MatButtonToggleModule} from "@angular/material/button-toggle";
-import {MatSlideToggleModule} from "@angular/material/slide-toggle";
-import {MatDialogModule} from "@angular/material/dialog";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatSelectModule} from "@angular/material/select";
-import {MatChipsModule} from "@angular/material/chips";
-
 
 @NgModule({
   declarations: [
-    ImageDisplayStudentComponent,
     ImageAnnotatorComponent,
-    InputMaterialHandlerComponent,
-    RadiolearnOptionsComponent,
-    RadiolearnOptionsShallowComponent,
+    ImageDisplayComponent,
+    InputHandlerComponent,
+    OptionsComponent,
+    OptionsShallowComponent,
     RadiolearnUiComponent,
     StudentErrorsComponent,
     VariablesComponent
@@ -41,21 +41,21 @@ import {MatChipsModule} from "@angular/material/chips";
   imports: [
     CommonModule,
     FormsModule,
-    MatToolbarModule,
     MatButtonModule,
-    MatIconModule,
-    MatMenuModule,
-    MatTooltipModule,
-    MatCheckboxModule,
-    MatRadioModule,
-    MatListModule,
-    MatSidenavModule,
     MatButtonToggleModule,
-    MatSlideToggleModule,
+    MatCheckboxModule,
+    MatChipsModule,
     MatDialogModule,
     MatFormFieldModule,
+    MatIconModule,
+    MatListModule,
+    MatMenuModule,
+    MatRadioModule,
     MatSelectModule,
-    MatChipsModule
+    MatSidenavModule,
+    MatSlideToggleModule,
+    MatToolbarModule,
+    MatTooltipModule
   ],
   exports: [
     RadiolearnUiComponent

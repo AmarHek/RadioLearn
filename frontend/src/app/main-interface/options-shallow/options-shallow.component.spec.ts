@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RadiolearnOptionsShallowComponent } from './radiolearn-options-shallow.component';
+import { OptionsShallowComponent } from './options-shallow.component';
 
 describe('RadiolearnOptionsShallowComponent', () => {
-  let component: RadiolearnOptionsShallowComponent;
-  let fixture: ComponentFixture<RadiolearnOptionsShallowComponent>;
+  let component: OptionsShallowComponent;
+  let fixture: ComponentFixture<OptionsShallowComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RadiolearnOptionsShallowComponent ]
+      declarations: [ OptionsShallowComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(RadiolearnOptionsShallowComponent);
+    fixture = TestBed.createComponent(OptionsShallowComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

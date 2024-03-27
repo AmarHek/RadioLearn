@@ -3,11 +3,11 @@ import * as M from "@app/core/models/templateModel";
 import {DataParserService} from "@app/core";
 
 @Component({
-  selector: "app-radiolearn-options",
-  templateUrl: "./radiolearn-options.component.html",
-  styleUrls: ["./radiolearn-options.component.scss"]
+  selector: "app-options",
+  templateUrl: "./options.component.html",
+  styleUrls: ["./options.component.scss"]
 })
-export class RadiolearnOptionsComponent {
+export class OptionsComponent {
 
   @Input() categories: M.Category[];
   @Input() paramMapID: string; // for detecting changes

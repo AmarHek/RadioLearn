@@ -97,27 +97,27 @@
         </mat-list-option>
       </mat-selection-list>
 
-      <app-radiolearn-options [ngStyle]="{'width.%': userMode ? 35 : 25, 'pointer-events' : sawFeedback ? 'none' : 'auto'}"
+      <app-options [ngStyle]="{'width.%': userMode ? 35 : 25, 'pointer-events' : sawFeedback ? 'none' : 'auto'}"
                               [selectedCat]="selectedCat"
                               [selectedSelectableID]="selectedSelectableID"
                               (nextCat)="nextCategory($event)"
                               (updateEmitter)="updateFromOptionsEvent()"
                               class="options-expand"
                               [categories]="categories">
-      </app-radiolearn-options>
+      </app-options>
     </ng-container>
 
     <ng-container *ngIf="!deepMode && !drawMode">
 
       <div class="shallowSelectionList"
            [ngStyle]="{'width.%': userMode ? 18 : 18, 'pointer-events' : sawFeedback ? 'none' : 'auto'}">
-        <app-radiolearn-options-shallow
+        <app-options-shallow
           (updateEmitter)="updateFromOptionsEvent()"
           [material]="this.material"
           [userMode]="this.userMode"
           [categories]="this.categories"
           [selectedSelectableID]="this.selectedSelectableID">
-        </app-radiolearn-options-shallow>
+        </app-options-shallow>
       </div>
     </ng-container>
 
@@ -126,12 +126,12 @@
                        [boxLabels]="boxLabels.slice(1)"
                        [annotations]="material.annotations"></app-image-annotator>
 
-    <app-image-display-student *ngIf="material && userMode"
+    <app-image-display *ngIf="material && userMode"
                                [scans]="material.scans"
                                [drawMode]="drawMode"
                                [categories]="this.categories"
                                [sawFeedback]="sawFeedback"
-                               [annotations]="material.annotations"></app-image-display-student>
+                               [annotations]="material.annotations"></app-image-display>
   </div>
 
 </div>
@@ -162,13 +162,13 @@
 
     </mat-drawer>
     <mat-drawer-content style="height: 100%">
-      <app-image-display-student *ngIf="material && userMode"
+      <app-image-display *ngIf="material && userMode"
                                  [scans]="material.scans"
                                  [isMobile]="isMobile"
                                  [annotations]="material.annotations"
                                  [showCommentButton]="sawFeedback && anyComments"
                                  [sawFeedback]="sawFeedback"
-      ></app-image-display-student>
+      ></app-image-display>
 
 
       <button mat-fab color="primary" style="position: fixed; bottom: 15px; left: 15px" (click)="drawer.toggle()"
