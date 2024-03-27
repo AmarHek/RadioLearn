@@ -269,7 +269,7 @@ export class MainInterfaceComponent implements OnInit {
           // }
           this.sawFeedback = false;
           increaseSurveyCounter();
-          this.router.navigate(["/", "radiolearn", "main", res.material._id]).then();
+          this.router.navigate(["/", "main", res.material._id]).then();
         }
       },
       error: (err) => {
@@ -288,7 +288,7 @@ export class MainInterfaceComponent implements OnInit {
         if (res.material === null) {
           window.alert("Keine weiteren Befunde verfügbar");
         } else {
-          this.router.navigate(["/", "radiolearn", "main", res.material._id]).then();
+          this.router.navigate(["/", "main", res.material._id]).then();
         }
       },
       error: (err) => {
