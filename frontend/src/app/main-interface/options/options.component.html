@@ -7,6 +7,9 @@
       </button>
     </div>
     <div class="col">
+      <h3 style="text-align: center">{{selectedCat}}</h3>
+    </div>
+    <div class="col">
       <button mat-flat-button color="primary" class="float-end"
               disabled="{{getSelectedCatIndex() === (categories.length - 1)}}"
               (click)="nextCategory()">Vor
