@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FeedbackDisplayComponent } from './feedback-display.component';
+import { FeedbackDisplayComponent } from '@app/feedback';
 
 describe('FeedbackDisplayComponent', () => {
   let component: FeedbackDisplayComponent;

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AnnotationPopupComponent } from './annotation-popup.component';
+import { AnnotationPopupComponent } from '@app/main-interface';
 
 describe('AnnotationPopupComponent', () => {
   let component: AnnotationPopupComponent;
