@@ -59,11 +59,11 @@
       </button>
       <button *ngIf="isMod" mat-button class="header-button" id="save" matTooltip="Speichern"
               (click)="save()">
-        <mat-icon>save</mat-icon>
+        <mat-icon class="icon-display">save</mat-icon>
       </button>
       <button mat-button class="header-button" id="next" matTooltip="Nächste Aufnahme"
               (click)="nextMaterial()">
-        <mat-icon>navigate_next</mat-icon>
+        <mat-icon class="icon-display">navigate_next</mat-icon>
       </button>
     </mat-toolbar>
 
@@ -83,7 +83,8 @@
       <mat-selection-list *ngIf="this.categories"
                           class="catSelectionList"
                           [ngStyle]="{'width.%': userMode ? 12 : 9}"
-                          [multiple]="false">
+                          [multiple]="false"
+                          [hideSingleSelectionIndicator]="true">
         <mat-list-option *ngFor="let cat of categories"
                          (click)="onCategorySelected(cat.name)"
                          [selected]="cat.name === this.selectedCat">

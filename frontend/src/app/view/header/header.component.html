@@ -22,13 +22,13 @@
   <span class="spacer2"></span>
 
   <a mat-button class="header-button" routerLink="/admin" routerLinkActive="active" *ngIf="(isAdmin)">
-    <mat-icon>admin_panel_settings</mat-icon>
+    <mat-icon class="icon-display">admin_panel_settings</mat-icon>
   </a>
   <a *ngIf="isMod" mat-button class="header-button" routerLink="/manageAccount" routerLinkActive="active">
-    <mat-icon>manage_accounts</mat-icon>
+    <mat-icon class="icon-display">manage_accounts</mat-icon>
   </a>
   <a mat-button class="header-button" style="cursor: pointer;" routerLinkActive="active" (click)="logout()">
-    <mat-icon>logout</mat-icon>
+    <mat-icon class="icon-display">logout</mat-icon>
   </a>
 
 </mat-toolbar>
