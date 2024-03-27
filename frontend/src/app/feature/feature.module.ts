@@ -17,7 +17,6 @@ import {RouterModule} from "@angular/router";
 import {MatRadioModule} from "@angular/material/radio";
 
 import {FeedbackDisplayComponent} from "@app/feature/feedback-display/feedback-display.component";
-import {MaterialListComponent} from "@app/feature/material-list/material-list.component";
 import {SharedModule} from "@app/shared/shared.module";
 import {DialogTemplateComponent} from '@app/shared/dialog-template/dialog-template.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
@@ -27,7 +26,6 @@ import {DialogNoMaterialsComponent} from '@app/shared/dialog-no-materials/dialog
 @NgModule({
   declarations: [
     FeedbackDisplayComponent,
-    MaterialListComponent,
     DialogTemplateComponent,
     DialogNoMaterialsComponent,
   ],
@@ -54,7 +52,6 @@ import {DialogNoMaterialsComponent} from '@app/shared/dialog-no-materials/dialog
     ],
   exports: [
     FeedbackDisplayComponent,
-    MaterialListComponent,
   ]
 })
 export class FeatureModule { }

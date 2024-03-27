@@ -2,9 +2,9 @@ import {Component, OnInit} from "@angular/core";
 import {MatDialog} from "@angular/material/dialog";
 import {Router} from "@angular/router";
 import {AuthenticationService, BackendService, MatDialogService, RadiolearnService} from "@app/core";
-import {Material, Role, User} from "app/core/models";
-import {ConfirmDialogComponent, ConfirmDialogModel, UploadMaterialComponent} from "@app/shared";
-import {AddScanDialogComponent} from "@app/shared/add-scan-dialog/add-scan-dialog.component";
+import {Material, Role, User} from "@app/core/models";
+import {ConfirmDialogComponent, ConfirmDialogModel} from "@app/shared";
+import {AddScanDialogComponent, UploadMaterialComponent} from "@app/material-manager";
 
 import {environment} from "@env/environment";
 

@@ -18,6 +18,7 @@ import {TemplateManagerModule} from "@app/template-manager/template-manager.modu
 import {AdminModule} from "@app/admin/admin.module";
 import {AccountManagementModule} from "@app/account-management/account-management.module";
 import {MainInterfaceModule} from "@app/main-interface/main-interface.module";
+import {MaterialManagerModule} from "@app/material-manager/material-manager.module";
 import {SharedModule} from "@app/shared/shared.module";
 import {ViewModule} from "@app/view/view.module";
 
@@ -37,6 +38,7 @@ import {AppComponent} from "./app.component";
     FeatureModule,
     FormsModule,
     HttpClientModule,
+    MaterialManagerModule,
     MatButtonModule,
     MatDialogModule,
     MatFormFieldModule,

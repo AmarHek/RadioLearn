@@ -26,7 +26,6 @@ import {ImageAnnotatorComponent,
   StudentErrorsComponent,
   VariablesComponent} from "@app/main-interface/";
 
-
 @NgModule({
   declarations: [
     ImageAnnotatorComponent,
