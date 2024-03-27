@@ -1,4 +1,4 @@
-import {CommonModule} from "@angular/common";
+import {CommonModule, NgOptimizedImage} from "@angular/common";
 import {NgModule} from "@angular/core";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
@@ -12,7 +12,7 @@ import {RouterModule} from "@angular/router";
 
 import {HeaderComponent} from "@app/view/header/header.component";
 import {LoginComponent} from "@app/view/login/login.component";
-import {RadiolearnWelcomeComponent} from "@app/view/radiolearn-welcome/radiolearn-welcome.component";
+import {WelcomePage} from "@app/view/welcome-page/welcome-page";
 import {MatMenuModule} from "@angular/material/menu";
 
 
@@ -20,25 +20,26 @@ import {MatMenuModule} from "@angular/material/menu";
   declarations: [
     HeaderComponent,
     LoginComponent,
-    RadiolearnWelcomeComponent
+    WelcomePage
   ],
-    imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        RouterModule,
-        MatButtonModule,
-        MatToolbarModule,
-        MatListModule,
-        MatIconModule,
-        MatCardModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatMenuModule
-    ],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    RouterModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatListModule,
+    MatIconModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatMenuModule,
+    NgOptimizedImage
+  ],
   exports: [
     HeaderComponent,
     LoginComponent,
-    RadiolearnWelcomeComponent
+    WelcomePage
   ]
 })
 export class ViewModule { }

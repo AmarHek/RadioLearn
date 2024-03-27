@@ -7,11 +7,11 @@ import {MatDialog} from "@angular/material/dialog";
 import {DialogNoMaterialsComponent} from "@app/shared/dialog-no-materials/dialog-no-materials.component";
 
 @Component({
-  selector: "app-radiolearn-welcome",
-  templateUrl: "./radiolearn-welcome.component.html",
-  styleUrls: ["./radiolearn-welcome.component.scss"]
+  selector: "app-welcome-page",
+  templateUrl: "./welcome-page.html",
+  styleUrls: ["./welcome-page.scss"]
 })
-export class RadiolearnWelcomeComponent implements OnInit {
+export class WelcomePage implements OnInit {
 
   // assetsUrl = environment.assets;
   assetsUrl = "assets/img/";
@@ -53,7 +53,7 @@ export class RadiolearnWelcomeComponent implements OnInit {
   }
 
   openEditor(matID: string) {
-    this.router.navigate(["/", "radiolearn", "main", matID]).then();
+    this.router.navigate(["/", "main", matID]).then();
   }
 
   loadUnused(mode: string){
@@ -62,7 +62,7 @@ export class RadiolearnWelcomeComponent implements OnInit {
       if (res.material === null) {
         this.dialog.open(DialogNoMaterialsComponent)
       } else {
-        this.router.navigate(["/", "radiolearn", "main", res.material._id]);
+        this.router.navigate(["/", "main", res.material._id]);
       }
     }, err => {
       console.log(err);

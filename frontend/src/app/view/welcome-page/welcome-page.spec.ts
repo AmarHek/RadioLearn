@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RadiolearnWelcomeComponent } from './radiolearn-welcome.component';
+import { WelcomePage } from './welcome-page';
 
 describe('RadiolearnWelcomeComponent', () => {
-  let component: RadiolearnWelcomeComponent;
-  let fixture: ComponentFixture<RadiolearnWelcomeComponent>;
+  let component: WelcomePage;
+  let fixture: ComponentFixture<WelcomePage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RadiolearnWelcomeComponent ]
+      declarations: [ WelcomePage ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RadiolearnWelcomeComponent);
+    fixture = TestBed.createComponent(WelcomePage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

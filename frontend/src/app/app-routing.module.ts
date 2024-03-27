@@ -12,7 +12,7 @@ import {AuthGuard} from "app/core/helpers";
 import {Role} from "app/core/models";
 
 import {LoginComponent} from "@app/view";
-import {RadiolearnWelcomeComponent} from "@app/view/radiolearn-welcome/radiolearn-welcome.component";
+import {WelcomePage} from "@app/view/welcome-page/welcome-page";
 
 const routes: Routes = [
   {
@@ -21,24 +21,24 @@ const routes: Routes = [
   },
   {
     path: "home",
-    component: RadiolearnWelcomeComponent,
+    component: WelcomePage,
     canActivate: [AuthGuard],
     data: { roles: [Role.User, Role.ExternalUser, Role.Moderator, Role.Admin, Role.demoUser, Role.tester] }
   },
   {
-    path: "list",
+    path: "template-list",
     component: TemplateListComponent,
     canActivate: [AuthGuard],
     data: { roles: [Role.User, Role.ExternalUser, Role.Moderator, Role.Admin, Role.demoUser, Role.tester] }
   },
   {
-    path: "radiolearn/list",
+    path: "material-list",
     component: MaterialListComponent,
     canActivate: [AuthGuard],
     data: { roles: [Role.Moderator, Role.Admin] }
   },
   {
-    path: "radiolearn/main/:id",
+    path: "main/:id",
     component: MainInterfaceComponent,
     canActivate: [AuthGuard],
     data: { roles: [Role.User, Role.ExternalUser, Role.Moderator, Role.Admin] }
