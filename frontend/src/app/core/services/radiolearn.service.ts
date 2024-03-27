@@ -301,8 +301,8 @@ export class RadiolearnService {
       selError = {
         kind: "box",
         name: originalSel.name,
-        should: originalSel.value ? originalSel.name : "Nichts",
-        actual: studentSel.value ? studentSel.name : "Nichts",
+        should: originalSel.value ? originalSel.name : "-",
+        actual: studentSel.value ? studentSel.name : "-",
         normal: studentSel.normal,
         varErrors: varErr
       };
@@ -324,8 +324,8 @@ export class RadiolearnService {
       selError = {
         kind: "group",
         name: originalSel.name,
-        should: ((originalSel.value !== null && originalSel.value !== undefined) ? originalSel.value : "Nichts"),
-        actual: ((studentSel.value !== null && studentSel.value !== undefined) ? studentSel.value : "Nichts"),
+        should: ((originalSel.value !== null && originalSel.value !== undefined) ? originalSel.value : "-"),
+        actual: ((studentSel.value !== null && studentSel.value !== undefined) ? studentSel.value : "-"),
         normal: this.getGroupNormal(studentSel),
         varErrors: varErr
       };
@@ -410,8 +410,8 @@ export class RadiolearnService {
       return {
         id: originalVar.id,
         kind: "value",
-        should: ((originalVar.value !== null && originalVar.value !== undefined) ? originalVar.value : "Nichts"),
-        actual: ((studentVar.value !== null && studentVar.value !== undefined) ? studentVar.value : "Nichts")
+        should: ((originalVar.value !== null && originalVar.value !== undefined) ? originalVar.value : "-"),
+        actual: ((studentVar.value !== null && studentVar.value !== undefined) ? studentVar.value : "-")
       };
     } else {
       return undefined;
@@ -451,7 +451,7 @@ export class RadiolearnService {
         peErrors.push({
           kind: "box",
           should: originalSels[0].name,
-          actual: "Nichts",
+          actual: "-",
           normal: originalSels[0].normal,
           varErrors: []
         });
@@ -461,7 +461,7 @@ export class RadiolearnService {
           peErrors.push({
             kind: "box",
             should: originalSels[0].name,
-            actual: "Nichts",
+            actual: studentSels[i].name,
             normal: originalSels[0].normal,
             varErrors: []
           });
@@ -484,8 +484,8 @@ export class RadiolearnService {
       if (studentTrueIndex.includes(0)) {
         peErrors.push({
           kind: "box",
-          should: "Nichts",
-          actual: "kein PE",
+          should: "-",
+          actual: "kein Pleuraerguss",
           normal: true,
           varErrors: []
         });
@@ -504,14 +504,14 @@ export class RadiolearnService {
               peErrors.push({
                 kind: "box",
                 should: originalSels[idx].name,
-                actual: "Nichts",
+                actual: "-",
                 normal: originalSels[idx].normal,
                 varErrors
               });
             } else {
               peErrors.push({
                 kind: "box",
-                should: "Nichts",
+                should: "-",
                 actual: studentSels[idx].name,
                 normal: originalSels[idx].normal,
                 varErrors
@@ -546,7 +546,7 @@ export class RadiolearnService {
             peErrors.push({
               kind: "box",
               should: originalSels[originalTrueIndex[i]].name,
-              actual: "Nichts",
+              actual: "-",
               normal: false,
               varErrors
             });
@@ -570,7 +570,7 @@ export class RadiolearnService {
               studentSels[studentTrueIndex[i]].variables);
             peErrors.push({
               kind: "box",
-              should: "Nichts",
+              should: "-",
               actual: studentSels[studentTrueIndex[i]].name,
               normal: false,
               varErrors
@@ -591,7 +591,7 @@ export class RadiolearnService {
     }
     if (peErrors.length > 0) {
       return {
-        name: "PE",
+        name: originalCat.name,
         selErrors: peErrors as SelectableError[]
       };
     } else {
