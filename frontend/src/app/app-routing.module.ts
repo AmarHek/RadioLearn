@@ -7,7 +7,7 @@ import {
 import { TemplateListComponent } from "@app/template-manager";
 import {AdminComponent} from "@app/admin";
 import {AccountManagementComponent} from "@app/account-management";
-import {RadiolearnUiComponent} from "@app/main-interface";
+import {MainInterfaceComponent} from "@app/main-interface";
 import {AuthGuard} from "app/core/helpers";
 import {Role} from "app/core/models";
 
@@ -39,7 +39,7 @@ const routes: Routes = [
   },
   {
     path: "radiolearn/main/:id",
-    component: RadiolearnUiComponent,
+    component: MainInterfaceComponent,
     canActivate: [AuthGuard],
     data: { roles: [Role.User, Role.ExternalUser, Role.Moderator, Role.Admin] }
   },

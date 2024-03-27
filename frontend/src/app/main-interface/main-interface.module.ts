@@ -22,7 +22,7 @@ import {ImageAnnotatorComponent,
   InputHandlerComponent,
   OptionsComponent,
   OptionsShallowComponent,
-  RadiolearnUiComponent,
+  MainInterfaceComponent,
   StudentErrorsComponent,
   VariablesComponent} from "@app/main-interface/";
 
@@ -34,7 +34,7 @@ import {ImageAnnotatorComponent,
     InputHandlerComponent,
     OptionsComponent,
     OptionsShallowComponent,
-    RadiolearnUiComponent,
+    MainInterfaceComponent,
     StudentErrorsComponent,
     VariablesComponent
   ],
@@ -58,7 +58,7 @@ import {ImageAnnotatorComponent,
     MatTooltipModule
   ],
   exports: [
-    RadiolearnUiComponent
+    MainInterfaceComponent
   ]
 })
 export class MainInterfaceModule { }

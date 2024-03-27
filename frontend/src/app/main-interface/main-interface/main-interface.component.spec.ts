@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RadiolearnUiComponent } from './radiolearn-ui.component';
+import { MainInterfaceComponent } from './main-interface.component';
 
 describe('JudgeMatComponent', () => {
-  let component: RadiolearnUiComponent;
-  let fixture: ComponentFixture<RadiolearnUiComponent>;
+  let component: MainInterfaceComponent;
+  let fixture: ComponentFixture<MainInterfaceComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RadiolearnUiComponent ]
+      declarations: [ MainInterfaceComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RadiolearnUiComponent);
+    fixture = TestBed.createComponent(MainInterfaceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

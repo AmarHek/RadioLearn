@@ -27,11 +27,11 @@ import {ImageAnnotatorComponent,
   InputHandlerComponent} from "@app/main-interface";
 
 @Component({
-  selector: "app-radiolearn-ui",
-  templateUrl: "./radiolearn-ui.component.html",
-  styleUrls: ["./radiolearn-ui.component.scss"],
+  selector: "app-main-interface",
+  templateUrl: "./main-interface.component.html",
+  styleUrls: ["./main-interface.component.scss"],
 })
-export class RadiolearnUiComponent implements OnInit {
+export class MainInterfaceComponent implements OnInit {
 
   @ViewChild(OptionsComponent) radiolearnOptionsChild: OptionsComponent;
   @ViewChild(ImageDisplayComponent) imageDisplayStudentChild: ImageDisplayComponent;
