@@ -36,7 +36,7 @@ export class MainInterfaceComponent implements OnInit {
   @ViewChild(OptionsComponent) radiolearnOptionsChild: OptionsComponent;
   @ViewChild(ImageDisplayComponent) imageDisplayStudentChild: ImageDisplayComponent;
   @ViewChild(ImageAnnotatorComponent) imageDisplayChild: ImageAnnotatorComponent;
-  @ViewChild(InputHandlerComponent) private inputMaterialHandlerComponent: InputHandlerComponent;
+  @ViewChild(InputHandlerComponent) private inputHandler: InputHandlerComponent;
   @ViewChild("chipInput") chipInput: ElementRef<HTMLInputElement> | undefined;
 
 
@@ -151,7 +151,7 @@ export class MainInterfaceComponent implements OnInit {
     });
   }
 
-  initFields(material){
+  initFields(material: Material){
     this.material = material;
     // Template to be worked on
     this.template = this.workMode === "deep" ? this.material.deepDocTemplate : this.material.shallowDocTemplate;
@@ -341,7 +341,7 @@ export class MainInterfaceComponent implements OnInit {
   resetMaterialKeepInput() {
     this.resetMaterial()
     this.selectedSelectableID = ""
-    setTimeout(() => this.inputMaterialHandlerComponent.onInput(), 5);
+    setTimeout(() => this.inputHandler.onInput(), 5);
   }
 
   resetMaterial() {
@@ -366,14 +366,14 @@ export class MainInterfaceComponent implements OnInit {
   // Any element in the options component was clicked, reset focus to input line,
   // reset element highlighting, update input chips
   updateFromOptionsEvent() {
-    this.inputMaterialHandlerComponent.focusInput()
+    this.inputHandler.focusInput()
     this.selectedSelectableID = "";
     this.materialChanged()
   }
 
   // Vales in the material changed, update chips to reflect changes
   materialChanged() {
-    setTimeout(() => this.inputMaterialHandlerComponent.generateChips(), 5);
+    setTimeout(() => this.inputHandler.generateChips(), 5);
   }
 
   makeNormal() {
