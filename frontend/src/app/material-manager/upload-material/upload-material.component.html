@@ -67,7 +67,7 @@
       </mat-form-field>
       <mat-icon [matTooltip]="'Eine oder mehrere Aufnahmen stimmen nicht mit dem Identifier überein.'"
                 class="icon" *ngIf="lateralRedFlags.includes(false)">error</mat-icon>
-      <mat-icon [matTooltip]="'Eine oder mehrere können nicht zu einer Frontalaufnahme zugeordnet werden.'"
+      <mat-icon [matTooltip]="'Eine oder mehrere Aufnahmen können nicht zu einer Frontalaufnahme zugeordnet werden.'"
                 class="icon"
                 *ngIf="lateralYellowFlags.includes(false) && !lateralRedFlags.includes(false)">
         warning</mat-icon>
@@ -93,7 +93,7 @@
       </mat-form-field>
       <mat-icon [matTooltip]="'Eine oder mehrere Aufnahmen stimmen nicht mit dem Identifier überein.'"
                 class="icon" *ngIf="preRedFlags.includes(false)">error</mat-icon>
-      <mat-icon [matTooltip]="'Eine oder mehrere können nicht zu einer Frontalaufnahme zugeordnet werden.'"
+      <mat-icon [matTooltip]="'Eine oder mehrere Aufnahmen können nicht zu einer Frontalaufnahme zugeordnet werden.'"
                 class="icon"
                 *ngIf="preYellowFlags.includes(false) && !preRedFlags.includes(false)">
         warning</mat-icon>
