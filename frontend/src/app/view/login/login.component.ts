@@ -61,7 +61,6 @@ export class LoginComponent implements OnInit {
 
   getBackgroundUrl() {
     return "url('" + "assets/img/" + 'loginScreen.PNG' + "')";
-    // return "url('" + this.assetsUrl + 'loginScreen.PNG' + "')";
   }
 
   onSubmit() {
