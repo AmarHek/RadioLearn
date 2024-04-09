@@ -4,123 +4,143 @@
 
 <mat-divider style="margin-bottom: 15px"></mat-divider>
 
-<div class="form-group">
-  <mat-form-field class="uniform-width">
-    <mat-label>Vorgefertigte Identifier</mat-label>
-    <mat-select [(ngModel)]="currentPresetID" (selectionChange)="updateIdentifier(false, $event.value)">
-      <mat-option [value]="0">CheXpert</mat-option>
-      <mat-option [value]="1">ChestXray</mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>
-
-<div class="form-group">
-  <mat-form-field class="uniform-width">
-    <mat-label>Eigener Identifier</mat-label>
-    <input matInput #identifierInput [(ngModel)]="currentCustomID"
-           (change)="updateIdentifier(true, identifierInput.value)"
-           matTooltip="String-Pattern für Bildzuordnung eingeben.
-        Variable Ziffern mit * kennzeichnen."
-           type="text" id="identifier">
-  </mat-form-field>
-  <mat-slide-toggle class="leftMargins"
-                    [(ngModel)]="ignoreFlags"
-                    (ngModelChange)="setIgnoreFlags(identifierInput.value)"
-                    [ngModelOptions]="{standalone: true}"
-                    matTooltip="Ohne Dateienkontrolle hochladen">Ohne ID
-  </mat-slide-toggle>
-</div>
-
-<mat-dialog-content class="uploadForm" [formGroup]="uploadForm" (ngSubmit)="submit()">
-
-  <div class="form-group">
-    <mat-form-field class="uniform-width">
-      <mat-label>Frontalaufnahmen: {{fileInput1.files.length}}</mat-label>
-      <mat-select id="mainImageFiles"
-                  [ngStyle]="{'background-color': (mainFlags.includes(false)) ? 'red' : 'white'}"
-                  [disabled]="this.uploadForm.get('mainScans').value.length === 0">
-        <ng-container *ngFor="let file of this.uploadForm.get('mainScans').value; index as i">
-          <mat-option disabled
-                      [ngStyle]="{'background-color': (mainFlags[i] ? 'white' : 'red')}">{{file.name}}</mat-option>
-        </ng-container>
-      </mat-select>
-    </mat-form-field>
-    <button mat-flat-button color="primary" class="leftMargins" (click)="fileInput1.click()">Durchsuchen...</button>
-    <input hidden class="mr-3" type="file" multiple="multiple" id="mainScans" #fileInput1
-           (change)="onFileSelect($event, 'mainScans')"/>
-  </div>
-
-  <div class="form-group">
-    <mat-form-field class="uniform-width">
-      <mat-label>Lateralaufnahmen: {{fileInput2.files.length}}</mat-label>
-      <mat-select id="lateralImageFiles"
-                  [ngStyle]="{'background-color': (lateralRedFlags.includes(false)) ? 'red' :
-                            (lateralYellowFlags.includes(false)) ? 'yellow' : 'white'}"
-                  [disabled]="this.uploadForm.get('lateralScans').value.length === 0">
-        <ng-container *ngFor="let file of this.uploadForm.get('lateralScans').value; index as i">
-          <mat-option disabled [ngStyle]="{'background-color': !lateralRedFlags[i] ? 'red':
-                                              !lateralYellowFlags[i] ? 'yellow' : 'white'}">
-            {{file.name}}</mat-option>
-        </ng-container>
-      </mat-select>
-    </mat-form-field>
-    <button mat-flat-button color="primary" class="leftMargins" (click)="fileInput2.click()">Durchsuchen...</button>
-    <input hidden type="file" multiple="multiple" id="lateralScans" #fileInput2
-           (change)="onFileSelect($event,'lateralScans')"/>
-  </div>
-
-  <div class="form-group">
-    <mat-form-field class="uniform-width">
-      <mat-label>Voraufnahmen: {{fileInput3.files.length}}</mat-label>
-      <mat-select id="preImageFiles"
-                  [ngStyle]="{'background-color': (preRedFlags.includes(false)) ? 'red' :
-                            (preYellowFlags.includes(false)) ? 'yellow' : 'white'}"
-                  [disabled]="this.uploadForm.get('preScans').value.length === 0">
-        <ng-container *ngFor="let file of this.uploadForm.get('preScans').value; index as i">
-          <mat-option disabled [ngStyle]="{'background-color': !preRedFlags[i] ? 'red':
-                                              !preYellowFlags[i] ? 'yellow' : 'white'}">
-            {{file.name}}</mat-option>
-        </ng-container>
-      </mat-select>
-    </mat-form-field>
-    <button mat-flat-button color="primary" class="leftMargins" (click)="fileInput3.click()">Durchsuchen...</button>
-    <input hidden type="file" multiple="multiple" id="preImageFile" #fileInput3
-           (change)="onFileSelect($event,'preScans')"/>
-  </div>
-
-  <div class="form-group">
-    <mat-form-field class="uniform-width">
-      <mat-label>Dokumentations-Schablone</mat-label>
-      <mat-select formControlName="deepDocTemplate">
-        <mat-option *ngFor="let template of deepDocTemplates" [value]="template">{{template.name}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-  <div class="form-group">
-    <mat-form-field class="uniform-width">
-      <mat-label>Diagnose-Schablone</mat-label>
-      <mat-select formControlName="shallowDocTemplate">
-        <mat-option *ngFor="let template of shallowDocTemplates" [value]="template">{{template.name}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-
-  <ng-container *ngIf="uploading">
-    <div *ngIf="messages.length > 0" class="alert alert-danger">
-      <p *ngFor="let message of messages">{{message}}</p>
+<form [formGroup]="uploadForm">
+  <mat-dialog-content>
+    <div class="form-group">
+      <mat-form-field class="uniform-width">
+        <mat-label>Vorgefertigte Identifier</mat-label>
+        <mat-select [(ngModel)]="currentPresetID" (selectionChange)="updateIdentifier(false, $event.value)">
+          <mat-option [value]="0">CheXpert</mat-option>
+          <mat-option [value]="1">ChestXray</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
-    <mat-progress-bar mode="determinate" value="{{progress}}"></mat-progress-bar>
-  </ng-container>
 
-</mat-dialog-content>
+    <div class="form-group">
+      <mat-form-field class="uniform-width">
+        <mat-label>Eigener Identifier</mat-label>
+        <input matInput #identifierInput [(ngModel)]="currentCustomID"
+               (change)="updateIdentifier(true, identifierInput.value)"
+               matTooltip="String-Pattern für Bildzuordnung eingeben.
+          Variable Ziffern mit * kennzeichnen."
+               type="text" id="identifier">
+      </mat-form-field>
+      <mat-slide-toggle class="icon"
+                        [(ngModel)]="ignoreFlags"
+                        (ngModelChange)="setIgnoreFlags(identifierInput.value)"
+                        [ngModelOptions]="{standalone: true}"
+                        matTooltip="Ohne Dateienkontrolle hochladen">Ohne ID
+      </mat-slide-toggle>
+    </div>
 
-<mat-divider></mat-divider>
+    <div class="form-group">
+      <mat-form-field class="uniform-width">
+        <mat-label>Frontalaufnahmen: {{ fileInput1.files.length }}</mat-label>
+        <mat-select id="mainImageFiles"
+                    [disabled]="this.uploadForm.get('mainScans').value.length === 0">
+          <ng-container *ngFor="let file of this.uploadForm.get('mainScans').value; index as i">
+            <mat-option disabled
+                        [ngStyle]="{'background-color': (mainFlags[i] ? 'white' : 'red')}">{{ file.name }}
+            </mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+      <mat-icon [matTooltip]="'Eine oder mehrere Aufnahmen stimmen nicht mit dem Identifier überein.'"
+                class="icon" *ngIf="mainFlags.includes(false)">error</mat-icon>
+      <button mat-flat-button color="primary" class="content-button" (click)="fileInput1.click()">Durchsuchen...</button>
+      <input hidden class="mr-3" type="file" multiple="multiple" id="mainScans" #fileInput1
+             (change)="onFileSelect($event, 'mainScans')"/>
+    </div>
 
-<mat-dialog-actions class="buttons float-end">
-  <button type="submit" id="submitButton" mat-raised-button color="primary"
-          [disabled]="uploadForm.invalid"
-          (click)="submit()">Hochladen</button>
-  <button id="cancelButton" mat-raised-button (click)="close()">Schließen</button>
-</mat-dialog-actions>
+    <div class="form-group">
+      <mat-form-field class="uniform-width">
+        <mat-label>Lateralaufnahmen: {{ fileInput2.files.length }}</mat-label>
+        <mat-select id="lateralImageFiles"
+                    [disabled]="this.uploadForm.get('lateralScans').value.length === 0">
+          <ng-container *ngFor="let file of this.uploadForm.get('lateralScans').value; index as i">
+            <mat-option disabled [ngStyle]="{'background-color': !lateralRedFlags[i] ? 'red':
+                                              !lateralYellowFlags[i] ? 'yellow' : 'white'}">
+              {{ file.name }}
+            </mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+      <mat-icon [matTooltip]="'Eine oder mehrere Aufnahmen stimmen nicht mit dem Identifier überein.'"
+                class="icon" *ngIf="lateralRedFlags.includes(false)">error</mat-icon>
+      <mat-icon [matTooltip]="'Eine oder mehrere können nicht zu einer Frontalaufnahme zugeordnet werden.'"
+                class="icon"
+                *ngIf="lateralYellowFlags.includes(false) && !lateralRedFlags.includes(false)">
+        warning</mat-icon>
+      <button mat-flat-button color="primary"
+              class="content-button"
+              (click)="fileInput2.click()">Durchsuchen...</button>
+      <input hidden type="file" multiple="multiple" id="lateralScans" #fileInput2
+             (change)="onFileSelect($event,'lateralScans')"/>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field class="uniform-width">
+        <mat-label>Voraufnahmen: {{ fileInput3.files.length }}</mat-label>
+        <mat-select id="preImageFiles"
+                    [disabled]="this.uploadForm.get('preScans').value.length === 0">
+          <ng-container *ngFor="let file of this.uploadForm.get('preScans').value; index as i">
+            <mat-option disabled [ngStyle]="{'background-color': !preRedFlags[i] ? 'red':
+                                              !preYellowFlags[i] ? 'yellow' : 'white'}">
+              {{ file.name }}
+            </mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+      <mat-icon [matTooltip]="'Eine oder mehrere Aufnahmen stimmen nicht mit dem Identifier überein.'"
+                class="icon" *ngIf="preRedFlags.includes(false)">error</mat-icon>
+      <mat-icon [matTooltip]="'Eine oder mehrere können nicht zu einer Frontalaufnahme zugeordnet werden.'"
+                class="icon"
+                *ngIf="preYellowFlags.includes(false) && !preRedFlags.includes(false)">
+        warning</mat-icon>
+      <button mat-flat-button color="primary"
+              class="content-button"
+              (click)="fileInput3.click()">Durchsuchen...</button>
+      <input hidden type="file" multiple="multiple" id="preImageFile" #fileInput3
+             (change)="onFileSelect($event,'preScans')"/>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field class="uniform-width">
+        <mat-label>Dokumentations-Schablone</mat-label>
+        <mat-select formControlName="deepDocTemplate">
+          <mat-option *ngFor="let template of deepDocTemplates"
+                      [value]="template">{{ template.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field class="uniform-width">
+        <mat-label>Diagnose-Schablone</mat-label>
+        <mat-select formControlName="shallowDocTemplate">
+          <mat-option *ngFor="let template of shallowDocTemplates"
+                      [value]="template">{{ template.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <ng-container *ngIf="uploading">
+      <div *ngIf="messages.length > 0" class="alert alert-danger">
+        <p *ngFor="let message of messages">{{ message }}</p>
+      </div>
+      <mat-progress-bar mode="determinate" value="{{progress}}"></mat-progress-bar>
+    </ng-container>
+
+  </mat-dialog-content>
+
+  <mat-divider></mat-divider>
+
+  <mat-dialog-actions class="float-end">
+    <button type="submit" id="submitButton" mat-raised-button color="primary"
+            [disabled]="uploadForm.invalid"
+            (click)="onSubmit()">Hochladen
+    </button>
+    <button id="cancelButton" mat-raised-button (click)="close()">Schließen</button>
+  </mat-dialog-actions>
+</form>
 
 

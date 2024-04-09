@@ -136,7 +136,7 @@ export class UploadMaterialComponent implements OnInit {
     }
   }
 
-  submit(): void {
+  onSubmit(): void {
     this.uploading = true;
     let choice = true;
     if (this.mainFlags.includes(false) || this.lateralYellowFlags.includes(false) || this.lateralRedFlags.includes(false)
@@ -159,8 +159,6 @@ export class UploadMaterialComponent implements OnInit {
         formData.append("id", id);
         console.log(this.uploadForm.value.deepDocTemplate);
         console.log(this.uploadForm.value.shallowDocTemplate);
-        //console.log(JSON.parse(this.uploadForm.value.deepDocTemplate));
-        //console.log(JSON.parse(this.uploadForm.value.shallowDocTemplate));
         formData.append("deepDocTemplate", JSON.stringify(this.uploadForm.value.deepDocTemplate));
         formData.append("shallowDocTemplate", JSON.stringify(this.uploadForm.value.shallowDocTemplate));
         formData.append("mainScan", fileTuple[0]);

@@ -60,14 +60,14 @@ export class UploadTemplateComponent implements OnInit {
       postData.append("timestamp", timestamp);
       if (extension === "xlsx") {
         this.backendCaller.addTemplateFromExcel(postData)
-          .subscribe((res) => {
+          .subscribe({next: (res) => {
           window.alert(res.message);
           this.uploadForm.reset();
           this.close();
-        }, (err) => {
+        }, error: (err) => {
             console.log(err);
             window.alert(err);
-          });
+          }});
       }
     }
   }
