@@ -39,7 +39,7 @@
         <mat-select id="mainImageFiles"
                     [disabled]="this.uploadForm.get('mainScans').value.length === 0">
           <ng-container *ngFor="let file of this.uploadForm.get('mainScans').value; index as i">
-            <mat-option disabled
+            <mat-option [disabled]="true"
                         [ngStyle]="{'background-color': (mainFlags[i] ? 'white' : 'red')}">{{ file.name }}
             </mat-option>
           </ng-container>
@@ -58,7 +58,7 @@
         <mat-select id="lateralImageFiles"
                     [disabled]="this.uploadForm.get('lateralScans').value.length === 0">
           <ng-container *ngFor="let file of this.uploadForm.get('lateralScans').value; index as i">
-            <mat-option disabled [ngStyle]="{'background-color': !lateralRedFlags[i] ? 'red':
+            <mat-option [disabled]="true" [ngStyle]="{'background-color': !lateralRedFlags[i] ? 'red':
                                               !lateralYellowFlags[i] ? 'yellow' : 'white'}">
               {{ file.name }}
             </mat-option>
@@ -84,7 +84,7 @@
         <mat-select id="preImageFiles"
                     [disabled]="this.uploadForm.get('preScans').value.length === 0">
           <ng-container *ngFor="let file of this.uploadForm.get('preScans').value; index as i">
-            <mat-option disabled [ngStyle]="{'background-color': !preRedFlags[i] ? 'red':
+            <mat-option [disabled]="true" [ngStyle]="{'background-color': !preRedFlags[i] ? 'red':
                                               !preYellowFlags[i] ? 'yellow' : 'white'}">
               {{ file.name }}
             </mat-option>
