@@ -46,7 +46,7 @@ export class AddScanDialogComponent implements OnInit {
     return true;
   }
 
-  submit(): void {
+  onSubmit(): void {
     this.uploading = true;
     const formData = new FormData();
     formData.append("scanType", this.data.scanType);

@@ -1,30 +1,33 @@
-<div mat-dialog-title class="header">
+<div mat-dialog-title>
   <h4>Aufnahme hinzufügen</h4>
 </div>
 
 <mat-divider></mat-divider>
 
-<mat-dialog-content [formGroup]="fileForm" (ngSubmit)="submit()" class="form">
+<form [formGroup]="fileForm">
+  <mat-dialog-content>
 
-  <div>Bitte Aufnahme auswählen:</div>
+    <div>Bitte Aufnahme auswählen:</div>
 
-  <button mat-stroked-button color="primary" (click)="fileInput1.click()">Datei auswählen</button>
-  <input hidden class="mr-3" type="file" id="mainScans" #fileInput1
-         (change)="onFileSelect($event)"/>
-  <div *ngIf="this.fileForm.get('newScan').value !== null">{{this.fileForm.get('newScan').value.name}}</div>
+    <button mat-stroked-button color="primary" (click)="fileInput1.click()">Datei auswählen</button>
+    <input hidden class="mr-3" type="file" id="mainScans" #fileInput1
+           (change)="onFileSelect($event)"/>
+    <div *ngIf="this.fileForm.get('newScan').value !== null">{{this.fileForm.get('newScan').value.name}}</div>
 
-  <ng-container *ngIf="uploading && message !== null">
-    <div class="alert alert-danger">{{message}}</div>
-    <mat-progress-bar mode="determinate" value="{{progress}}"></mat-progress-bar>
-  </ng-container>
+    <ng-container *ngIf="uploading && message !== null">
+      <div class="alert alert-danger">{{message}}</div>
+      <mat-progress-bar mode="determinate" value="{{progress}}"></mat-progress-bar>
+    </ng-container>
 
-</mat-dialog-content>
+  </mat-dialog-content>
 
-<mat-divider></mat-divider>
+  <mat-divider></mat-divider>
 
-<mat-dialog-actions class="buttons float-end">
-  <button type="submit" id="submitButton" mat-raised-button color="primary"
-          [disabled]="fileForm.invalid"
-          (click)="submit()">Hochladen</button>
-  <button id="cancelButton" mat-raised-button (click)="close()">Schließen</button>
-</mat-dialog-actions>
+  <mat-dialog-actions class="buttons float-end">
+    <button type="submit" id="submitButton" mat-raised-button color="primary"
+            [disabled]="fileForm.invalid"
+            (click)="onSubmit()">Hochladen</button>
+    <button id="cancelButton" mat-raised-button (click)="close()">Schließen</button>
+  </mat-dialog-actions>
+
+</form>
