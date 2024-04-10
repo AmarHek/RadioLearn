@@ -1,12 +1,14 @@
 import express from 'express';
 import multer from 'multer';
 import fs from "fs";
+import * as Path from "path";
+import {dataPathConfig} from "../config";
 
 import * as TemplateController from "../controllers/template.controller";
 
 const storageExcel = multer.diskStorage({
     destination: (req, file, cb) => {
-        const path = "data/excels/";
+        const path = Path.join(dataPathConfig.path, "excels");
         fs.mkdirSync(path, { recursive: true });
         cb(null, path);
     },

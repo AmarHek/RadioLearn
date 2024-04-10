@@ -5,6 +5,7 @@ import {parseXLSToJson} from "../middleware";
 import * as Path from "path";
 import {generateUniqueFilename} from "../util/util";
 import {RowErrorCollection} from "../middleware/errorFeedback";
+import {dataPathConfig} from "../config";
 
 
 export function createExcelTemplate(req: any, res: Response) {
@@ -18,9 +19,10 @@ export function createExcelTemplate(req: any, res: Response) {
         });
     } else {
         // save parsed data to json
-        const jsonName = generateUniqueFilename("data/json", req.body.name, ".json");
+        const jsonName = generateUniqueFilename(Path.join(dataPathConfig.path, "json"),
+            req.body.name, ".json");
         const templateName = jsonName.replace(".json", "");
-        fs.writeFile(Path.join("data/json", jsonName), result, (err) => {
+        fs.writeFile(Path.join(dataPathConfig.path, "json", jsonName), result, (err) => {
             if (err) {
                 console.log(err);
             } else {
@@ -82,7 +84,7 @@ export function deleteTemplate(req: any, res: Response){
     }).then(
         template => {
             if (template) {
-                const jsonPath = "data/json/" + template.name + ".json";
+                const jsonPath = Path.join(dataPathConfig.path, "json", template.name + ".json");
                 if (fs.existsSync(jsonPath)) {
                     fs.rmSync(jsonPath);
                     console.log(template.name + ": Json-file deleted");

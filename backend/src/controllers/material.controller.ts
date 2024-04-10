@@ -6,6 +6,7 @@ import fs from "fs";
 import Path from "path";
 import {Template} from "../models/template.model";
 import {isJsonString} from "../util/util";
+import {dataPathConfig} from "../config";
 
 // TODO: Define request types properly
 
@@ -76,7 +77,7 @@ export function addMaterial(req: any, res: Response): void {
 export async function deleteMaterial(req: Request, res: Response): Promise<void> {
     try {
         await MaterialDB.deleteOne({_id: req.body.objectID})
-        const dir = Path.join("data/images/", req.body.scanID);
+        const dir = Path.join(dataPathConfig.path, "images", req.body.scanID);
         fs.rmSync(dir, {recursive: true});
         res.status(200).send({message: "Material deleted"});
     }
@@ -170,7 +171,7 @@ export async function deleteScanById(req: Request, res: Response) {
         }
 
         // delete image from server folder
-        const imagePath = Path.join("data/images", req.body.id, req.body.filename);
+        const imagePath = Path.join(dataPathConfig.path, "images", req.body.id, req.body.filename);
         if (fs.existsSync(imagePath)) {
             fs.rmSync(imagePath);
         }

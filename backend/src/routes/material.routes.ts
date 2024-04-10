@@ -8,10 +8,11 @@ import {
   checkDuplicateLateralScan,
   checkDuplicateMainScan, checkDuplicatePreScan
 } from "../middleware/materialMiddleware";
+import {dataPathConfig} from "../config";
 
 const storageImages = multer.diskStorage({
   destination: (req, file, cb) => {
-    const path = Path.join("data/images/", req.body.id);
+    const path = Path.join(dataPathConfig.path, "images", req.body.id);
     fs.mkdirSync(path, {recursive: true});
     cb(null, path);
   },
@@ -22,7 +23,7 @@ const storageImages = multer.diskStorage({
 
 const updateStorage = multer.diskStorage({
   destination: (req, file, cb) => {
-    const path = Path.join("data/images/", req.body.id);
+    const path = Path.join(dataPathConfig.path, "images", req.body.id);
     cb(null, path);
   },
   filename: (req, file, cb) => {
