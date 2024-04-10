@@ -21,7 +21,7 @@
         <td class="text">{{displayKind(template.kind)}}</td>
         <td class="button">
           <ng-container *ngIf="(isMod && !blacklist.includes(template.name)) || isAdmin">
-            <button class="btn btn-secondary ml-3 disabled" [routerLink]="['/', 'edit', template.name]">
+            <button class="btn btn-secondary ml-3 disabled" [routerLink]="['/', 'edit', template._id]">
               Edit
             </button>
             <button class="btn btn-danger ml-3" style="margin-left: 10px;"
