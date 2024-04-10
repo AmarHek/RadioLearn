@@ -59,7 +59,8 @@ import {AnnotationPopupComponent,
     MatTooltipModule
   ],
   exports: [
-    MainInterfaceComponent
+    MainInterfaceComponent,
+    VariablesComponent
   ]
 })
 export class MainInterfaceModule { }
