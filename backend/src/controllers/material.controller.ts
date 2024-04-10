@@ -149,33 +149,34 @@ export async function deleteScanById(req: Request, res: Response) {
         let update;
         if (req.body.scanType === "lateralScan") {
             update = {
-                "scans.lateralScan": undefined,
-                "annotations.lateral": []
+                $unset: {"scans.lateralScan": ""},
+                $set: {"annotations.lateral": []}
             }
         } else if (req.body.scanType === "preScan") {
             update = {
-                "scans.preScan": undefined,
-                "annotations.pre": []
+                $unset: {"scans.preScan": ""},
+                $set: {"annotations.pre": []}
             }
         } else {
             res.status(400).send({message: "Unknown scanType specified"});
             return;
         }
 
-        const updateResult = await MaterialDB.updateOne({_id: req.params.id}, update).exec();
-        console.log(updateResult);
+        MaterialDB.updateOne({_id: req.params.id}, update).then((response) => {
+            console.log(response);
 
-        if (updateResult.modifiedCount === 0) {
-            res.status(404).send(
-                {message: "No scan was deleted. Material not found or scan already deleted."});
-        }
-
-        // delete image from server folder
-        const imagePath = Path.join(dataPathConfig.path, "images", req.body.id, req.body.filename);
-        if (fs.existsSync(imagePath)) {
-            fs.rmSync(imagePath);
-        }
-        res.status(200).send({message: "Deletion successful"});
+            if (response.modifiedCount === 0) {
+                res.status(404).send(
+                    {message: "No scan was deleted. Material not found or scan already deleted."});
+            } else {
+                // delete image from server folder
+                const imagePath = Path.join(dataPathConfig.path, "images", req.body.id, req.body.filename);
+                if (fs.existsSync(imagePath)) {
+                    fs.rmSync(imagePath);
+                }
+                res.status(200).send({message: "Deletion successful"});
+            }
+        });
     } catch(err) {
         res.status(500).send({message: err});
     }
