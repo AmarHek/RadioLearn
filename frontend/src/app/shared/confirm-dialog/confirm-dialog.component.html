@@ -3,18 +3,20 @@
 </h5>
 <mat-divider></mat-divider>
 
-<div mat-dialog-content class="content">
-  <p>{{message}}</p>
-</div>
+<form>
+  <div mat-dialog-content>
+    <p>{{ message }}</p>
+  </div>
 
-<mat-divider></mat-divider>
+  <mat-divider></mat-divider>
 
-<div mat-dialog-actions class="float-end" *ngIf="type === 'confirm'">
-  <button mat-raised-button color="primary" (click)="onConfirm()">Bestätigen</button>
-  <button mat-raised-button (click)="onDismiss()">Abbrechen</button>
-</div>
+  <div mat-dialog-actions class="float-end" *ngIf="type === 'confirm'">
+    <button mat-raised-button color="primary" (click)="onConfirm()">Bestätigen</button>
+    <button mat-raised-button (click)="onDismiss()">Abbrechen</button>
+  </div>
 
-<div mat-dialog-actions class="float-end" *ngIf="type === 'warning'">
-  <button mat-raised-button color="warn" (click)="onConfirm()">Bestätigen</button>
-  <button mat-raised-button (click)="onDismiss()">Abbrechen</button>
-</div>
+  <div mat-dialog-actions class="float-end" *ngIf="type === 'warning'">
+    <button mat-raised-button color="warn" (click)="onConfirm()">Bestätigen</button>
+    <button mat-raised-button (click)="onDismiss()">Abbrechen</button>
+  </div>
+</form>
