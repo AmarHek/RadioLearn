@@ -1,0 +1,67 @@
+<table style="margin: 20px">
+  <tbody>
+  <tr *ngFor="let row of rows; let rowIndex = index">
+    <td *ngIf="layoutId===0" class="category"
+        [style.width.%]="10"
+        [ngStyle]="{'color': row.optional ? 'grey' : 'black'}">
+      {{row.hidden ? "" : row.name}}</td>
+    <ng-container *ngIf="row.name === selectedCat || layoutId === 0">
+      <ng-container *ngFor="let clickable of row.clickables; let columnIndex = index" class="col-3">
+        <ng-container *ngIf="clickable.kind === 'box'">
+          <td class="box" style="padding-left: 10px">
+            <input type="checkbox" [(ngModel)]="clickable.value"
+                   (click)="this.dataParser.updateFromBox(clickable,this.clickEvent,undefined, row.name,this.categories)"
+                   id="{{row.name}} {{clickable.name}} box"/>
+          </td>
+          <td class="title" [style.width.%]="width" (mouseover)="hoveredColumn = columnIndex; hoveredRow = rowIndex"
+              (mouseout)="hoveredColumn = -1; hoveredRow = -1">
+            <label [ngClass]="{'selected': clickable.value}"
+                   [ngStyle]="{'border' : row.name + ' '
+                     + clickable.name === selectedSelectableID ? '3px solid red' : '3px solid transparent'}"
+                   for="{{row.name}} {{clickable.name}} box">
+              {{clickable.name}}
+            </label>
+            <mat-icon style="float:right; margin-top: 3px" (click)="edit(clickable)" *ngIf="hoveredColumn === columnIndex && hoveredRow === rowIndex">edit</mat-icon>
+            <mat-icon style="float:right; margin-top: 3px" (click)="remove(clickable)" *ngIf="hoveredColumn === columnIndex && hoveredRow === rowIndex">delete</mat-icon>
+          </td>
+          <app-variables *ngIf="clickable.variables.length> 0"
+                         (clickEvent)="this.dataParser.updateFromVariable(clickable,this.clickEvent,undefined, this.categories, row.name)"
+                         [variables]="clickable.variables"
+                         [parentText]="clickable.name"
+                         [parentActive]="clickable.value"
+                         [currentLayout]="layoutId"></app-variables>
+        </ng-container>
+
+        <ng-container *ngIf="clickable.kind === 'option'">
+          <td class="radio box" style="padding-left: 10px">
+            <input type="radio"
+                   id="{{row.name}} {{clickable.groupID + clickable.name}} box"
+                   [name]="clickable.groupID"
+                   [value]="clickable.name"
+                   (click)="this.dataParser.updateFromGroup(clickable.name,this.clickEvent,undefined, row.name, this.categories, clickable.groupID)"
+                   [(ngModel)]="this.dataParser.getGroupByID(row.name, clickable.groupID, this.categories).value"/>
+          </td>
+          <td class="title" [style.width.%]="width" (mouseover)="hoveredColumn = columnIndex; hoveredRow = rowIndex; hoveredGroupID = clickable.groupID"
+              (mouseout)="hoveredColumn = -1; hoveredRow = -1; hoveredGroupID = ''" [ngStyle]="{'background': hoveredGroupID == clickable.groupID ? 'lightblue' : 'white'}">
+            <label for="{{row.name}} {{clickable.groupID + clickable.name}} box"
+                   [ngStyle]="{'border' : row.name + ' ' + clickable.name === selectedSelectableID ?
+                       '3px solid red' : '3px solid transparent'}"
+                   [ngClass]="{'selected': (clickable.name === this.dataParser.getGroupByID(row.name, clickable.groupID, this.categories).value)}">
+              {{clickable.name}}
+            </label>
+            <mat-icon style="float:right; margin-top: 3px" (click)="edit(clickable)" *ngIf="hoveredColumn === columnIndex && hoveredRow === rowIndex">edit</mat-icon>
+            <mat-icon style="float:right; margin-top: 3px" (click)="remove(clickable)" *ngIf="hoveredColumn === columnIndex && hoveredRow === rowIndex">delete</mat-icon>
+          </td>
+          <app-variables *ngIf="clickable.variables.length > 0"
+                         (clickEvent)="this.dataParser.updateFromVariable(clickable,this.clickEvent, undefined, this.categories,row.name)"
+                         [variables]="clickable.variables"
+                         [parentText]="clickable.name"
+                         [parentActive]="clickable.name === this.dataParser.getGroupByID(row.name, clickable.groupID, this.categories).value"
+                         [currentLayout]="layoutId"></app-variables>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </tr>
+  </tbody>
+</table>
+

@@ -1,0 +1,69 @@
+<h2 mat-dialog-title>{{ this.title }}</h2>
+<mat-dialog-content style="display: flex; flex-direction: column">
+  <mat-form-field>
+    <mat-label>Variablentyp</mat-label>
+    <mat-select [(ngModel)]="selectedType">
+      <mat-option *ngFor="let option of variable_types" [value]="option">
+        {{ option }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill"
+                  *ngIf="selectedType == 'Multiple Choice' || selectedType == 'One Choice'">
+    <mat-label>Optionen (Durch Komma getrennt)</mat-label>
+    <mat-chip-grid #chipList aria-label="Optionen">
+      <mat-chip-row
+        *ngFor="let option of options"
+        (click)="onChipSelect(option)"
+        (removed)="removeOption(option)">
+        {{ option }}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip-row>
+      <input
+        placeholder="Neue Option ..."
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="addOption($event)">
+    </mat-chip-grid>
+  </mat-form-field>
+
+  <p *ngIf="!selectedChipName && (selectedType == 'Multiple Choice' || selectedType == 'One Choice')">Wähle eine der
+    oben gelisteten Optionen, um Synonyme und Variablen zu bearbeiten.</p>
+  <mat-form-field appearance="fill"
+                  *ngIf="(selectedType == 'Multiple Choice' || selectedType == 'One Choice') && selectedChipName">
+    <mat-label>Synonyme für {{ selectedChipName }} (Durch Komma getrennt)</mat-label>
+    <mat-chip-grid #chipListSynonyms aria-label="Synonyme">
+      <mat-chip-row
+        *ngFor="let synonym of visibleSynonyms"
+        (removed)="removeSynonym(synonym)">
+        {{ synonym }}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip-row>
+      <input
+        placeholder="Neues Synonym ..."
+        [matChipInputFor]="chipListSynonyms"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="addSynonym($event)">
+    </mat-chip-grid>
+  </mat-form-field>
+
+  <mat-form-field style="width: 100%;">
+    <input placeholder="Text Before" matInput [(ngModel)]="textBefore">
+  </mat-form-field>
+
+  <mat-form-field style="width: 100%;">
+    <input placeholder="Text After" matInput [(ngModel)]="textAfter">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)="onCancel()">Abbrechen</button>
+  <button mat-raised-button color="primary" (click)="onConfirm()"
+          [disabled]="(selectedType =='One Choice') && options.length < 2 || (selectedType == 'Multiple Choice') && options.length < 1">
+    Bestätigen
+  </button>
+</mat-dialog-actions>

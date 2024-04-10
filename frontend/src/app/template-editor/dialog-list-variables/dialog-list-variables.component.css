@@ -1,0 +1,9 @@
+.field-container {
+  display: flex;
+  align-items: center; /* Vertically align items in the container */
+  margin-bottom: 10px; /* Add some space between each field and button */
+}
+
+.card {
+  flex: 1; /* Allow the card to expand and fill available space */
+}

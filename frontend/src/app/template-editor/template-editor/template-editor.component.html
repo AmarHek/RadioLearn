@@ -1,0 +1,62 @@
+<html>
+<body class="disable-select">
+<div id="outer">
+  <div id="inner_remaining">
+    <mat-selection-list [multiple]="false"
+                        [hideSingleSelectionIndicator]="true">
+      <div *ngFor="let cat of categories" style="display: flex; align-items: center;">
+        <mat-list-option (click)="onCategorySelected(cat.name)"
+                         [selected]="cat.name == selectedCat"
+                         style="width: 40%">
+          {{ cat.name }}
+        </mat-list-option>
+        <div *ngIf="cat.name == selectedCat">
+          <button (click)=moveCategoryUp(cat.name) style="margin-left: 10px" mat-mini-fab color="primary">
+            <mat-icon>arrow_upward</mat-icon>
+          </button>
+          <button (click)=moveCategoryDown(cat.name) style="margin-left: 10px" mat-mini-fab color="primary">
+            <mat-icon>arrow_downward</mat-icon>
+          </button>
+          <button (click)=renameCategory(cat.name) style="margin-left: 10px" mat-mini-fab color="primary">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button (click)=removeCategory(cat.name) style="margin-left: 10px" mat-mini-fab color="warn">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div style="display: flex; justify-content: center; align-items: center">
+        <button (click)="addCategory()" mat-raised-button color="primary" style="margin: 10px">+ Kategorie hinzufügen
+        </button>
+      </div>
+    </mat-selection-list>
+
+    <div style="display: flex; justify-content: space-between;">
+      <div>
+        <button (click)="addGroup()" mat-raised-button color="primary" style="margin: 10px; float: left">Gruppe
+          hinzufügen
+        </button>
+        <button (click)="addCheckBox()" mat-raised-button color="primary" style="margin: 10px; float: left">Checkbox
+          hinzufügen
+        </button>
+      </div>
+      <div>
+        <button [disabled]="!redoAvailable()" (click)="redo()" mat-raised-button color="primary"
+                style="margin: 10px; float: right">Redo
+        </button>
+        <button [disabled]="!undoAvailable()" (click)="undo()" mat-raised-button color="primary"
+                style="margin: 10px; float: right">Undo
+        </button>
+      </div>
+    </div>
+    <editor-options style="float: left" [selectedCat]="selectedCat" [selectedSelectableID]="selectedSelectableID"
+                         *ngIf="categories"
+                         (editClickEvent)="edit($event)"
+                         (removeClickEvent)="removeElement($event)"
+                         class="options-expand"
+                         [categories]="categories"
+    ></editor-options>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<h2 mat-dialog-title>{{ title }}</h2>
+<mat-dialog-content>
+
+  <mat-form-field appearance="fill" style="width: 100%">
+    <mat-label>Optionen (Durch Komma getrennt)</mat-label>
+    <mat-chip-grid #chipList aria-label="Optionen">
+      <mat-chip-row
+        [ngClass]="{'option-chip-selected': selectedOption === option, 'option-chip-unselected': selectedOption !== option}"
+        *ngFor="let option of this.group.options"
+        (click)="onChipSelect(option)"
+        (removed)="removeOption(option)">
+        {{ option.name }}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip-row>
+      <input
+        #optionInput
+        placeholder="Neue Option ..."
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="addGroupOption($event)">
+    </mat-chip-grid>
+  </mat-form-field>
+
+
+  <p *ngIf="!selectedOption">Wähle eine der oben gelisteten Optionen, um Synonyme zu bearbeiten.</p>
+  <mat-form-field appearance="fill" *ngIf="selectedOption" style="width: 100%">
+    <mat-label>Synonyme für Option "{{ selectedOption.name }}" (Durch Komma getrennt)</mat-label>
+    <mat-chip-grid #chipListSynonyms aria-label="Synonyme">
+      <mat-chip-row
+        class="option-chip-unselected"
+        *ngFor="let synonym of selectedOption.keys"
+        (removed)="removeSynonym(synonym)">
+        {{ synonym }}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip-row>
+      <input
+        placeholder="Neues Synonym ..."
+        [matChipInputFor]="chipListSynonyms"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="addSynonym($event)">
+    </mat-chip-grid>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" style="margin-left: 10px"
+          (click)="openListVariablesDialog(selectedOption.name)"
+          *ngIf="selectedOption">
+    Variablen für Option "{{ selectedOption.name }}" verwalten ({{ selectedOption.variables.length }})
+  </button>
+
+</mat-dialog-content>
+<mat-dialog-actions style="margin-top: 50px">
+  <button mat-raised-button color="warn" (click)="onCancel()">Abbrechen</button>
+  <button mat-raised-button color="primary" (click)="onConfirm()"
+          disabled="{{!checkAtLeastTwoFilled()}}">Bestätigen
+  </button>
+</mat-dialog-actions>

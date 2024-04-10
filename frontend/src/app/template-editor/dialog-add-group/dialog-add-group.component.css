@@ -1,0 +1,9 @@
+.option-chip-selected {
+  background-color: forestgreen;
+  color: white;
+}
+
+.option-chip-unselected {
+  background-color: lightblue;
+  color: black;
+}

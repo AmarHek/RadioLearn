@@ -1,0 +1,31 @@
+<h2 mat-dialog-title>Variablen für {{this.data.displayName}}</h2>
+<mat-dialog-content>
+  <div class="field-container" *ngFor="let variable of this.variables; let i = index">
+    <mat-card appearance="outlined" class="card" *ngIf="variable.kind ==='oc'">
+      <p>{{textForVariableOC(variable)}}</p>
+    </mat-card>
+    <mat-card appearance="outlined" class="card" *ngIf="variable.kind ==='mc'">
+      <p>{{textForVariableMC(variable)}}</p>
+    </mat-card>
+    <mat-card appearance="outlined" class="card" *ngIf="variable.kind ==='text'">
+      <p>{{variable.textBefore}}  [Text]  {{variable.textAfter}}</p>
+    </mat-card>
+    <mat-card appearance="outlined" class="card" *ngIf="variable.kind ==='number'">
+      <p>{{variable.textBefore}}  [Zahl]  {{variable.textAfter}}</p>
+    </mat-card>
+    <mat-card appearance="outlined" class="card" *ngIf="variable.kind ==='date'">
+      <p>{{variable.textBefore}}  [Datum] {{variable.textAfter}}</p>
+    </mat-card>
+    <button mat-icon-button style="margin-left: 10px" (click)="openAddVariableDialog(variable)">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button (click)="removeField(i)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+  <button mat-raised-button color="primary" (click)="openAddVariableDialog()" style="margin-bottom: 30px">+ Variable hinzufügen</button>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)="onCancel()">Abbrechen</button>
+  <button mat-raised-button color="primary" (click)="onConfirm()" [mat-dialog-close]="fields">Bestätigen</button>
+</mat-dialog-actions>
