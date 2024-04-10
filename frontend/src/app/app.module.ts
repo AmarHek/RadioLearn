@@ -21,9 +21,9 @@ import {PendingChangesGuard} from "@app/core/guards/pending-changes.guard";
 import {SharedModule} from "@app/shared/shared.module";
 import {TemplateManagerModule} from "@app/template-manager/template-manager.module";
 import {ViewModule} from "@app/view/view.module";
-
 import {AppRoutingModule} from "./app-routing.module";
 import {AppComponent} from "./app.component";
+import {TemplateEditorModule} from "@app/template-editor/template-editor.module";
 
 @NgModule({
   declarations: [
@@ -45,6 +45,7 @@ import {AppComponent} from "./app.component";
     MatInputModule,
     MainInterfaceModule,
     SharedModule,
+    TemplateEditorModule,
     TemplateManagerModule,
     ViewModule
   ],

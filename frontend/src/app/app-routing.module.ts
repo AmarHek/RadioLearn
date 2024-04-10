@@ -11,6 +11,8 @@ import {MaterialListComponent} from "@app/material-manager";
 import {TemplateListComponent} from "@app/template-manager";
 import {LoginComponent} from "@app/view";
 import {WelcomePage} from "@app/view/";
+import {TemplateEditorComponent} from "@app/template-editor";
+import {PendingChangesGuard} from "@app/core/guards/pending-changes.guard";
 
 const routes: Routes = [
   {
@@ -39,6 +41,13 @@ const routes: Routes = [
     path: "main/:id",
     component: MainInterfaceComponent,
     canActivate: [AuthGuard],
+    data: { roles: [Role.User, Role.ExternalUser, Role.Moderator, Role.Admin] }
+  },
+  {
+    path: "edit/:id",
+    component: TemplateEditorComponent,
+    canActivate: [AuthGuard],
+    canDeactivate: [PendingChangesGuard],
     data: { roles: [Role.User, Role.ExternalUser, Role.Moderator, Role.Admin] }
   },
   {

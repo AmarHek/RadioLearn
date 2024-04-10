@@ -9,3 +9,5 @@ export * from "./services/mat-dialog.service";
 export * from "./services/radiolearn.service";
 export * from "./services/user.service";
 export * from "./models";
+export * from "./guards/pending-changes.guard"
+export * from "./helpers";
