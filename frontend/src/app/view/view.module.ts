@@ -14,6 +14,7 @@ import {HeaderComponent} from "@app/view/header/header.component";
 import {LoginComponent} from "@app/view/login/login.component";
 import {WelcomePage} from "@app/view/welcome-page/welcome-page";
 import {MatMenuModule} from "@angular/material/menu";
+import {MatTooltip} from "@angular/material/tooltip";
 
 
 @NgModule({
@@ -22,20 +23,21 @@ import {MatMenuModule} from "@angular/material/menu";
     LoginComponent,
     WelcomePage
   ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    RouterModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatListModule,
-    MatIconModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatMenuModule,
-    NgOptimizedImage
-  ],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        RouterModule,
+        MatButtonModule,
+        MatToolbarModule,
+        MatListModule,
+        MatIconModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatMenuModule,
+        NgOptimizedImage,
+        MatTooltip
+    ],
   exports: [
     HeaderComponent,
     LoginComponent,

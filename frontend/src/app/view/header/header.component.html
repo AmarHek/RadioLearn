@@ -21,6 +21,10 @@
   </a>
   <span class="spacer2"></span>
 
+  <a mat-button class="header-button" href="https://forms.gle/zXVf14PEaEiLFRLt5" target="_blank"
+     [matTooltip]="'Hier geht\'s zur Umfrage'">
+    <mat-icon class="icon-display" style="transform: scale(1.6)">edit_note</mat-icon>
+  </a>
   <a mat-button class="header-button" routerLink="/admin" routerLinkActive="active" *ngIf="(isAdmin)">
     <mat-icon class="icon-display">admin_panel_settings</mat-icon>
   </a>
