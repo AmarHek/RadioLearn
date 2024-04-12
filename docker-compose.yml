@@ -3,7 +3,7 @@ services:
   mongodb:
     image: mongodb/mongodb-community-server:latest
     ports:
-      - "27018:27018"
+      - "27017:27017"
     volumes:
       - /home/radiolearn/mongodb:/app/db
     container_name: radiolearn-mongodb
