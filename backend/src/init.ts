@@ -46,7 +46,7 @@ async function loadDefaultMongoDB() {
         }
 
         for (const collection of collections) {
-            const jsonData = fs.readFileSync(Path.join(__dirname, "..", "init", "development", collection + ".json"),
+            const jsonData = fs.readFileSync(Path.join(__dirname, "..", "init", dataPathConfig.init, collection + ".json"),
                 'utf8');
             const data = JSON.parse(jsonData);
 
