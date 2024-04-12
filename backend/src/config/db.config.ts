@@ -22,7 +22,7 @@ const prodConfig: DataBaseConfig = {
 // Configuration for running in a docker-compose environment
 const dockerConfig: DataBaseConfig = {
     HOST: "radiolearn-mongodb",
-    PORT: 27020,
+    PORT: 27018,
     DB: "radiolearn"
 };
 
