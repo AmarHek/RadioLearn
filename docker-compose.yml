@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   mongodb:
-    image: radiolearn/mongodb/mongodb-community-server:latest
+    image: harbor-ls6.informatik.uni-wuerzburg.de/radiolearn/mongodb/mongodb-community-server:latest
     ports:
       - "27017:27017"
     volumes:
@@ -9,7 +9,7 @@ services:
     container_name: radiolearn-mongodb
 
   app:
-    image: radiolearn/radio-learn-app:latest
+    image: harbor-ls6.informatik.uni-wuerzburg.de/radiolearn/radio-learn-app:latest
     environment:
       - NODE_ENV=docker
     ports:
