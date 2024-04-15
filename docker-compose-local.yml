@@ -1,15 +1,17 @@
 version: '3.8'
 services:
   mongodb:
-    image: radiolearn/mongodb/mongodb-community-server:latest
+    image: mongodb/mongodb-community-server:latest
     ports:
       - "27017:27017"
     volumes:
-      - /scratch/hekalo/radiolearn/mongodb:/app/db
+      - /home/radiolearn/mongodb:/app/db
     container_name: radiolearn-mongodb
 
   app:
-    image: radiolearn/radio-learn-app:latest
+    build:
+      context: .
+      dockerfile: Dockerfile-app
     environment:
       - NODE_ENV=docker
     ports:
@@ -17,6 +19,6 @@ services:
     depends_on:
       - mongodb
     volumes:
-      - /scratch/hekalo/radiolearn/data:/app/data
+      - /home/radiolearn/data:/app/data
     container_name: radiolearn-app
 
