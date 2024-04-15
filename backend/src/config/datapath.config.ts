@@ -11,7 +11,7 @@ const developmentConfig: DataPathConfig = {
 };
 
 const dockerConfig: DataPathConfig = {
-    path: '/data',
+    path: '/app/data',
     init: "docker"
 }
 
