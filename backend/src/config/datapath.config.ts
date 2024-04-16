@@ -6,7 +6,7 @@ interface DataPathConfig {
 
 // Configuration for development environment
 const developmentConfig: DataPathConfig = {
-    path: '/data-dev',
+    path: './data-dev',
     init: "development"
 };
 

@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use("/images", express.static(path.join(dataPathConfig.path, "images")));
-app.use("/", express.static(path.join(__dirname, "../dist/radiolearn")));
+app.use("/radiolearn", express.static(path.join(__dirname, "../dist/radiolearn")));
 app.use("/assets", express.static(path.join(__dirname, "assets", "img")));
 app.set("view engine", "ejs");
 
