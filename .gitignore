@@ -5,6 +5,7 @@
 /backend/data
 /backend/data-dev
 /data
+/data-dev
 
 # compiled output
 /frontend/dist
