@@ -33,6 +33,8 @@ export let dbConfig: DataBaseConfig;
 
 if (environment === 'docker') {
     dbConfig = dockerConfig;
+} else if (environment === 'docker-local') {
+    dbConfig = dockerConfig;
 } else if (environment === 'production') {
     dbConfig = prodConfig;
 } else {
