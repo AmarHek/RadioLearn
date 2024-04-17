@@ -47,7 +47,7 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "baseHref": "/radiolearn",
+              "baseHref": "/",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -63,7 +63,7 @@
                   "maximumWarning": "6kb"
                 }
               ],
-              "baseHref": "/radiolearn",
+              "baseHref": "/radiolearn/",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -85,7 +85,7 @@
                   "with": "src/environments/environment.docker.ts"
                 }
               ],
-              "baseHref": "/radiolearn",
+              "baseHref": "/radiolearn/",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -107,7 +107,7 @@
                   "with": "src/environments/environment.docker-local.ts"
                 }
               ],
-              "baseHref": "/radiolearn",
+              "baseHref": "/radiolearn/",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
