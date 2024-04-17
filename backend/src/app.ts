@@ -36,7 +36,7 @@ app.use(bodyParser.urlencoded({
 app.use("/images", express.static(path.join(dataPathConfig.path, "images")));
 
 if (process.env.NODE_ENV === "docker") {
-    app.use("/", express.static(path.join(__dirname, "..", "dist", "public", "radiolearn")));
+    app.use("/", express.static(path.join(__dirname, "..", "dist", "radiolearn")));
 } else {
     app.use("/radiolearn", express.static(path.join(__dirname, "..", "dist", "radiolearn")));
 }
