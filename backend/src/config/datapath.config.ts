@@ -31,6 +31,8 @@ if (environment === 'production') {
     dataPathConfig = productionConfig;
 } else if (environment === 'docker') {
     dataPathConfig = dockerConfig;
+} else if (environment === 'docker-local') {
+    dataPathConfig = dockerConfig;
 } else {
     dataPathConfig = developmentConfig;
 }
