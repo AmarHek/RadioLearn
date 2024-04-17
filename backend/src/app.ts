@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use("/images", express.static(path.join(dataPathConfig.path, "images")));
-app.use("/radiolearn", express.static(path.join(__dirname, "../dist/radiolearn")));
+app.use("/", express.static(path.join(__dirname, "..", "dist", "radiolearn")));
 app.use("/assets", express.static(path.join(__dirname, "assets", "img")));
 app.set("view engine", "ejs");
 
@@ -55,7 +55,7 @@ app.use("/database/material", matRouter);
 app.use("/database/template", templateRouter);
 app.use("/database/feedback", feedbackRouter);
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, "../dist/radiolearn/index.html"));
+app.get('/radiolearn*', (req, res) => {
+    res.sendFile(path.join(__dirname, "..", "dist", "radiolearn", "index.html"));
 });
 
