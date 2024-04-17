@@ -56,6 +56,22 @@
               "vendorChunk": false,
               "buildOptimizer": true
             },
+            "development": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
+              "baseHref": "/radiolearn",
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            },
             "docker": {
               "budgets": [
                 {
@@ -78,11 +94,17 @@
               "vendorChunk": false,
               "buildOptimizer": true
             },
-            "development": {
+            "docker-local": {
               "budgets": [
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "6kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.docker-local.ts"
                 }
               ],
               "baseHref": "/radiolearn",
