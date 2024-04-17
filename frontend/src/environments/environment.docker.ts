@@ -1,8 +1,15 @@
 export const environment = {
   production: true,
-  backend: "https://projekte-ls6.informatik.uni-wuerzburg.de/radiolearn",
-  authentication: "https://projekte-ls6.informatik.uni-wuerzburg.de/auth/",
-  database: "https://projekte-ls6.informatik.uni-wuerzburg.de/database/",
-  images: "https://projekte-ls6.informatik.uni-wuerzburg.de/images/",
-  assets: "https://projekte-ls6.informatik.uni-wuerzburg.de/assets/"
+  backend: "https://projekte-ls6.informatik.uni-wuerzburg.de/radiolearn/",
+  authentication: "auth/",
+  database: "database/",
+  images: "images/",
+  assets: "assets/"
 };
+
+environment.authentication = environment.backend + environment.authentication;
+environment.database = environment.backend + environment.database;
+environment.images = environment.backend + environment.images;
+environment.assets = environment.backend + environment.assets;
+
+
