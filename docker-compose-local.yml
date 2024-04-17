@@ -13,7 +13,7 @@ services:
       context: .
       dockerfile: Dockerfile-app
     environment:
-      - NODE_ENV=docker
+      - NODE_ENV=docker-local
     ports:
       - "8000:8000"
     depends_on:
