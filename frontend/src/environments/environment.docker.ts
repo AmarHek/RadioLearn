@@ -1,8 +1,8 @@
 export const environment = {
   production: true,
-  backend: "http://localhost:8000/",
-  authentication: "http://localhost:8000/auth/",
-  database: "http://localhost:8000/database/",
-  images: "http://localhost:8000/images/",
-  assets: "http://localhost:8000/assets/"
+  backend: "https://projekte-ls6.informatik.uni-wuerzburg.de/radiolearn",
+  authentication: "https://projekte-ls6.informatik.uni-wuerzburg.de/auth/",
+  database: "https://projekte-ls6.informatik.uni-wuerzburg.de/database/",
+  images: "https://projekte-ls6.informatik.uni-wuerzburg.de/images/",
+  assets: "https://projekte-ls6.informatik.uni-wuerzburg.de/assets/"
 };
