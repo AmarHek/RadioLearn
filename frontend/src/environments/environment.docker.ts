@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  backend: "https://projekte-ls6.informatik.uni-wuerzburg.de/radiolearn/",
+  backend: "https://radiolearn.informatik.uni-wuerzburg.de/",
   authentication: "auth/",
   database: "database/",
   images: "images/",
